@@ -1,0 +1,9 @@
+<div class="navigation">
+  <div *ngFor="let navItem of navItems$ | async" class="nav-item" fxFill>
+        <button type="button" mat-button (click)="navClick(navItem)" [ngClass]="{ 'selected' : navItem.id == selectedId }" fxFill fxLayoutAlign="start">
+            <span class="selected-indicator"></span>
+            <mat-icon class="material-icons-outlined">{{ navItem.icon }}</mat-icon>
+            <span class="label" i18n="{{ navItem.i18nLabel }}" [ngClass]="{ 'nav-item-min' : minimized }">{{ navItem.label }}</span>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+
+@mixin font($font-family, $font-file) {
+    @font-face {
+      font-family: $font-family;
+      src: url($font-file) format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+  }
+
+@include font('Avenir-Black', '/../assets/fonts/Avenir-Black.ttf');
+@include font('Avenir-BlackOblique', '/../assets/fonts/Avenir-BlackOblique.ttf');
+@include font('Avenir-Book', '/../assets/fonts/Avenir-Book.ttf');
+@include font('Avenir-BookOblique', '/../assets/fonts/Avenir-BookOblique.ttf');
+@include font('Avenir-Heavy', '/../assets/fonts/Avenir-Heavy.ttf');
+@include font('Avenir-HeavyOblique', '/../assets/fonts/Avenir-HeavyOblique.ttf');
+@include font('Avenir-Light', '/../assets/fonts/Avenir-Light.ttf');
+@include font('Avenir-Medium', '/../assets/fonts/Avenir-Medium.ttf');
+@include font('Avenir-MediumOblique', '/../assets/fonts/Avenir-MediumOblique.ttf');
+@include font('Avenir-Oblique', '/../assets/fonts/Avenir-Oblique.ttf');
+@include font('Avenir-Roman', '/../assets/fonts/Avenir-Roman.ttf');

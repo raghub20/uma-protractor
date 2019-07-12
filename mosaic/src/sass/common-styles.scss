@@ -1,0 +1,537 @@
+@import '../sass/cartus-palette.scss';
+/*Add candidate popup css*/
+.addCandidateModal{
+    // .mat-form-field-appearance-legacy .mat-form-field-infix{
+    //     padding:20px 0;
+    // }
+    .mat-dialog-container
+    {
+        border-radius: 4px;
+        padding: 24px;
+        overflow:hidden;
+        min-height: 450px;
+    }
+    .mat-dialog-content{
+        max-height:100%;
+        overflow: hidden;
+    }
+   
+    @media screen and (max-width: 599px){
+        max-width:100% !important;
+        height:100%; 
+        width:100%;      
+        .mat-dialog-container
+        {
+            border-radius:0;
+            width:100%;
+            box-shadow: none;
+            border:none;
+        }
+    }
+    
+}
+
+.tranfereeDetailsModal{
+    // .mat-form-field-appearance-legacy .mat-form-field-infix{
+    //     padding:20px 0;
+    // }
+    .mat-dialog-container
+    {
+        border-radius: 4px;
+        padding: 24px;
+        overflow:hidden;
+        min-height: 450px;
+    }
+    .mat-dialog-content{
+        max-height:100%;
+        overflow: hidden;
+    }
+   
+    @media screen and (max-width: 599px){
+        max-width:100% !important;
+        height:100%; 
+        width:100%;      
+        .mat-dialog-container
+        {
+            border-radius:0;
+            width:100%;
+            box-shadow: none;
+            border:none;
+        }
+    }
+    
+}
+
+.transfereeAssessmentModal{
+    // .mat-form-field-appearance-legacy .mat-form-field-infix{
+    //     padding:20px 0;
+    // }
+    .mat-dialog-container
+    {
+        border-radius: 4px;
+        padding: 24px;
+        overflow:hidden;
+        min-height: 450px;
+    }
+    .mat-dialog-content{
+        max-height:100%;
+        overflow: hidden;
+    }
+   
+    @media screen and (max-width: 599px){
+        max-width:100% !important;
+        height:100%; 
+        width:100%;      
+        .mat-dialog-container
+        {
+            border-radius:0;
+            width:100%;
+            box-shadow: none;
+            border:none;
+        }
+    }
+    
+}
+
+.addCostModelModal{
+    // .mat-form-field-appearance-legacy .mat-form-field-infix{
+    //     padding:20px 0;
+    // }
+    .mat-dialog-container
+    {
+        border-radius: 4px;
+        padding: 24px;
+        overflow:hidden;
+        min-height: 450px;
+    }
+    .mat-dialog-content{
+        max-height:100%;
+        overflow: hidden;
+    }
+   
+    @media screen and (max-width: 599px){
+        max-width:100% !important;
+        height:100%; 
+        width:100%;      
+        .mat-dialog-container
+        {
+            border-radius:0;
+            width:100%;
+            box-shadow: none;
+            border:none;
+        }
+    }
+    
+}
+
+/* DISPLAYEDCOLUMNS Modal popup*/
+.DisplayedColumnsModal {
+    .mat-grid-tile .mat-figure{
+        align-items: center;
+        justify-content: left;   
+        -ms-flex-pack: left;
+    }
+    .mat-dialog-content{
+        overflow: hidden;
+    }
+    @media screen and (max-width:600px){
+        max-width:100% !important;
+        max-height:100%;
+        width:100% !important;
+        height: 100%;
+        .settings-tablecol {
+            height: 400px;
+            width: 100%;
+            }
+        .mat-grid-tile .mat-figure{
+            left:10px;
+        }
+        .mat-dialog-actions{
+            justify-content: flex-end;
+        }
+        .mat-dialog-container{
+            border-radius: 0;
+        }
+    }
+@media screen and (min-width:768px){
+   .settings-tablecol {
+    height: 185px;
+    width: 432px;
+    }
+}
+.mat-checkbox .mat-checkbox-ripple{
+  width:0;
+  height: 0;
+}
+.settings-tablecol {
+    box-sizing: border-box;
+    border:1px solid rgba(0, 0, 0, 0.12);
+    display: flex;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    }
+.settings-scrolldiv{
+    overflow-y: auto;
+    flex-shrink: 50;
+    flex-basis: 100%;
+    padding-top: 4px;
+    }
+     .settings-scrolldiv::-webkit-scrollbar {
+         width: 6px;
+      background-color: #F5F5F5;
+    }
+    .settings-scrolldiv::-webkit-scrollbar-thumb {
+         background-color: map-get($cartus-palette, 'cartus_primary_dark_brown');
+        }
+    .settings-scrolldiv::-webkit-scrollbar-track {
+         -webkit-box-shadow : inset 0 0 6px rgba(0,0,0,0.1);
+         background-color: #fff;
+     }
+    .mat-checkbox-layout .mat-checkbox-label{
+        font-size: 0.75em;
+    }
+    .mat-dialog-title{
+        margin-bottom: 0;
+    }
+    .mat-dialog-container{
+        padding: 10px;
+        overflow: hidden;
+    }
+    // .mat-icon-button{
+    //     width:28px;
+    // }
+    .mat-checkbox-frame{
+       border-width:1px;
+    }
+    .mat-checkbox-background, .mat-checkbox-frame{
+        border-radius: 4px;
+        border-color: map-get($cartus-palette, 'cartus_light_gray' );  
+    }
+    .mat-checkbox-disabled .mat-checkbox-background{
+        // border-radius: 4px;
+        // border-color: map-get($cartus-palette, 'cartus_light_gray' ); 
+        background-color: #aaa!important;   
+    }
+    .mat-checkbox-checked .mat-checkbox-background
+    {
+        background-color: map-get($cartus-palette, 'cartus_accent_blue');
+    }
+    .mat-grid-tile .mat-figure{
+        left:7px;
+        display:block;
+    }
+    .mat-dialog-actions{
+        justify-content: flex-end;
+        -ms-flex-pack: left;
+        padding: 20px 0 35px 0;
+    }      
+}
+/* Seetings Modal popup ends*/
+
+/* button styles */
+button{
+    &.contained-button{
+        font-family: 'Avenir-Light', sans-serif;
+        color: map-get($cartus-palette, 'cartus_nav_tile');
+        font-size: 1em;
+        height: 40px;
+        line-height:24px;
+        border-radius: 4px;
+        padding:0.5em;
+        background-color: map-get($cartus-palette, 'cartus_accent_blue');
+        border:none;
+        // margin-bottom:1.5em;
+        min-width:100px;
+        &:active{
+            text-decoration: underline;
+            border: 2px solid map-get($cartus-palette, 'cartus_dark_accent_blue');
+            background-color: map-get($cartus-palette, 'cartus_accent_blue');
+        }
+        &:hover{
+            background-color: map-get($cartus-palette, 'cartus_dark_accent_blue');
+        }   
+        &:disabled{
+            color:map-get($cartus-palette,'cartus_gray');
+            background-color: map-get($cartus-palette,'cartus_disabled_gray');
+        }
+    }
+    &.outlined-button{
+        font-family: 'Avenir-Light', sans-serif;
+        color: map-get($cartus-palette, 'cartus_dark_accent_blue');
+        font-size: 1em;
+        height: 40px;
+        line-height:24px;
+        border-radius: 4px;
+        padding:0.5em;
+        border: 1px solid map-get($cartus-palette, 'cartus_light_gray');
+       // background-color: map-get($cartus-palette, 'cartus_accent_blue');
+        // margin-bottom:1.5em;
+        min-width:100px;
+        &:active{
+            text-decoration: underline;
+            color: map-get($cartus-palette, 'cartus_dark_accent_blue');
+            border: 1px solid map-get($cartus-palette, 'cartus_light_gray');
+            background-color: map-get($cartus-palette, 'cartus_hover_tint');
+        }
+        &:hover{
+            //background-color: map-get($cartus-palette, 'cartus_dark_accent_blue');
+            color: map-get($cartus-palette, 'cartus_dark_accent_blue');
+            border: 1px solid map-get($cartus-palette, 'cartus_light_gray');
+        }   
+        &:disabled{
+            color:map-get($cartus-palette,'cartus_gray');
+            border: 1px solid map-get($cartus-palette, 'cartus_light_gray');
+        }
+    }
+    &.text-button{
+        font-family: 'Avenir-Light', sans-serif;
+        color: map-get($cartus-palette, 'cartus_accent_blue');
+        font-size: 1em;
+        height: 40px;
+        line-height:24px;
+        border-radius:4px;
+        padding:0.5em;
+        // margin-bottom:1.5em;
+        min-width:100px;
+        &:active{
+            text-decoration: underline;
+            border: 2px solid map-get($cartus-palette, 'cartus_dark_accent_blue');
+            color: map-get($cartus-palette, 'cartus_dark_accent_blue');
+        }
+        &:hover{
+            color: map-get($cartus-palette, 'cartus_dark_accent_blue');
+            background-color: map-get($cartus-palette, 'cartus_hover_tint');
+        }   
+        &:disabled{
+            color:map-get($cartus-palette,'cartus_gray');
+            background-color: map-get($cartus-palette,'cartus_disabled_gray');
+        }
+    }   
+}
+
+/*menu styles */
+.menu-style[aria-expanded="true"]{
+    color:map-get($cartus-palette, 'cartus_dark_accent_blue');
+    .menuName{
+        text-decoration: underline;  
+    }
+    .menuIconBlock{
+        .expandMore{
+            display:none;
+        }
+        .expandLess{
+            display:block;
+        }
+    }
+}
+.menu-style{
+    font-family:'Avenir-Book',sans-serif;
+    color:map-get($cartus-palette, 'cartus_light_gray');
+    &:hover{
+        .menuName{
+            text-decoration: underline;
+        }
+        background-color:map-get($cartus-palette,'cartus_hover_tint');
+    }
+    &:active{
+        .menuName{
+            text-decoration: underline;
+        }
+        color:map-get($cartus-palette, 'cartus_dark_accent_blue');   
+    }
+    .menuIconBlock{
+        .mat-icon{
+            font-weight:bold;
+            font-size:1.75em;
+        }
+        .expandMore{
+            display:block;
+        }
+        .expandLess{
+            display:none;
+        }
+    }
+}
+.cdk-overlay-pane{
+    .mat-menu-panel {
+        min-width: 135px;
+        margin-top:8px;
+        .mat-menu-content{
+            padding:0;
+            button.mat-menu-item{
+                font-family:'Avenir-Roman',sans-serif;
+                &:hover{
+                    color: map-get($cartus-palette, 'cartus_dark_accent_blue');
+                    background-color: map-get($cartus-palette,'cartus_orange_tint');
+                    .mat-icon{
+                        color: map-get($cartus-palette, 'cartus_dark_accent_blue');
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Mat Table COmmon Styles */
+
+.mat-table{
+    width:100%;
+    //border: 1px solid map-get($cartus-palette, 'cartus_light_gray');
+
+    th.mat-header-cell{
+        color: map-get($cartus-palette, 'cartus_gray');
+        border-right-color: map-get($cartus-palette, 'cartus_secondary_gray' );
+        padding: 10px 10px 10px 10px;
+        font-size: 0.75em;
+        vertical-align: bottom;
+        padding-bottom: 10px;
+        font-weight: normal;
+        font-family: 'Avenir-Heavy',sans-serif;
+        border-bottom-color: map-get($cartus-palette, 'cartus_secondary_gray');
+    }
+    td.mat-cell{
+        font-size: 0.875em;
+        padding: 10px 10px 10px 10px;
+        line-height: 20px;
+        vertical-align: top;
+        font-family: 'Avenir-Book',sans-serif;
+     
+    }
+
+    .mat-checkbox-frame {
+        border-width:1px;
+    }
+    .mat-row:hover {
+        background-color:map-get($cartus-palette, 'cartus_hover_tint');
+        cursor: pointer;
+    }
+    a {
+        text-decoration: underline;
+    }
+}
+
+
+/* Common Heading Styles */
+h1 {
+    font-size: 1.5em;
+    color: map-get($cartus-palette, 'cartus_gray' );
+}
+
+h2 {
+    font-size: 1.25em;
+    color: map-get($cartus-palette, 'cartus_gray' );
+}
+
+/* Sticky material table */
+    
+/* Styling specfic for Material Design */
+
+@media only screen and (max-width: 400px) {
+  
+    th.mat-column-select, td.mat-column-select {
+      min-width: 2.1em;
+      max-width: 4em;
+      padding-right: 0.5em;
+    }
+    
+    th.mat-column-fullname, td.mat-column-fullname {
+      min-width: 2.1em;
+      max-width: 9em;
+      padding-left: 0.5em;
+    }
+    
+    .mat-table-sticky:nth-child(2) {
+      border-right: 1px solid map-get($cartus-palette, 'cartus_pale_gray');
+    }
+    
+    .mat-table-sticky:last-child {
+      border-left: 1px solid map-get($cartus-palette, 'cartus_pale_gray');
+    }
+    
+    }
+    
+    @media only screen 
+      and (min-width: 400px) {
+      
+        td.mat-column-select {
+          min-width: 2.1em;
+          max-width: 4em;
+          padding-right: 0.5em;
+        }
+        
+        th.mat-column-fullname, td.mat-column-fullname {
+          min-width: 2.1em;
+          max-width: 9em;
+          padding-left: 0.5em;
+        }
+        .mat-table-sticky:nth-child(2) {
+            border-right: 1px solid map-get($cartus-palette, 'cartus_pale_gray');
+          }
+          
+          .mat-table-sticky:last-child {
+            border-left: 1px solid map-get($cartus-palette, 'cartus_pale_gray');
+          }
+      
+      }
+
+      @media only screen 
+      and (min-width: 1200px ) {
+      
+        td.mat-column-select {
+         width:2em;
+          padding-right: 0.5em;
+        }
+        
+        th.mat-column-fullname, td.mat-column-fullname {
+            min-width: 4em;
+            padding-left: 0.5em;
+        }
+        .mat-table-sticky:nth-child(2) {
+            border-right:none;
+          }
+          
+          .mat-table-sticky:last-child {
+            border-left: none;
+          }
+      
+      }
+
+.error:hover {
+    color: map-get($cartus-palette, 'cartus_error_feedback');
+}    
+
+
+/* Cartus Design Framework Documenation */
+
+/* Material Design - Typography */
+
+/* Material Design - Dialog  */
+
+/* Material Design - Buttons & Links */
+
+/* Material Design - Tables */
+
+/* Material Design - Forms, Validations, Error */
+
+/* Material Design - Lists */
+
+/* Material Design - Icons */
+
+/* Material Design - Notifications */
+
+/* Expansion Panels or Accordions */
+
+
+
+
+
+
+
+
+
+
+
+
+

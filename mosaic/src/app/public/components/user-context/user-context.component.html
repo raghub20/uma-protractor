@@ -1,0 +1,24 @@
+<div class="userContextContainer" fxLayout fxLayoutAlign="end center">
+    <div class="userNameSection" fxFlex="150px">
+        <div  [matMenuTriggerFor]="nameMenu"  class="menu-style">
+            <div class="menuName">
+                <a>{{userContextDetails.userContextName}}
+                    <span>{{userContextDetails.userContextDesignation}}</span>
+                </a>
+            </div>
+            <div class="menuIconBlock">
+                <mat-icon class="expandMore">expand_more</mat-icon> 
+                <mat-icon class="expandLess">expand_less</mat-icon>
+            </div>
+        </div>
+    </div>
+    <div class="userImageSection" fxFlex="60px">
+        <mat-icon [matMenuTriggerFor]="nameMenu"  class="avatorImage">
+            <img alt="userImage" src="{{userContextDetails.userContextImage}}">
+        </mat-icon>
+    </div>
+    <mat-menu #nameMenu="matMenu">
+            <button mat-menu-item><mat-icon>settings</mat-icon> Settings</button>
+            <button mat-menu-item (click)="logout()"><mat-icon>exit_to_app</mat-icon> Log Out</button>
+    </mat-menu>
+</div>

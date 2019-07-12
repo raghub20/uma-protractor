@@ -1,0 +1,213 @@
+@import '../sass/cartus-palette.scss';
+
+$header-height-desktop: 4.5em;
+$header-height-mobile: 3.5em;
+$sidebar-desktop-minimized-width: 60px !important;
+$sidebar-desktop-transition-speed: .5s;
+$drop-shadow-color: rgba(0, 0, 0, 0.1); /* Use rgba for better alpha rendering */
+
+.header-desktop {
+    height: $header-height-desktop;
+    z-index: 3;
+}
+
+.header-desktop span, .header-mobile span {
+    font-family: 'Arial-BoldMT', 'Arial Bold', 'Arial', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.header-desktop button[mat-button] {
+    height: 48px;
+    min-width: 48px;
+    width: 48px;
+    padding: 0;
+}
+
+.header-desktop mat-icon, .sidebar-mobile-logout mat-icon, .sidebar-desktop-toggle mat-icon {
+    color: #949494;
+    font-weight: 400;
+}
+
+.header-desktop.product-desktop, .header-desktop-r {
+    box-shadow: 0 7px 5px -1px $drop-shadow-color;
+    -webkit-box-shadow: 0 7px 5px -1px $drop-shadow-color; /* Safari and Chrome */
+    -moz-box-shadow: 0 7px 5px -1px $drop-shadow-color; /* Firefox */
+}
+
+.header-desktop-r span:last-child {
+    border-left: 2px solid #ccc;
+    padding-left: .5em;
+}
+
+.header-desktop.product-desktop {
+    color: #3e79bb;
+}
+
+.header-desktop-search-btn mat-icon {
+    font-size: 28px;
+    font-weight: 700;
+    height: 28px;
+    width: 28px;
+}
+
+.header-mobile {
+    color: #fff;
+    background-color: #4b85ff;
+    height: $header-height-mobile;
+    position: relative;
+    z-index: 2;
+}
+
+.header-mobile-menu mat-icon {
+    font-size: 38px;
+    font-weight: 700;
+    height: 38px;
+    width: 38px;
+    transform: scale(1, 1.2);
+    -webkit-transform: scale(1, 1.2); /* Safari and Chrome */
+    -moz-transform: scale(1, 1.2); /* Firefox */
+}
+
+.header-mobile-search mat-icon {
+    font-size: 28px;
+    font-weight: 700;
+    height: 28px;
+    width: 28px;
+}
+
+.search-input { /* Maybe remove when real search is in place */
+    font-size: 14px;
+    border: 0;
+    width: 100%;
+    outline: none;
+    color: #575A5D;
+}
+
+.search-input::placeholder, .search-input::-moz-placeholder, .search-input::-ms-input-placeholder {
+    color: #949494 !important; /* Maybe remove when real search is in place */
+}
+
+.search-mobile .search-input {
+    padding-top: 1.5em;
+}
+
+.nav-mobile {
+    height: calc(100vh - #{$header-height-mobile});
+    min-width: 300px;
+}
+
+.sidebar-desktop {
+    width: 250px;
+    transition: width $sidebar-desktop-transition-speed, min-width $sidebar-desktop-transition-speed, 
+        max-width $sidebar-desktop-transition-speed;
+}
+
+.sidebar-desktop-min {
+    width: $sidebar-desktop-minimized-width;
+    min-width: $sidebar-desktop-minimized-width;
+    max-width: $sidebar-desktop-minimized-width;
+}
+
+.sidebar-desktop-logo {
+    width: 50px; /* Required for width transition to work, depends on text length */
+    transition: width $sidebar-desktop-transition-speed, opacity 1.35s;
+}
+
+.sidebar-desktop-logo-min {
+    width: 0 !important;
+    opacity: 0;
+    transition: width $sidebar-desktop-transition-speed, opacity .35s;
+}
+
+.sidebar-desktop-toggle, .sidebar-mobile-logout {
+    height: 3em;
+}
+
+.sidebar-mobile-logout {
+    color: #767676;
+}
+
+.sidebar-mobile-logout span {
+    font-size: 16px;
+}
+
+.sidebar-desktop-toggle button {
+    overflow: hidden; /* Fix scrollbar issue when button used (probably from icon rotation) */
+}
+
+.sidebar-desktop-toggle .icon-container {
+    transform: rotateZ(-90deg);
+    position: relative;
+    left: .5em;
+}
+
+.sidebar-mobile-logout mat-icon {
+    margin-left: .5em;
+}
+
+.sidebar-desktop-toggle mat-icon {
+    font-size: 38px;
+    line-height: 38px;
+    height: 38px;
+    width: 38px;
+    transform: rotateX(0deg);
+    transition: transform .75s;
+}
+
+@media not all and (min-resolution:.001dpcm) {
+    @supports (-webkit-appearance:none) {
+        .sidebar-desktop-toggle mat-icon {
+            width: 39px; /* Fix jumpy toggle on Safari only (probable rounding error) */
+        }
+    }
+}
+
+.sidebar-desktop-toggle-min {
+    transform: rotateX(-180deg) !important;
+}
+
+.nav-container-desktop {
+    z-index: 1;
+}
+
+.sidebar-hr {
+    margin: 0 .25em;
+    border: 1px solid #ccc;
+}
+
+.content-col-desktop {
+    z-index: 2;
+    position: relative;
+}
+
+.content-desktop {
+    height: calc(100vh - #{$header-height-desktop}) !important;
+    min-height: calc(100vh - #{$header-height-desktop}) !important;
+}
+
+.content-mobile {
+    height: calc(100vh - #{$header-height-mobile}) !important;
+    min-height: calc(100vh - #{$header-height-mobile}) !important;
+}
+
+.main-content {
+    background-color: #f7f7f7;
+    overflow: auto;
+}
+
+button[mat-button]:hover {
+    background-color: #edf4d9;
+}
+
+button[mat-button]:hover mat-icon, .sidebar-mobile-logout button[mat-button]:hover span {
+    color: #3e79bb !important;
+}
+
+.header-mobile button[mat-button]:hover {
+    background-color: transparent;
+}
+
+.header-mobile button[mat-button]:hover mat-icon {
+    color: #fff !important;
+}

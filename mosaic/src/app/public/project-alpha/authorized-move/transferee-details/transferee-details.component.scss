@@ -1,0 +1,56 @@
+@import '../../../../../sass/cartus-palette.scss';
+
+form {
+  padding : 0;
+}
+
+.input-headline {
+  font-size: 2.33em;
+  line-height: 32px;
+  font-weight: 400;
+}
+
+.mat-option {
+  font-size:1em;
+}
+
+.mat-raised-button.mat-send-button{
+  border: 1px solid #77797B;
+  color: #77797B;
+  background-color: #AAAAAA;
+}
+
+.mat-dialog-actions {
+  justify-content: flex-end;
+  padding-top: 24px;
+}
+
+.addcandidateformcontainer{
+  input{
+    color:#575A5D;
+    font-weight: 100;
+  }
+  .material-icons{
+    position: relative;
+    color:#575A5D;
+    background: none;
+  }
+  .mat-form-field{
+    width:100% !important;
+  }
+  .close-icon{    
+    position: relative;
+    top: 10px;
+    cursor: pointer;
+  }
+  .modal-rightnavarrow{
+    font: size 2.9em;
+  }
+  .hide-arrow-xs{
+    display: block !important;
+    @media screen and (max-width:600px){
+      display: none !important;
+    }
+  }
+  
+}

@@ -1,0 +1,27 @@
+<div class="project_alpha">
+ 
+  <section class="page_header">
+      <div fxLayout="row" fxLayoutGap="15px">
+          <span fxLayoutAlign="start"> 
+              <h1>Project Alpha</h1>
+          </span>
+          <span fxLayoutAlign="start center" >
+              <a (click)="openModal();">
+                  <mat-icon matTooltip="Settings" matTooltipPosition="right">settings</mat-icon>
+              </a>
+          </span>
+        </div>
+      </section>
+  </div>
+
+<div class="candidates-container">
+
+  <nav mat-tab-nav-bar>
+    <a mat-tab-link *ngFor="let link of navLinks; let i = index;" [routerLink]="[link.path]"
+      routerLinkActive #rla="routerLinkActive" [active]="rla.isActive" >
+      {{link.label}}
+    </a>
+  </nav>
+
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,21 @@
+<div class="settingsContainer" flexLayout fxLayout.xs="column">
+  
+    <div mat-dialog-title disableTypography className={styles.dialogTitle} fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="20px">
+        <h2>Settings</h2>
+        <button mat-icon-button (click)="onNoClick()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+  
+  <mat-dialog-content>    
+    <p>
+    Coming Soon...
+    </p>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button (click)="onNoClick()" mat-button color="primary">CANCEL</button>
+    <button class="mat-raised-button mat-primary" (click)="save()">Save Settings</button>
+  </mat-dialog-actions>
+</div>

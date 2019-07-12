@@ -1,0 +1,141 @@
+image: node:10.15
+#run-as-user: 1000
+#image:
+#  name: 732821338101.dkr.ecr.us-west-2.amazonaws.com/ui_build
+#  aws: 
+#    access-key: $AWS_ACCESS_KEY_ID_DEV01
+#    secret-key: $AWS_SECRET_ACCESS_KEY_DEV01
+
+options:
+  max-time: 15
+
+definitions:
+  steps:
+      - step: &Start
+            name: Build & Test
+            caches:
+                  - node
+            script: 
+                  - apt-get update && apt-get install -y apt-transport-https ca-certificates curl gnupg --no-install-recommends 
+                  - curl -sSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add - && echo "deb https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
+                  - apt-get update && apt-get install -y google-chrome-stable fontconfig fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-symbola fonts-noto ttf-freefont --no-install-recommends
+                  - apt-get purge --auto-remove -y curl gnupg && rm -rf /var/lib/apt/lists/*
+                  - apt-get update -y && apt-get install -y && apt-get install -y apt-utils && apt-get install -y --no-install-recommends apt-utils apt-get install -y default-jre && apt install -y iceweasel && apt install -y fonts-liberation && apt install -y libappindicator3-1 && apt install -y libxss1 && apt install -y lsb-release && apt install -y xdg-utils && apt install -y net-tools
+                  -  apt-get update && apt-get install -y openjdk-8-jre-headless && apt-get install -y ca-certificates-java
+                  - npm install -g --quiet 
+                  - npm install chromedriver
+                  - npm install webdriver-manager
+                  - npm install chromium
+                  - npm install karma-cli --save-dev
+                  - npm install phantomjs-prebuilt
+                  - npm install karma-jasmine --save-dev
+                  - npm install karma-phantomjs-launcher --save-dev
+                  - npm install http-server
+                  - npm install -g cross-env
+                  - npm install geckodriver --save
+                  - npm install firefox
+                  - npm install get-firefox
+                  - npm install karma-firefox-launcher
+                  - npm install protractor
+                  - node node_modules/protractor/bin/webdriver-manager update
+                  - npm install
+            # Devloper Commands
+                  - npm run build:dev
+                  #- npm run lint
+                  - npm run test
+                  - npm run test:coverage
+                  - npm run e2e:setup
+                  #- npm run e2e
+                  - npm run e2e:mocked
+                  #- npm run webdriver-update
+                  #- npm run e2e:mocked-multi
+                  #- npm run e2e:browserstack
+                  - npm run sonar
+                  - npm run build:ft
+                  - npm run build:qa
+                  - npm run build:prod                 
+            artifacts:
+                  - dist/**
+
+pipelines:
+  branches:
+    master: 
+      - step: *Start
+      - step:
+          name: Deploy to Development
+          script:
+                  - echo "Deploying to test environment"      
+                  - apt-get update && apt-get -y install python-dev
+                  - curl -O https://bootstrap.pypa.io/get-pip.py           
+                  - python get-pip.py     
+                  - pip install awscli --upgrade
+                  - python --version
+                  - pip --help
+                  - aws --version
+                  - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID_DEV01
+                  - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY_DEV01
+                  - aws s3 sync ./dist/mosaic-dev s3://mosaicdev01.cartus.com --sse AES256
+      - step:
+          name: Deploy to Testing
+          deployment: test   # can be test, staging or production.
+          trigger: manual
+          script:
+                  - echo "Deploy to Testing"
+                  - apt-get update && apt-get -y install python-dev
+                  - curl -O https://bootstrap.pypa.io/get-pip.py           
+                  - python get-pip.py     
+                  - pip install awscli --upgrade
+                  - python --version
+                  - pip --help
+                  - aws --version
+                  - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID_TST
+                  - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY_TST
+                  - aws s3 sync ./dist/mosaic-ft s3://mosaictst01.cartus.com --sse AES256
+      - step:
+          name: Deploy to staging
+          deployment: staging   # can be test, staging or production.
+          trigger: manual
+          script:
+                  - echo "Deploy to Staging"
+                  - apt-get update && apt-get -y install python-dev
+                  - curl -O https://bootstrap.pypa.io/get-pip.py           
+                  - python get-pip.py     
+                  - pip install awscli --upgrade
+                  - python --version
+                  - pip --help
+                  - aws --version
+                  - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID_STG
+                  - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY_STG
+                  - aws s3 sync ./dist/mosaic-qa s3://mosaicstg01.cartus.com --sse AES256
+      - step:
+          name: Deploy to prod
+          deployment: production   # can be test, staging or production.
+          trigger: manual
+          script:
+                  - echo "Deploy to Production"
+                  - apt-get update && apt-get -y install python-dev 
+                  - curl -O https://bootstrap.pypa.io/get-pip.py           
+                  - python get-pip.py     
+                  - pip install awscli --upgrade
+                  - python --version
+                  - pip --help
+                  - aws --version
+                  - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID_PRD
+                  - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY_PRD
+                  - aws s3 sync ./dist/mosaic-prod s3://mosaic.cartus.com --sse AES256
+    feature/*:
+      - step: *Start
+      - step:
+          name: Deploy to SandBox
+          script:
+                  - echo "Deploying to Sandbox environment"
+                  - apt-get update && apt-get -y install python-dev 
+                  - curl -O https://bootstrap.pypa.io/get-pip.py           
+                  - python get-pip.py     
+                  - pip install awscli --upgrade
+                  - python --version
+                  - pip --help
+                  - aws --version
+                  - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID_SB
+                  - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY_SB
+                  - aws s3 sync ./dist/mosaic-dev s3://mosaicsb01.cartus.com --sse AES256

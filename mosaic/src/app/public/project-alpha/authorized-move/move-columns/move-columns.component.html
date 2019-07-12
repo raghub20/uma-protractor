@@ -1,0 +1,26 @@
+<div class="settingsContainer" flexLayout fxLayout.xs="column">
+  
+  <div mat-dialog-title disableTypography className={styles.dialogTitle} fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="20px">
+      <h2>Table Columns</h2>
+      <button mat-icon-button (click)="onNoClick()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>  
+<mat-dialog-content> 
+  <div class="settings-tablecol">
+      <div class="settings-scrolldiv">
+  <mat-grid-list [cols]="gridColumn" rowHeight="35px">
+    <mat-grid-tile *ngFor="let selection of columnsList">
+      <mat-checkbox [checked]="selection.flag" [disabled]="selection.disabled"  (change)="updateChkbxArray(selection, $event.checked)" >{{selection.displayName}}</mat-checkbox>
+      
+  </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>
+    <div class="settings-selectedcount"><span>{{selectedColumnsList.length}}</span> Selected</div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button (click)="resetValues()" mat-button color="primary">RESET</button>
+  <button class="contained-button" (click)="save()">OK</button>
+</mat-dialog-actions>
+</div>

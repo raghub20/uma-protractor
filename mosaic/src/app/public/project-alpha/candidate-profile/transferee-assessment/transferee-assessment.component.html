@@ -1,0 +1,105 @@
+<div class="addcandidateformcontainer" flexLayout fxLayout.xs="column">
+  <div mat-dialog-title disableTypography className={styles.dialogTitle} fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="20px" fxLayoutGap.xs="0em">
+    <h2>{{ title }}</h2>
+    <a  class="close-icon" (click)="onNoClick()">
+      <mat-icon>close</mat-icon>
+   </a>
+  </div>
+  
+  <mat-dialog-content>    
+    <form fxLayout="column" [formGroup]="addCandidateForm">
+      <div class="input-row" fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="2em" fxLayout.xs="column" fxLayoutGap.xs="0em">
+        <div fxFlex="50%" fxLayoutAlign="start" fxLayout.xs="column" fxFlex.xs="100%">
+          <mat-form-field>
+            <input matInput placeholder="First Name" formControlName="FirstName">
+            <mat-error>
+              {{ getErrorMessage('FIRST_NAME') }}
+          </mat-error>
+          </mat-form-field>
+        </div>
+        <div fxFlex="50%" fxLayout.xs="column" fxFlex.xs="100%">
+            <mat-form-field>
+              <input matInput placeholder="Last Name" formControlName="LastName" >
+              <mat-error>
+                {{ getErrorMessage('LAST_NAME') }}
+            </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      <div class="input-row" style="margin-top: 0.9em;">
+        <mat-form-field fxFlex>
+          <input matInput  type="text" placeholder="Email" formControlName="Email">
+          <mat-error>
+            {{ getErrorMessage('EMAIL') }}
+        </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="2em" fxLayout.xs="column" fxLayoutGap.xs="0px" style="margin-top: 0.9em;">
+        <div fxFlex="50%" fxLayoutAlign="start" fxLayout.xs="column" fxFlex.xs="100%">
+            <mat-form-field>
+              <mat-label>Level</mat-label>
+              <mat-select formControlName="Level" >
+              <mat-option *ngFor="let level of levels" [value]="level.levelName">
+                  {{level.levelName}}
+                </mat-option>
+              </mat-select>
+              <mat-error>
+                  {{ errors.Level }}
+              </mat-error>
+              
+            </mat-form-field>
+          </div>
+        <div fxFlex="50%" fxLayout.xs="column" fxFlex.xs="100%">
+            <mat-form-field>
+              <input matInput placeholder="Business Unit (optional)" formControlName="BusinessUnit">
+            </mat-form-field>
+          </div>
+        </div>
+      <div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="2em" fxLayout.xs="column" fxLayoutGap.xs="0" style="margin-top: 0.9em;">
+        <div fxFlex="50%" fxLayoutAlign="start" fxLayout.xs="column" fxFlex.xs="100%">
+            <mat-form-field>
+                <input type="text" placeholder="Departure (Optional)" matInput formControlName="Departure" [matAutocomplete]="departureList" >
+                <mat-autocomplete #departureList="matAutocomplete" >
+                  <mat-option *ngFor="let departure of departures | async" [value]="departure.name">
+                    {{departure.name}}
+                  </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+          </div>
+          <div fxFlex fxLayout.xs="column" class="hide-arrow-xs">
+            <i class="material-icons modal-rightnavarrow">
+              arrow_forward_ios
+              </i>
+        </div>
+        <div fxFlex="45%" fxLayout.xs="column" fxFlex.xs="100%">          
+            <mat-form-field>
+              <input type="text" placeholder="Destination" matInput formControlName="Destination" [matAutocomplete]="destinationList">
+              <mat-autocomplete #destinationList="matAutocomplete">
+                <mat-option *ngFor="let destination of destinations | async" [value]="destination.name">
+                  {{destination.name}}
+                </mat-option>
+              </mat-autocomplete>
+              <mat-error>
+                {{ errors.Destination }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </mat-dialog-content>
+
+  <!-- <mat-dialog-actions>
+    <button (click)="onNoClick()" mat-button color="primary">CANCEL</button>
+    <button  [disabled]="!addCandidateForm.valid" class="mat-raised-button mat-primary" (click)="sendInvite()">Send Invite</button>
+  </mat-dialog-actions> -->
+  <mat-dialog-actions>
+    <!-- <button (click)="onNoClick()" mat-button color="primary">CANCEL</button>
+    <button mat-button class="mat-button outlined-button" (click)="saveCandidate()">Save Draft</button>
+    <button [disabled]="!addCandidateForm.valid" class="mat-raised-button mat-send-button">Send Invite</button> -->
+
+    <button (click)="onNoClick()" mat-button color="primary" id="cancel">CANCEL</button>
+    <button mat-button class="mat-button outlined-button"  (click)="sendInvite()" id="save">Save Draft</button>
+    <button [disabled]="!addCandidateForm.valid" class="mat-button contained-button" (click)="sendInvite()" id="invite">Send Invite</button>
+    <!-- [ngClass]="{'outlined-button': addCandidateForm.valid === true, 'contained-button': addCandidateForm.valid === false }" -->
+  </mat-dialog-actions>
+</div>

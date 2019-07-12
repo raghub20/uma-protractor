@@ -1,0 +1,6 @@
+{
+  "extends": [],
+  "rules": {
+    "rxjs-add": { "severity": "off" }
+  }
+}

@@ -1,0 +1,98 @@
+<div fxLayout="row" fxFill>
+  <div fxFlex="250px" fxHide.lt-md class="sidebar-desktop" [ngClass]="{ 'sidebar-desktop-min' : sidebarMinimized }">
+    <div fxFill fxLayout="column" fxLayoutAlign="space-between stretch">
+      <div fxFlex="nogrow" fxLayoutAlign="center center" class="header-desktop product-desktop">
+        <span>M</span>
+        <span class="sidebar-desktop-logo" [ngClass]="{ 'sidebar-desktop-logo-min' : sidebarMinimized }">OSAIC</span>
+      </div>
+      <div fxFlex class="nav-container-desktop">
+        <app-nav-list #desktopNavList [minimizable]="true"></app-nav-list>
+      </div>
+      <div fxFlex="nogrow">
+        <hr class="sidebar-hr" />
+      </div>
+      <div fxFlex="nogrow" class="sidebar-desktop-toggle">
+        <button fxFill fxLayoutAlign="end" type="button" mat-button (click)="sidebarToggle()">
+          <div fxFill fxLayoutAlign="center center" class="icon-container">
+            <mat-icon class="material-icons-outlined" [ngClass]="{ 'sidebar-desktop-toggle-min' : sidebarMinimized }">eject</mat-icon>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div fxFlex="100">
+    <div class="content-col-desktop">
+      <div fxLayout="row" fxLayoutAlign="space-between center" fxHide.lt-md class="header-desktop header-desktop-r">
+        <span fxFlex="60px" fxLayoutAlign="center">
+          <button type="button" mat-button class="header-desktop-search-btn">
+            <mat-icon>search</mat-icon>
+          </button>
+        </span>
+        <span fxFlex>
+          <input class="search-input" placeholder="Search by Name or File #" />
+        </span>
+        <span fxFlex="60px" fxLayoutAlign="center">
+          <button type="button" mat-button>
+            <mat-icon>help</mat-icon>
+          </button>
+        </span>
+        <span fxFlex="60px" fxLayoutAlign="center">
+          <button type="button" mat-button>
+            <mat-icon>forum</mat-icon>
+          </button>
+        </span>
+        <span fxFlex="60px" fxLayoutAlign="center">
+          <button type="button" mat-button>
+            <mat-icon>notifications</mat-icon>
+          </button>
+        </span>
+        <span fxFlex="220px" fxLayoutAlign="end">
+            <app-user-context></app-user-context>
+        </span>
+      </div>
+      <div fxHide.gt-sm>
+        <div class="header-mobile">
+          <div fxFill fxLayout="row" fxLayoutAlign="space-between center">
+            <button type="button" mat-button (click)="mobsearch.close();nav.toggle()" 
+            class="header-mobile-menu">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span>MOSAIC</span>
+            <button type="button" mat-button (click)="nav.close();mobsearch.toggle()" 
+            class="header-mobile-search">
+              <mat-icon>search</mat-icon>
+            </button>
+          </div>
+          <div>
+            <mat-expansion-panel #mobsearch mode="over" fxFill class="search-mobile">
+              <input class="search-input" placeholder="Search by Name or File #" />
+            </mat-expansion-panel>
+          </div>
+        </div>
+      </div>
+    </div>
+    <mat-drawer-container fxFill ngClass.lt-md="content-mobile" ngClass.gt-sm="content-desktop">
+      <mat-drawer fxHide.gt-sm #nav mode="over" class="nav-mobile" (window:resize)="nav.close()" [autoFocus]="false">
+        <div fxFill fxLayout="column" fxLayoutAlign="space-between">
+          <div fxFlex>
+            <app-nav-list #mobileNavList></app-nav-list>
+          </div>
+          <div fxFlex="nogrow">
+            <hr class="sidebar-hr" />
+          </div>
+          <div fxFlex="nogrow" class="sidebar-mobile-logout">
+            <button fxFill fxLayoutAlign="end" type="button" mat-button (click)="logout()">
+              <span>Logout</span>
+              <mat-icon>exit_to_app</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-drawer>
+      <mat-drawer-content>
+        <div fxFill class="main-content" (click)="nav.close();mobsearch.close()">
+          <router-outlet></router-outlet>
+        </div>
+      </mat-drawer-content>
+    </mat-drawer-container>
+  </div>
+</div>

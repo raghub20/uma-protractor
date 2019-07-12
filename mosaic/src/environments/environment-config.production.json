@@ -1,0 +1,15 @@
+{
+  "environment": "developer",
+  "api": {
+    "host": "api.cartus.com",
+    "port": "443",
+    "protocol": "https",
+    "base_url": "/api/"
+  },
+  "google_analytics": {
+    "key": "UA-119441655-4"
+  },
+  "logout": "http://login.cartus.com/#/logout",
+  "cartusOnline": "https://online.cartus.com/Public#/context",
+  "atlas": "https://atlas.cartus.com/setup.aspx"
+}

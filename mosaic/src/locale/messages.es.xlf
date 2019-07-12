@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="es" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="homeTitle" datatype="html">
+        <source>Welcome To New {{ title }}!</source>
+        <target>Bienvenido a Nuevo {{ title }}!</target>
+      </trans-unit>
+      <trans-unit id="homeDescription" datatype="html">
+        <source>Here are some links to help you start:</source>
+        <target>Aquí hay algunos enlaces para ayudarte a comenzar:</target>
+      </trans-unit>
+      <trans-unit id="cardLinkTutorial" datatype="html">
+        <source>Visit tutorial</source>
+        <target>Visitar tutorial</target>
+      </trans-unit>
+      <trans-unit id="cardTitleDocumentation" datatype="html">
+        <source>CLI Documentation</source>
+        <target>CLI Documentación</target>
+      </trans-unit>
+      <trans-unit id="cardSubtitleDocumentation" datatype="html">
+        <source>Documentation</source>
+        <target>Documentación</target>
+      </trans-unit>
+      <trans-unit id="cardLinkDocumentation" datatype="html">
+        <source>Visit documentation</source>
+        <target>Visitar documentación</target>
+      </trans-unit>
+      <trans-unit id="cardLinkBlog" datatype="html">
+        <source>Visit blog</source>
+        <target>Visitar blog</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

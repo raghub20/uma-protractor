@@ -1,0 +1,29 @@
+.settingsContainer {
+    @media screen and (min-width:768px){
+        width: 435px;
+    }
+    @media screen and (max-width:600px){
+        max-width:100% !important;
+        max-height:100%;
+        width:100% !important;
+        height: 100%;
+    }
+	h2 {
+		margin-right: 20px;
+		padding: 0;
+		line-height: 16px;
+    }
+    .settings-selectedcount{
+        display: flex;
+        justify-content: flex-end;
+        font-size: 0.75em;
+        padding: 10px 0;
+        line-height: 3px;
+        span{
+            font-weight: bold;
+            padding-right: 3px;
+        }
+    }
+}
+
+

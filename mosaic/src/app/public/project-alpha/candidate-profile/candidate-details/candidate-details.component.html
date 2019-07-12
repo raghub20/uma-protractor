@@ -1,0 +1,106 @@
+<section class="candidate_details">
+  
+  <h2>Candidate Details</h2>
+  
+  <section class="mat-elevation-z8">
+    <div style="overflow:auto;">
+      <table mat-table [dataSource]="dataSource" matSort>
+        <!-- Select Checkbox Column -->
+        <ng-container matColumnDef="select" sticky>
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="$event ? masterToggle() : null"
+              [checked]="selection.hasValue() && isAllSelected()"
+              [indeterminate]="selection.hasValue() && !isAllSelected()"
+              [aria-label]="checkboxLabel()">
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row" >
+            <mat-checkbox (click)="$event.stopPropagation()"
+              (change)="$event ? selection.toggle(row) : null"
+              [checked]="selection.isSelected(row)"
+              [aria-label]="checkboxLabel(row)" >
+            </mat-checkbox>
+          </td>
+      </ng-container>
+  
+      <!-- Full Name Column -->
+      <ng-container matColumnDef="fullname" sticky>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Full Name </th>
+          <td mat-cell *matCellDef="let element" class="cLinks" [ngClass]="{highlighted: selection.isSelected(row)}" (click)="open($event, element)"><span class="text-as-link" [innerHTML]="element.fullname | highlightSearch: filterText">{{element.fullname}}</span> </td>
+      </ng-container>
+
+      <!-- Email Address Column -->
+      <ng-container matColumnDef="emailAddress">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email Address </th>
+        <td mat-cell *matCellDef="let element" [innerHTML]="element.emailAddress | highlightSearch: filterText"> {{element.emailAddress}} </td>
+      </ng-container>
+  
+      <!-- Level Column -->
+      <ng-container matColumnDef="level">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Level </th>
+          <td mat-cell *matCellDef="let element" [innerHTML]="element.level.levelName | highlightSearch: filterText"> {{element.level.levelName}}</td>
+      </ng-container>
+
+       <!-- Business Unit Column -->
+      <ng-container matColumnDef="businessUnit">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Business Unit </th>
+        <td mat-cell *matCellDef="let element" [innerHTML]="element.businessUnit | highlightSearch: filterText"> {{element.businessUnit}} </td>
+      </ng-container>
+  
+      <!-- Departure Column -->
+      <ng-container matColumnDef="departure">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Departure </th>
+        <td mat-cell *matCellDef="let element" [innerHTML]="element.departure | highlightSearch: filterText"> {{element.departure}}</td>
+      </ng-container>
+  
+      <!-- Destination Column -->
+      <ng-container matColumnDef="destination">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Destination </th>
+        <td mat-cell *matCellDef="let element" [innerHTML]="element.destination | highlightSearch: filterText"> {{element.destination}} </td>
+      </ng-container>
+
+      <!-- Last Status Updated Column -->
+      <ng-container matColumnDef="lastUpdatedDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status Date </th>
+        <td mat-cell *matCellDef="let element" [innerHTML]="element.lastUpdatedDate | highlightSearch: filterText"> {{element.lastUpdatedDate}} </td>
+      </ng-container>
+
+      <!-- Invitation Sent Date Column -->
+      <ng-container matColumnDef="invitationSentDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Invitation Sent Date </th>
+        <td mat-cell *matCellDef="let element" [innerHTML]="element.invitationSentDate | highlightSearch: filterText"> {{element.invitationSentDate}} </td>
+      </ng-container>
+
+      <!-- Created By Column -->
+      <ng-container matColumnDef="createdBy">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Created By </th>
+        <td mat-cell *matCellDef="let element" [innerHTML]="element.createdBy | highlightSearch: filterText"> {{element.createdBy}} </td>
+      </ng-container>
+      
+      <!-- Status Column -->
+      <ng-container matColumnDef="status" stickyEnd>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="notification-important">
+            <span *ngIf="element.isAssessmentReceived" (click)="open($event, element)">
+              <mat-icon> notification_important </mat-icon>
+              <a> {{element.status}} </a>
+            </span>
+            <span *ngIf="!element.isAssessmentReceived">
+              {{element.status}}
+            </span>
+            <span *ngIf="element.isInvitationSent" style="margin-left: 10px;">
+              <a (click)="openAlert($event)"> {{element.invitationText}} </a>
+            </span>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"  [ngClass]="{highlighted: selection.isSelected(row)}"></tr>
+    </table>
+  </div>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" ></mat-paginator>
+</section>
+
+</section>

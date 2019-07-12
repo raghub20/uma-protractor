@@ -1,0 +1,15 @@
+{
+  "environment": "developer",
+  "api": {
+    "host": "apiqa.cartus.com",
+    "port": "443",
+    "protocol": "https",
+    "base_url": "/api/"
+  },
+  "google_analytics": {
+    "key": "UA-119441655-3"
+  },
+  "logout": "http://loginqa.cartus.com/#/logout",
+  "cartusOnline": "https://onlineqa.cartus.com/Public#/context",
+  "atlas": "https://atlasqa.cartus.com/setup.aspx"
+}

@@ -1,0 +1,46 @@
+<div class="login_container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" style="margin-top: 40px;">
+    <!-- <div class="loginImgBlock" fxFlex="50%"></div> -->
+    <div class="loginContentBlock" fxFlex="50%" fxLayoutAlign="center">
+      <mat-card class="no-border">
+        <mat-card-header fxLayoutAlign="center">
+          <mat-card-title>
+            <h1>Project Alpha</h1>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form (ngSubmit)="onSubmit()" style="margin-top: 20px;">
+            <div class="mat-form-input loginInput">
+              <mat-form-field  appearance="fill">
+                <mat-label>Username</mat-label>
+                <input matInput placeholder="Enter your username" formControlName="userName" 
+                  #userName>
+                <mat-error *ngIf="userName.required">Please give a valid user name</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="mat-form-input loginInput">
+              <mat-form-field appearance="fill">
+                <mat-label>Password</mat-label>
+                <input matInput  placeholder="Enter your password" formControlName="password" #password
+                [type]="!hide ? 'password' : 'text'">
+                <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}
+                </mat-icon> -->
+                <mat-error *ngIf="password.required">Please give a valid password</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="checkbox-block" fxLayoutAlign="center" style="margin-top: 20px;">
+              <mat-checkbox>Remember me</mat-checkbox>
+            </div>
+            <!-- <div class="errorBlock" *ngIf="loginError!=''">
+              <span>{{loginError}}</span>
+            </div> -->
+            <div class="raised-button" fxLayoutAlign="center" style="margin-top: 20px;">
+              <button mat-raised-button color="primary" > Login </button>
+            </div>
+            <div class="link-style" fxLayoutAlign="center" style="margin-top: 20px;">
+              <a href="#">Forgot Password</a>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+@import '../../../../sass/cartus-palette.scss';
+.userContextContainer{
+    .userNameSection{
+        padding-right: 10px;
+        .menu-style{
+            display:inline-flex;
+            .menuName{
+                span{
+                    display: flex;
+                    white-space: pre-wrap;
+                    font-size: 0.75em;
+                    line-height: 1em;
+                }
+            }
+            .menuIconBlock{
+                padding: 15px 0 0 0;
+            }
+        }
+    }
+    .userImageSection{
+        .avatorImage{
+            vertical-align: middle;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: map-get($cartus-palette, 'cartus_light_gray');
+            overflow:hidden;
+            img{
+                width:45px;
+            }
+        }
+    }
+}   

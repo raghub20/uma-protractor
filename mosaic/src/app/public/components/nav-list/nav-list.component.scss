@@ -1,0 +1,50 @@
+.navigation {
+    color: #767676;
+}
+
+.nav-item .label {
+    opacity: 1;
+    transition: opacity .75s;
+}
+
+.nav-item .selected-indicator {
+    display: inline-block;
+    width: .25em;
+    height: 100%;
+    padding: 0;
+}
+
+.nav-item button {
+    padding: 0;
+    border-radius: 0;
+}
+
+.nav-item mat-icon {
+    padding: .5em .6em;
+}
+
+.nav-item span {
+    font-size: 16px;
+}
+
+.nav-item .label.nav-item-min {
+    opacity: 0;
+    transition: opacity .35s;
+}
+
+.nav-item button[mat-button]:hover {
+    background-color: #edf4d9;
+}
+
+.nav-item button[mat-button]:hover mat-icon {
+    color: #3e79bb !important;
+}
+
+.nav-item .selected {
+    pointer-events: none;
+    color: #4b85ff !important;
+}
+
+.nav-item .selected .selected-indicator {
+    background-color: #4b85ff;
+}

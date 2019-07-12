@@ -1,0 +1,72 @@
+<section class="search_table">
+
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <span fxFlex="60%" fxLayoutAlign="start">
+      <mat-form-field appearance="outline" class="search-within-table search-box">
+          <mat-icon matPrefix>search</mat-icon>
+          <input matInput (keyup)="filterResults($event.target.value)" placeholder="Search within table for..." width="80%" fxFlex.sm="65">
+        </mat-form-field>
+        <span fxLayoutAlign="start center" >
+          <a (click)="openModal()">
+              <mat-icon matTooltip="Filter Columns" matTooltipPosition="right" class="viewsetting-icon">view_column</mat-icon>
+          </a>
+      </span>
+      </span>
+      <span fxFlex="12.5em" fxLayoutAlign="end" fxFlex.xs="8em">
+        <button mat-raised-button color="primary" (click)="openDialog()">
+            <mat-icon matPrefix>person_add</mat-icon>
+            Create Cost Model
+        </button>
+    </span>
+  </div>
+  </section>  
+
+<section class="candidate_details">
+    <h2>4 Cost Models</h2>
+  
+  <section class="mat-elevation-z8">
+<div style="overflow:auto;">
+    <table mat-table [dataSource]="dataSource" matSort>
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="modelName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Cost Model Name </th>
+          <td mat-cell *matCellDef="let element" class="cLinks" (click)="open($event, element)"><span class="text-as-link" [innerHTML]="element.modelName | highlightSearch: filterText">{{element.modelName}}</span> </td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="departure">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Departure </th>
+          <td mat-cell *matCellDef="let element" [innerHTML]="element.departure | highlightSearch: filterText"> {{element.departure}}</td>
+      </ng-container>
+  
+      <!-- Star Column -->
+      <ng-container matColumnDef="destination">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Destination </th>
+          <td mat-cell *matCellDef="let element" [innerHTML]="element.destination | highlightSearch: filterText"> {{element.destination}} </td>
+      </ng-container>
+
+       <!-- Last Updated Date Column -->
+       <ng-container matColumnDef="updateDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Updated Date </th>
+        <td mat-cell *matCellDef="let element" [innerHTML]="element.updateDate | highlightSearch: filterText"> {{element.updateDate}} </td>
+       </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>
+             Delete
+          </th>
+          <td mat-cell *matCellDef="let row" >
+              <mat-icon matPrefix class="error">delete</mat-icon>
+          </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+    </table>
+  </div>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" ></mat-paginator>
+</section>
+
+</section>
