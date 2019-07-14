@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { EmployeeDetails as IEmployeeDetails } from '../../../src/app/core/models/employee-details.model';
+//import { EmployeeDetails as IEmployeeDetails } from '../../../src/app/core/models/employee-details.model';
 
 export class EmployeeDetails {
     static getSchema() {
@@ -21,7 +21,7 @@ export class EmployeeDetails {
         });
     }
     static getData() {
-        const employeeDetails: IEmployeeDetails[] = [];
+        const employeeDetails = [];
         employeeDetails.push({
             'empFirstName': 'Angela',
             'empLastName': 'Rippon',

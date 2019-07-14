@@ -8,11 +8,11 @@ import { async } from 'q';
 chai.use(chaiAsPromised);
 const expect = chai.expect;
 
-let approvedmoves: ApprovedMoves;
+let approvedmoves: ApprovedMoves = new ApprovedMoves();
 let actual: string;
-Before(() => {
-  approvedmoves= new ApprovedMoves();
-});
+// Before(() => {
+//   approvedmoves= new ApprovedMoves();
+// });
 
 Given('the User Navigates to Transferee’s Profile View', async () => {
   await approvedmoves.get();

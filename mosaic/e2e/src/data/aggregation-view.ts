@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import { AggregationData as IAggregationData } from '../../../src/app/core/models/aggregation-data.model';
-import { AggregationView as IAggregationView } from '../../../src/app/core/models/aggregation-view.model';
+//import { AggregationData as IAggregationData } from '../../../src/app/core/models/aggregation-data.model';
+//import { AggregationView as IAggregationView } from '../../../src/app/core/models/aggregation-view.model';
 
 export class AggregationView {
   static getSchema() {
@@ -12,8 +12,8 @@ export class AggregationView {
     });
   }
   static getData() {
-    const aggregateView: IAggregationView[] = [];
-    const aggregateData: IAggregationData[] = [];
+    const aggregateView  = [];
+    const aggregateData = [];
 
     aggregateData.push({
       country: 'Australia',

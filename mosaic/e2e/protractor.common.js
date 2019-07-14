@@ -14,19 +14,21 @@ const config = {
   framework: 'custom',  // set to "custom" instead of cucumber.
   frameworkPath: require.resolve('protractor-cucumber-framework'),  // path relative to the current config file
   specs: [
-    '../e2e/src/features/**/approved-moves.feature'     // Specs here are the cucumber feature files
+    '../e2e/protractor/features/*.feature'
+    //'../e2e/src/features/**/approved-moves.feature'     // Specs here are the cucumber feature files
     //'../e2e/src/features/**/EmployeeStatusSummary.feature'
     //'../e2e/src/features/**/Layout_AggregateView.feature'
     //'../e2e/src/features/**/AggregateView_Destination_Country.feature'
   ],
   // cucumber command line options
   cucumberOpts: {
-    require: ['../e2e/src/support/setup.ts', '../e2e/src/step_definitions/**/*.steps.ts'],  // require setup and step definition files before executing features
+    require: ['../e2e/src/support/setup.ts', '../e2e/protractor/step_definitions/*.ts'],
+    //require: ['../e2e/src/support/setup.ts', '../e2e/src/step_definitions/**/*.steps.ts'],  // require setup and step definition files before executing features
     //require: ['../e2e/src/support/setup.ts', '../e2e/src/step_definitions/**/EmployeeStatusSummary.steps.ts'],
     //require: ['../e2e/src/support/setup.ts', '../e2e/src/step_definitions/**/Layout_AggregateView.steps.ts'],
     //require: ['../e2e/src/support/setup.ts', '../e2e/src/step_definitions/**/AggregateView_Destination_Country.steps.ts'],
     
-    tags: tags,                           // <string[]> (expression) only execute the features or scenarios with tags matching the expression
+    tags: ['@regression'],                           // <string[]> (expression) only execute the features or scenarios with tags matching the expression
     strict: true,                       // <boolean> fail if there are any undefined or pending steps
     format: 'json:' + jsonReportFile,   //["summary"],            // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)
     'dry-run': false,                   // <boolean> invoke formatters without executing steps
@@ -49,7 +51,12 @@ const config = {
     // Ensure ts-node uses our custom tsconfig.
     require('ts-node').register({ project: 'e2e/src/tsconfig.json'});
     browser.params['rootUrl'] = browser.baseUrl + '/' + browser.params.app_base;
-    browser.manage().window().setSize(1400, 900); // Set initial browser size
+    //browser.manage().window().setSize(1400, 900); // Set initial browser size
+    browser.waitForAngularEnabled(false);
+    browser.manage().window().maximize();
+    console.log("On prepare common = " + browser.baseUrl);
+    browser.get('http://localhost:4202/#');
+    browser.sleep(3000);
     // Ensure that the reports directory has been created.
     if (!existsSync(cucumberReportDirectory)) {
       mkdirSync(cucumberReportDirectory);
