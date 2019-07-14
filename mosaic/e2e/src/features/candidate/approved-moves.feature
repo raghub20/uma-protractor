@@ -14,5 +14,12 @@ Background:
   And User will verify search box is displayed
   And User will wait for "5" seconds
 
-  Scenario: Verify sorting of the data present in summary
-  When User will do "asceding" sort of approved moves table by clicking on "Full Name" header
+  @SR_50
+  Scenario Outline: Verify sorting of the data present in summary
+  When User will do "<Sort Type>" sort of approved moves table by clicking on "<Header Name>" header
+  Then User will verify the "<Sort Type>" sorted data for the header "<Header Name>"
+  Examples:
+  | Header Name | Sort Type |
+  | Full Name   | asceding  |
+
+  

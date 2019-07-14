@@ -10,33 +10,51 @@ export class ApprovedMoves {
         return await element(by.cssContainingText('button.mat-sort-header-button', headerName));
     }
 
-    async performAscendingSortAndVerifyData(headerName: string) {
+    async performSort(headerName: string, sortType) {
         let headerEle = await this.getHeader(headerName);
-        await headerEle.click();
-        let headerDiv: ElementFinder = await headerEle.element(by.xpath('..'));
-        let currentSortMethod: string = await headerDiv.getAttribute('aria-sort');
-        let isAcending = false;
-        while(!isAcending) {
-            if(currentSortMethod == 'ascending') {
-                isAcending = false;
-            } else {
-                await headerEle.click();
-            }
-        }
-    
+        if(sortType == 'asceding') {
+            await headerEle.click();
+        } else {
+            await headerEle.click();
+            await headerEle.click();
+        }    
     }
 
+    async getHeaderIndex(headerName) {
+        let headers: ElementFinder[] = await element.all(by.css('.mat-table thead th .mat-sort-header-button'));
+        let headerIndex;
+        for(let i=0; i<headers.length; i++) {
+            let currentHeaderName = await headers[i].getText();
+            console.log("current header name = " + currentHeaderName)
+            if(headerName == currentHeaderName) {
+                headerIndex = i;
+                break;
+            }
+        }
+        return headerIndex;
+    }
 
-    async getApprovedMovesTableDataByHeaderName(headerName) {
+    async verifyTableSortData(headerName, sortType) {
         let dataArr = [];
         let rows: ElementFinder[] = await element.all(by.css('.mat-table tbody tr'));
+        let columnIndex = await this.getHeaderIndex(headerName);
+        let previousText = '';
         for(let i=0; i<rows.length; i++) {
             let row: ElementFinder = rows[i];
             let columns: ElementFinder[] = await element.all(by.tagName('td'));
-            for(let j=0; j<columns.length; j++) {
-                let column: ElementFinder = columns[j];
+            let columnText = await columns[columnIndex].getText();
+            if(sortType == 'ascending') {
+                if(i>1) {
+                    if(previousText.localeCompare(columnText)   != 1) {
+                        console.log("previous text = " + previousText);
+                        console.log("current text = " + columnText);
+                        return false;
+                    }
+                }
             }
+            previousText = columnText;
         }
+        return true;
 
     }
 

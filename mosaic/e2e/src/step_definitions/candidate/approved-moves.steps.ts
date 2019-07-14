@@ -22,18 +22,22 @@ Then('User will wait for {string} seconds', (waitForSeconds) => {
   return browser.sleep(parseInt(waitForSeconds)*1000);
 });
 
-Then('User will verify {string} header is displayed', (headerName) => {
-  return expect(approvedmoves.getHeader(headerName).isDisplayed()).to.be.eventually.true;
+Then('User will verify {string} header is displayed', async (headerName) => {
+  let el = await approvedmoves.getHeader(headerName);
+  return expect(el.isDisplayed()).to.be.eventually.true;
 });
 
 Then('User will verify search box is displayed', () => {
   return expect(approvedmoves.searchItemInput().isDisplayed()).to.be.eventually.true;
 });
 
-When('User will do {string} sort of approved moves table by clicking on {string} header', (sortType, headerName) => {
-  if(sortType == 'asceding') {
-    
-  }
+When('User will do {string} sort of approved moves table by clicking on {string} header', async (sortType, headerName) => {
+  return await approvedmoves.performSort(headerName, sortType);
+});
+
+Then('User will verify the {string} sorted data for the header {string}', async (sortType, headerName) => {
+  let result = await approvedmoves.verifyTableSortData(headerName, sortType);
+  return expect(result).to.be.true;
 });
 
     
