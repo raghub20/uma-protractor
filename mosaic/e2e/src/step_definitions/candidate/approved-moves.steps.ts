@@ -3,16 +3,12 @@ import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import { ApprovedMoves } from './approved-moves.page';
 import { browser } from 'protractor';
-import { async } from 'q';
 
 chai.use(chaiAsPromised);
 const expect = chai.expect;
 
-let approvedmoves: ApprovedMoves;
+let approvedmoves: ApprovedMoves = new ApprovedMoves();
 let actual: string;
-Before(() => {
-  approvedmoves= new ApprovedMoves();
-});
 
 Given('the User Navigates to Transferee’s Profile View', async () => {
   await approvedmoves.get();
@@ -22,7 +18,24 @@ Given('the User Navigates to Transferee’s Profile View', async () => {
   await approvedmoves.getApprovedMovesView().isDisplayed();   // verifying candidates screen displayed
 });
 
-  
+Then('User will wait for {string} seconds', (waitForSeconds) => {
+  return browser.sleep(parseInt(waitForSeconds)*1000);
+});
+
+Then('User will verify {string} header is displayed', (headerName) => {
+  return expect(approvedmoves.getHeader(headerName).isDisplayed()).to.be.eventually.true;
+});
+
+Then('User will verify search box is displayed', () => {
+  return expect(approvedmoves.searchItemInput().isDisplayed()).to.be.eventually.true;
+});
+
+When('User will do {string} sort of approved moves table by clicking on {string} header', (sortType, headerName) => {
+  if(sortType == 'asceding') {
+    
+  }
+});
+
     
  // Scenario: Verify the information presented in the transferee’s profile view
 
@@ -44,9 +57,7 @@ Given('the User Navigates to Transferee’s Profile View', async () => {
        Then('Authorized Amount  is displayed', async () => {
         return approvedmoves.getauthorizedamount().isDisplayed();   
       });
-      Then('search box is displayed', async () => {
-         return approvedmoves.searchItemInput().isDisplayed();
-       });
+      
        Then('search for item as {string}', async (searchitem) => {
          return approvedmoves.searchForItem("75,000");
        });

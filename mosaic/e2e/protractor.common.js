@@ -49,7 +49,8 @@ const config = {
     // Ensure ts-node uses our custom tsconfig.
     require('ts-node').register({ project: 'e2e/src/tsconfig.json'});
     browser.params['rootUrl'] = browser.baseUrl + '/' + browser.params.app_base;
-    browser.manage().window().setSize(1400, 900); // Set initial browser size
+    browser.manage().window().maximize();
+    //browser.manage().window().setSize(1400, 900); // Set initial browser size
     // Ensure that the reports directory has been created.
     if (!existsSync(cucumberReportDirectory)) {
       mkdirSync(cucumberReportDirectory);

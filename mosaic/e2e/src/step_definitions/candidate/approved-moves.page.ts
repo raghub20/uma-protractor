@@ -1,12 +1,45 @@
-import { browser, element, by, promise, ElementFinder } from 'protractor';
-
+import { browser, element, by, promise, ElementFinder, ElementArrayFinder } from 'protractor';
 import _ from 'lodash';
-import { Then } from 'cucumber';
 export class ApprovedMoves {
-  
-  get() {
-        return browser.get('/#/project-alpha');
+    get() {
+        return browser.get('http://localhost:4202/');
+        //return browser.get('/#/project-alpha');
     }
+
+    async getHeader(headerName: string): Promise<ElementFinder> {
+        return await element(by.cssContainingText('button.mat-sort-header-button', headerName));
+    }
+
+    async performAscendingSortAndVerifyData(headerName: string) {
+        let headerEle = await this.getHeader(headerName);
+        await headerEle.click();
+        let headerDiv: ElementFinder = await headerEle.element(by.xpath('..'));
+        let currentSortMethod: string = await headerDiv.getAttribute('aria-sort');
+        let isAcending = false;
+        while(!isAcending) {
+            if(currentSortMethod == 'ascending') {
+                isAcending = false;
+            } else {
+                await headerEle.click();
+            }
+        }
+    
+    }
+
+
+    async getApprovedMovesTableDataByHeaderName(headerName) {
+        let dataArr = [];
+        let rows: ElementFinder[] = await element.all(by.css('.mat-table tbody tr'));
+        for(let i=0; i<rows.length; i++) {
+            let row: ElementFinder = rows[i];
+            let columns: ElementFinder[] = await element.all(by.tagName('td'));
+            for(let j=0; j<columns.length; j++) {
+                let column: ElementFinder = columns[j];
+            }
+        }
+
+    }
+
     getUser() {
         return new promise.Promise((resolve) => resolve('user')); // TODO: Find and return real user
     }
@@ -62,7 +95,7 @@ export class ApprovedMoves {
 
 
     searchItemInput(): ElementFinder {
-            return element(by.css('.mat-input-element.mat-form-field-autofill-control.cdk-text-field-autofill-monitored'));
+            return element(by.css('[ng-reflect-placeholder="Search within table for..."]'));
      }
 searchForItem( searchItem: string) {
    this.searchItemInput().sendKeys(searchItem);
