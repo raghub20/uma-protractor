@@ -1,7 +1,7 @@
 
 .settingsContainer {
     @media screen and (min-width:768px){
-        width: 435px;
+        width: 27.18em;
     }
     @media screen and (max-width:600px){
         max-width:100% !important;
@@ -10,19 +10,19 @@
         height: 100%;
     }
 	h2 {
-		margin-right: 20px;
+		margin-right: 1.25em;
 		padding: 0;
-		line-height: 16px;
+		line-height: 1em;
     }
     .settings-selectedcount{
         display: flex;
         justify-content: flex-end;
         font-size: 0.75em;
         padding: 10px 0;
-        line-height: 3px;
+        line-height: 0.18em;
         span{
             font-weight: bold;
-            padding-right: 3px;
+            padding-right: 0.18em;
         }
     }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ViewEncapsulation, ChangeDetectorRef } fr
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
+import { MatExpansionModule } from '@angular/material/expansion';
 import { CandidateProfilesService } from '../../../../core/services/candidate-profiles.service';
 import { LocationService } from '../../../../core/services/location.service';
 import { LevelService } from '../../../../core/services/level.service';
@@ -29,9 +29,9 @@ export const errorMessages: { [key: string]: string } = {
   styleUrls: ['./transferee-details.component.scss']
 })
 export class TransfereeDetailsComponent {
-
+  panelOpenState = false;
   /**Form group name */
-  addCandidateForm: FormGroup;
+  transfereeDetailsForm: FormGroup;
   /* Title to display the dialog window page title */
   title: string;
   /**Flag mode for Create */
@@ -67,7 +67,7 @@ export class TransfereeDetailsComponent {
     private changeDetectorRef: ChangeDetectorRef) {
 
       /* Setting default title of the dialof window */
-      this.title = 'Add Candidate';
+      this.title = 'Transferee Details';
 
       /* Get all the locations for destination and departure */
       this.options = this.locationService.getLocations();
@@ -76,12 +76,12 @@ export class TransfereeDetailsComponent {
       this.levels = this.levelService.getLevels();
 
       /* Create the Add/Edit dialog window */
-      this.addCandidateForm = this.formBuilder.group({
+      this.transfereeDetailsForm = this.formBuilder.group({
         FirstName: ['', Validators.compose([
             Validators.required, 
             Validators.pattern('^[a-zA-Z0-9]*$')]
           )],
-        LastName: ['', Validators.compose([
+        Name: ['', Validators.compose([
             Validators.required, 
             Validators.minLength(1),
             Validators.maxLength(30), 
@@ -103,23 +103,25 @@ export class TransfereeDetailsComponent {
         this.title = 'Edit Candidate';
 
         /* Setting the default values for form elements in edit candidate dialog */
-        this.addCandidateForm.get('FirstName').setValue(this.data.fullname.substr(data.fullname.indexOf(',') + 2, data.fullname.length));
-        this.addCandidateForm.get('LastName').setValue(this.data.fullname.substr(0, data.fullname.indexOf(',')));
-        this.addCandidateForm.get('Destination').setValue(this.data.destination);
-        this.addCandidateForm.get('Departure').setValue(this.data.departure);
-        this.addCandidateForm.get('Email').setValue(this.data.emailAddress);
-        this.addCandidateForm.get('BusinessUnit').setValue(this.data.businessUnit);
-        this.addCandidateForm.get('Level').setValue(this.data.level.levelName);
+        this.transfereeDetailsForm.get('FirstName').setValue(this.data.fullname.substr(data.fullname.indexOf(',') + 2, data.fullname.length));
+        this.transfereeDetailsForm.get('Name').setValue(this.data.fullname.substr(0, data.fullname.indexOf(',')));
+        this.transfereeDetailsForm.get('Destination').setValue(this.data.destination);
+        this.transfereeDetailsForm.get('Departure').setValue(this.data.departure);
+        this.transfereeDetailsForm.get('Email').setValue(this.data.emailAddress);
+        this.transfereeDetailsForm.get('BusinessUnit').setValue(this.data.businessUnit);
+        this.transfereeDetailsForm.get('Level').setValue(this.data.level.levelName);
+        this.transfereeDetailsForm.get('AmountAuthorized').setValue('10,000 USD');
+        this.transfereeDetailsForm.get('AmountRemaining').setValue('10,000 USD');
       }
 
       /* Enable the event listener for departure drop down form element */
-      this.departures = this.addCandidateForm.get('Departure').valueChanges
+      this.departures = this.transfereeDetailsForm.get('Departure').valueChanges
       .pipe(
         startWith(''),
         map(name => name ? this._filter(name) : this.options.slice())
       );
       /* Enable the event listener for the destination drop down form element */
-      this.destinations = this.addCandidateForm.get('Destination').valueChanges
+      this.destinations = this.transfereeDetailsForm.get('Destination').valueChanges
       .pipe(
         startWith(''),
         map(name => name ? this._filter(name) : this.options.slice())
@@ -135,12 +137,12 @@ export class TransfereeDetailsComponent {
     return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
   }
   /**
-   * Click on Submit button inside the addCandidateForm dialog window
+   * Click on Submit button inside the transfereeDetailsForm dialog window
    */
   sendInvite() {
-    const levelDetails =  this.levelService.getLevelId(this.addCandidateForm.value.Level);
+    const levelDetails =  this.levelService.getLevelId(this.transfereeDetailsForm.value.Level);
 
-    this.candidateProfilesService.addCandidateProfile(this.addCandidateForm.value, levelDetails);
+    this.candidateProfilesService.addCandidateProfile(this.transfereeDetailsForm.value, levelDetails);
     this.dialogRef.close();
   }
 
@@ -150,10 +152,10 @@ export class TransfereeDetailsComponent {
   onNoClick(): void {
     this.dialogRef.close();
 
-    this.addCandidateForm = this.formBuilder.group({
+    this.transfereeDetailsForm = this.formBuilder.group({
 
       FirstName: ['', Validators.required],
-      LastName: ['', Validators.required, Validators.minLength(1), Validators.maxLength(30)],
+      Name: ['', Validators.required, Validators.minLength(1), Validators.maxLength(30)],
       Email: ['', Validators.required, Validators.email],
       Departure: [''],
       BusinessUnit: [''],
@@ -169,18 +171,18 @@ export class TransfereeDetailsComponent {
   getErrorMessage(field_name) {
     if (field_name === 'FIRST_NAME')
     {
-       return this.addCandidateForm.get('FirstName').hasError('required') ? 'You must enter first name' :
-        this.addCandidateForm.get('FirstName').hasError('pattern') ? 'Special characters are not allowed' : '';
+       return this.transfereeDetailsForm.get('FirstName').hasError('required') ? 'You must enter first name' :
+        this.transfereeDetailsForm.get('FirstName').hasError('pattern') ? 'Special characters are not allowed' : '';
     }
-    if (field_name === 'LAST_NAME')
+    if (field_name === 'NAME')
     {
-       return this.addCandidateForm.get('LastName').hasError('required') ? 'You must enter last name' :
-        this.addCandidateForm.get('LastName').hasError('pattern') ? 'Special characters are not allowed' : '';
+       return this.transfereeDetailsForm.get('Name').hasError('required') ? 'You must enter a name' :
+        this.transfereeDetailsForm.get('Name').hasError('pattern') ? 'Special characters are not allowed' : '';
     }
     if (field_name === 'EMAIL')
     {
-       return this.addCandidateForm.get('Email').hasError('required') ? 'You must enter email address' :
-        this.addCandidateForm.get('Email').hasError('pattern') ? 'You must enter a valid email address' : '';
+       return this.transfereeDetailsForm.get('Email').hasError('required') ? 'You must enter email address' :
+        this.transfereeDetailsForm.get('Email').hasError('pattern') ? 'You must enter a valid email address' : '';
     }
   }
 

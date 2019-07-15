@@ -15,7 +15,7 @@
 </div>
 </section>  
 
-<section class="candidate_details">
+<section class="content_table">
     <h2>Approved Moves</h2>
   
   <section class="mat-elevation-z8">
@@ -48,8 +48,8 @@
   
       <!-- Authorized Amount Column -->
       <ng-container matColumnDef="authorizedAmount">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Authorized Amount </th>
-          <td mat-cell *matCellDef="let element" [innerHTML]="element.authorizedAmount | highlightSearch: filterText"> {{element.authorizedAmount}}</td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Authorized/Remaining Amount </th>
+          <td mat-cell *matCellDef="let element"> {{element.authorizedAmount}}<br> Remaining: {{element.spentAmount }}</td>
       </ng-container>
   
       <!-- Departure Column -->

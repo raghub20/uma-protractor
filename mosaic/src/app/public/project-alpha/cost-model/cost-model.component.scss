@@ -13,53 +13,7 @@
     padding-left: 15px;
     padding-top: 8px;
 }
-.candidate_details{
-    td.mat-cell{
-      p{
-        margin:0
-      }
-      &.mat-column-empName{
-        color: map-get($cartus-palette, 'cartus_link_color');
-        em{
-          font-style: normal;
-          font-size: 0.9em;
-        }
-      }
-      &.mat-column-movePhase{
-        color: map-get($cartus-palette, 'cartus_link_color');
-      }
-    }
-    .mat-paginator-container{
-      position: relative;
-      .mat-paginator-page-size{
-        position:absolute;
-        left:0;
-      }
-      .mat-paginator-range-actions{
-        position:relative;
-        .mat-paginator-range-label{
-          margin: 0;
-          position: absolute;
-          left: 2.5em;
-        }
-        .mat-paginator-navigation-previous{
-          margin-right: 5em; 
-        }
-      }
-    }
-    .mat-table{
-        th.mat-header-cell{
-            &:first-of-type{
-                padding-left: 0.7em;
-            }
-        }
-        td.mat-cell{
-            &:first-of-type{
-                padding-left: 0.7em;
-            }
-        }
-    }
-}
+
   
 
 

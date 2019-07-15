@@ -1,4 +1,5 @@
 @import '../sass/cartus-palette.scss';
+
 /*Add candidate popup css*/
 .addCandidateModal{
     // .mat-form-field-appearance-legacy .mat-form-field-infix{
@@ -7,7 +8,7 @@
     .mat-dialog-container
     {
         border-radius: 4px;
-        padding: 24px;
+        padding: 1.5em;
         overflow:hidden;
         min-height: 450px;
     }
@@ -32,9 +33,7 @@
 }
 
 .tranfereeDetailsModal{
-    // .mat-form-field-appearance-legacy .mat-form-field-infix{
-    //     padding:20px 0;
-    // }
+  
     .mat-dialog-container
     {
         border-radius: 4px;
@@ -63,9 +62,7 @@
 }
 
 .transfereeAssessmentModal{
-    // .mat-form-field-appearance-legacy .mat-form-field-infix{
-    //     padding:20px 0;
-    // }
+ 
     .mat-dialog-container
     {
         border-radius: 4px;
@@ -94,15 +91,13 @@
 }
 
 .addCostModelModal{
-    // .mat-form-field-appearance-legacy .mat-form-field-infix{
-    //     padding:20px 0;
-    // }
+    
     .mat-dialog-container
     {
         border-radius: 4px;
-        padding: 24px;
+        padding: 1.5em;
         overflow:hidden;
-        min-height: 450px;
+        min-height: 28.1em;
     }
     .mat-dialog-content{
         max-height:100%;
@@ -140,11 +135,11 @@
         width:100% !important;
         height: 100%;
         .settings-tablecol {
-            height: 400px;
+            height: 25em;
             width: 100%;
             }
         .mat-grid-tile .mat-figure{
-            left:10px;
+            left:0.6em;
         }
         .mat-dialog-actions{
             justify-content: flex-end;
@@ -155,8 +150,8 @@
     }
 @media screen and (min-width:768px){
    .settings-tablecol {
-    height: 185px;
-    width: 432px;
+    height: 11.55em;
+    width: 27em;
     }
 }
 .mat-checkbox .mat-checkbox-ripple{
@@ -176,10 +171,10 @@
     overflow-y: auto;
     flex-shrink: 50;
     flex-basis: 100%;
-    padding-top: 4px;
+    padding-top: 0.25em;
     }
      .settings-scrolldiv::-webkit-scrollbar {
-         width: 6px;
+         width: 0.37em;
       background-color: #F5F5F5;
     }
     .settings-scrolldiv::-webkit-scrollbar-thumb {
@@ -196,12 +191,10 @@
         margin-bottom: 0;
     }
     .mat-dialog-container{
-        padding: 10px;
+        padding:0.6em;
         overflow: hidden;
     }
-    // .mat-icon-button{
-    //     width:28px;
-    // }
+    
     .mat-checkbox-frame{
        border-width:1px;
     }
@@ -210,8 +203,6 @@
         border-color: map-get($cartus-palette, 'cartus_light_gray' );  
     }
     .mat-checkbox-disabled .mat-checkbox-background{
-        // border-radius: 4px;
-        // border-color: map-get($cartus-palette, 'cartus_light_gray' ); 
         background-color: #aaa!important;   
     }
     .mat-checkbox-checked .mat-checkbox-background
@@ -219,13 +210,13 @@
         background-color: map-get($cartus-palette, 'cartus_accent_blue');
     }
     .mat-grid-tile .mat-figure{
-        left:7px;
+        left:0.4em;
         display:block;
     }
     .mat-dialog-actions{
         justify-content: flex-end;
         -ms-flex-pack: left;
-        padding: 20px 0 35px 0;
+        padding: 1.2em 0 2.1em 0;
     }      
 }
 /* Seetings Modal popup ends*/
@@ -236,14 +227,14 @@ button{
         font-family: 'Avenir-Light', sans-serif;
         color: map-get($cartus-palette, 'cartus_nav_tile');
         font-size: 1em;
-        height: 40px;
-        line-height:24px;
-        border-radius: 4px;
+        height: 2.5em;
+        line-height:1.5em;
+        border-radius:0.25em;
         padding:0.5em;
         background-color: map-get($cartus-palette, 'cartus_accent_blue');
         border:none;
         // margin-bottom:1.5em;
-        min-width:100px;
+        min-width:6.25em;
         &:active{
             text-decoration: underline;
             border: 2px solid map-get($cartus-palette, 'cartus_dark_accent_blue');
@@ -261,14 +252,12 @@ button{
         font-family: 'Avenir-Light', sans-serif;
         color: map-get($cartus-palette, 'cartus_dark_accent_blue');
         font-size: 1em;
-        height: 40px;
-        line-height:24px;
-        border-radius: 4px;
+        height: 2.5em;
+        line-height:1.5em;
+        border-radius:0.25em;
         padding:0.5em;
         border: 1px solid map-get($cartus-palette, 'cartus_light_gray');
-       // background-color: map-get($cartus-palette, 'cartus_accent_blue');
-        // margin-bottom:1.5em;
-        min-width:100px;
+        min-width:6.25em;
         &:active{
             text-decoration: underline;
             color: map-get($cartus-palette, 'cartus_dark_accent_blue');
@@ -289,12 +278,12 @@ button{
         font-family: 'Avenir-Light', sans-serif;
         color: map-get($cartus-palette, 'cartus_accent_blue');
         font-size: 1em;
-        height: 40px;
-        line-height:24px;
-        border-radius:4px;
+        height: 2.5em;
+        line-height:1.5em;
+        border-radius:0.25em;
         padding:0.5em;
         // margin-bottom:1.5em;
-        min-width:100px;
+        min-width:6.25em;
         &:active{
             text-decoration: underline;
             border: 2px solid map-get($cartus-palette, 'cartus_dark_accent_blue');
@@ -374,7 +363,102 @@ button{
     }
 }
 
-/* Mat Table COmmon Styles */
+
+.error:hover {
+    color: map-get($cartus-palette, 'cartus_error_feedback');
+}    
+
+
+/* Cartus Design Framework Documenation */
+
+/* Material Design - Typography */
+
+h1 {
+    font-size: 1.5em;
+    color: map-get($cartus-palette, 'cartus_gray' );
+}
+
+h2 {
+    font-size: 1.25em;
+    color: map-get($cartus-palette, 'cartus_gray' );
+}
+
+/* Material Design - Dialog  */
+
+/* Material Design - Buttons & Links */
+
+.mat-raised-button.mat-primary {
+    background-color: map-get($cartus-palette, 'cartus_accent_blue' ) !important;    
+    height: 3.5em;
+}
+
+.mat-outline-button{
+    background-color: map-get($cartus-palette, 'cartus_accent_blue' ) !important;    
+    height: 3.5em;
+}
+    
+.highlight-search {
+    background-color:map-get($cartus-palette, 'cartus_highlight');
+}
+
+.highlighted {
+    background-color:map-get($cartus-palette, 'cartus_hover_tint');
+}
+  
+.text-as-link {
+    color:map-get($cartus-palette, 'cartus_accent_blue');
+    text-decoration: none;  
+}
+
+.cLinks a{
+    color: map-get($cartus-palette, cartus_accent_blue);
+    text-decoration: none;
+}
+
+.project_alpha {
+    padding: 0px 20px;
+  }
+
+/* Alpha Search Component */
+
+.search-within-table {
+    background-color: #fff !important;
+    font-size: 14px;
+    font-weight: normal !important;
+    color: #575A5D;
+    @media screen and (max-width:600px){
+      width:200px;
+    }
+  }
+
+.search_table .mat-form-field-wrapper {
+    margin:0px !important;
+    padding:0px !important;
+    border:1px solid map-get($cartus-palette, 'cartus_light_gray' );
+    border-radius: 5px;
+  }
+  
+  .search_table .search-input{
+    vertical-align: text-top;
+  }
+
+  .table_views mat-icon {
+    color:map-get($cartus-palette, 'cartus_light_gray');
+  }
+  .highlight-search {
+    background-color:map-get($cartus-palette, 'cartus_highlight');
+  }
+  .highlighted {
+    background-color:map-get($cartus-palette, 'cartus_hover_tint');
+  }
+  .text-as-link {
+    color:map-get($cartus-palette, 'cartus_accent_blue');
+    text-decoration: none;
+  }
+
+/* Material Design - Tables */
+
+/* Material Common Table Styles */
 
 .mat-table{
     width:100%;
@@ -410,25 +494,72 @@ button{
     a {
         text-decoration: underline;
     }
-}
 
-
-/* Common Heading Styles */
-h1 {
-    font-size: 1.5em;
-    color: map-get($cartus-palette, 'cartus_gray' );
-}
-
-h2 {
-    font-size: 1.25em;
-    color: map-get($cartus-palette, 'cartus_gray' );
-}
-
-/* Sticky material table */
+    .highlight-search {
+        background-color:map-get($cartus-palette, 'cartus_highlight');
+    }
     
-/* Styling specfic for Material Design */
+    .highlighted {
+        background-color:map-get($cartus-palette, 'cartus_hover_tint');
+    }
+}
 
-@media only screen and (max-width: 400px) {
+/* Alpha Page Content Table Style */
+
+.content_table{
+    td.mat-cell{
+      p{
+        margin:0
+      }
+      &.mat-column-empName{
+        color: map-get($cartus-palette, 'cartus_link_color');
+        em{
+          font-style: normal;
+          font-size: 14px;
+        }
+      }
+      &.mat-column-movePhase{
+        color: map-get($cartus-palette, 'cartus_link_color');
+      }
+    }
+  
+    .mat-paginator-container{
+      position: relative;
+      .mat-paginator-page-size{
+        position:absolute;
+        left:0;
+      }
+      .mat-paginator-range-actions{
+        position:relative;
+        .mat-paginator-range-label{
+          margin: 0;
+          position: absolute;
+          left: 40px;
+        }
+        .mat-paginator-navigation-previous{
+          margin-right: 70px; 
+        }
+      }
+    }
+    .mat-table{
+  
+     
+        .notification-important {
+          .mat-icon {
+            color: map-get($cartus-palette, 'cartus_warning_color');
+            vertical-align: bottom;
+          }
+          a {
+            color: map-get($cartus-palette, cartus_accent_blue);
+            text-decoration: none;
+          }
+        }
+    }
+  }
+
+  /* Material Table Design for Small Screens*/
+
+  @media only screen and (max-width: 400px) {
   
     th.mat-column-select, td.mat-column-select {
       min-width: 2.1em;
@@ -452,6 +583,8 @@ h2 {
     
     }
     
+     /* Material Table Design for Medium Screens*/
+
     @media only screen 
       and (min-width: 400px) {
       
@@ -498,26 +631,38 @@ h2 {
       
       }
 
-.error:hover {
-    color: map-get($cartus-palette, 'cartus_error_feedback');
-}    
-
-
-/* Cartus Design Framework Documenation */
-
-/* Material Design - Typography */
-
-/* Material Design - Dialog  */
-
-/* Material Design - Buttons & Links */
-
-/* Material Design - Tables */
-
 /* Material Design - Forms, Validations, Error */
+
+.mat-form-field-appearance-outline {
+    .mat-form-field-outline-start, .mat-form-field-outline-gap, .mat-form-field-outline-end {
+      border: map-get($cartus-palette, 'cartus_light_gray' );
+    }
+}
+
+.mat-select-value {
+    color: #575A5D;
+    font-weight: 100;
+}
+
+.mat-form-field.mat-form-field-invalid .mat-form-field-label {
+    color: map-get($cartus-palette, 'cartus_light_gray' );
+}
+  
+.mat-error {
+    color:map-get($cartus-palette, 'cartus_error_feedback' );
+}
 
 /* Material Design - Lists */
 
 /* Material Design - Icons */
+
+.page_header .mat-icon {
+    color:map-get($cartus-palette, 'cartus_light_gray' ) !important;    
+}
+
+.table_views mat-icon {
+    color:map-get($cartus-palette, 'cartus_light_gray');
+}
 
 /* Material Design - Notifications */
 

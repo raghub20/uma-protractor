@@ -19,6 +19,8 @@ import { LoginComponent} from './login/login.component';
 import { ResendInviteComponent } from './candidate-profile/resend-invite/resend-invite.component';
 import { HighlightSearchPipe } from './highlight-search.pipe';
 import {MatCardModule} from '@angular/material/card';
+import { MaterialModule } from '../../material/material.module';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import {
   MatFormFieldModule,
@@ -34,11 +36,13 @@ import {
   MatSortModule,
   MatTooltipModule,
   MatSelectModule,
-  MatGridListModule  
+  MatGridListModule
 } from '@angular/material';
 import { AddCostModelComponent } from './cost-model/add-cost-model/add-cost-model.component';
 import { TransfereeDetailsComponent } from './authorized-move/transferee-details/transferee-details.component';
 import { TransfereeAssessmentComponent } from './candidate-profile/transferee-assessment/transferee-assessment.component';
+import { ExploreDestinationsComponent } from './explore-destinations/explore-destinations.component';
+import { ServicesComponent } from './services/services.component';
 
 
 
@@ -59,7 +63,9 @@ import { TransfereeAssessmentComponent } from './candidate-profile/transferee-as
     ModelColumnsComponent,
     AddCostModelComponent,
     TransfereeDetailsComponent,
-    TransfereeAssessmentComponent
+    TransfereeAssessmentComponent,
+    ExploreDestinationsComponent,
+    ServicesComponent
   ],
   imports: [  
   CommonModule,
@@ -82,7 +88,9 @@ import { TransfereeAssessmentComponent } from './candidate-profile/transferee-as
     MatAutocompleteModule,
     MatCardModule,
     MatGridListModule,
-    ProjectAlphaRoutingModule
+    ProjectAlphaRoutingModule,
+    MaterialModule,
+    MatExpansionModule
   ],
   bootstrap: [
     AddCandidateComponent,

@@ -28,6 +28,12 @@ export class ModelColumnsComponent implements OnInit {
       disabled: true
     },
     {
+      displayName: 'Level',
+      value: 'level',
+      flag: true,
+      disabled: false
+    },
+    {
       displayName: 'Departure',
       value: 'departure',
       flag: true,
@@ -101,6 +107,12 @@ export class ModelColumnsComponent implements OnInit {
         value: 'modelName',
         flag: true,
         disabled: true
+      },
+      {
+        displayName: 'Level',
+        value: 'level',
+        flag: true,
+        disabled: false
       },
       {
         displayName: 'Departure',
