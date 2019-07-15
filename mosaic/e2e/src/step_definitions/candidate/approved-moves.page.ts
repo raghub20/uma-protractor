@@ -1,4 +1,4 @@
-import { browser, element, by, promise, ElementFinder, ElementArrayFinder } from 'protractor';
+import { browser, element, by, promise, ElementFinder, protractor } from 'protractor';
 import _ from 'lodash';
 export class ApprovedMoves {
     get() {
@@ -25,27 +25,80 @@ export class ApprovedMoves {
         let headerIndex;
         for(let i=0; i<headers.length; i++) {
             let currentHeaderName = await headers[i].getText();
-            console.log("current header name = " + currentHeaderName)
             if(headerName == currentHeaderName) {
-                headerIndex = i;
+                headerIndex = i + 1;
                 break;
             }
         }
         return headerIndex;
     }
 
-    async verifyTableSortData(headerName, sortType) {
-        let dataArr = [];
+    async verifySortedNumbers(columnIndex, sortType) {
+        if(sortType == 'asceding') {
+            let amountText = await element(by.xpath('//table//tbody//tr[1]//td[3]')).getText();
+            if(amountText != undefined) {
+                amountText = amountText.replace('USD', '').replace(',','').trim();
+            }
+            console.log("amount text = " + amountText);
+        }
+    }
+
+    async verifyTableNumberData(columnIndex, sortType) {
         let rows: ElementFinder[] = await element.all(by.css('.mat-table tbody tr'));
+        for(let i=0; i<rows.length; i++) {
+
+        }
+    }
+
+    async verifyTableNumberSortData(columnIndex, sortType) {
+        let rows: ElementFinder[] = await element.all(by.css('.mat-table tbody tr'));
+        let previousNumber;
+        for(let i=0; i<rows.length; i++) {
+            let row: ElementFinder = rows[i];
+            let columns: ElementFinder[] = await row.all(by.tagName('td'));
+            let currentNumberStr = await columns[columnIndex].getText();
+            let numbersStr = currentNumberStr.split(' ')[0];
+            numbersStr.replace(',', '');
+            let currentNumber = parseFloat(numbersStr);
+            if(sortType == 'asceding' && i>0) {
+                if(previousNumber>=currentNumber) {
+                    return false;
+                }
+            } else if(i>0) {
+                if(previousNumber>=currentNumber) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    async getApprovedMovesTableBody() {
+        return await element.all(by.css('.mat-table tbody tr'));
+    }
+
+    async verifyTableSortData(headerName, sortType) {
+        let rows: ElementFinder[] = await this.getApprovedMovesTableBody();
         let columnIndex = await this.getHeaderIndex(headerName);
         let previousText = '';
         for(let i=0; i<rows.length; i++) {
             let row: ElementFinder = rows[i];
-            let columns: ElementFinder[] = await element.all(by.tagName('td'));
+            let columns: ElementFinder[] = await row.all(by.tagName('td'));
             let columnText = await columns[columnIndex].getText();
-            if(sortType == 'ascending') {
-                if(i>1) {
-                    if(previousText.localeCompare(columnText)   != 1) {
+            if(headerName == 'Authorized/Remaining Amount') {
+                return this.verifyTableNumberSortData(columnIndex, sortType);
+            }
+            if(sortType == 'asceding') {
+                if(i>0) {
+                    if(previousText.localeCompare(columnText) == 1) {
+                        console.log("previous text = " + previousText);
+                        console.log("current text = " + columnText);
+                        return false;
+                    }
+                }
+            } else {
+                if(i>0) {
+                    if(previousText.localeCompare(columnText) == -1) {
                         console.log("previous text = " + previousText);
                         console.log("current text = " + columnText);
                         return false;
@@ -55,8 +108,32 @@ export class ApprovedMoves {
             previousText = columnText;
         }
         return true;
-
     }
+
+    /**
+     * This function will verify the given text is matched in each row either pariatlly or fully.
+     * @param expectedText : string - The target value which we want to check whether displayed in approved moves table or not.
+     */
+    async verifyTextInApprovedMovesTable(expectedText: string) {
+        let rows : ElementFinder[] = await this.getApprovedMovesTableBody();
+        let isMatched = false;
+        for(let i=0; i<rows.length; i++) {
+            isMatched = false;
+            let columns: ElementFinder[] = await rows[i].all(by.tagName('td'));
+            for(let j=0; j<columns.length; j++) {
+                let columnText = await columns[j].getText();
+                if(columnText.toLowerCase().includes(expectedText.toLowerCase())) {
+                    isMatched = true;
+                    break;
+                }
+            }
+            if(!isMatched) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
 
     getUser() {
         return new promise.Promise((resolve) => resolve('user')); // TODO: Find and return real user
@@ -117,6 +194,7 @@ export class ApprovedMoves {
      }
 searchForItem( searchItem: string) {
    this.searchItemInput().sendKeys(searchItem);
+   return this.searchItemInput().sendKeys(protractor.Key.ENTER);
 }
 //searchForItem(): ElementFinder {
    // return element(by.)

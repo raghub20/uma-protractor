@@ -40,6 +40,14 @@ Then('User will verify the {string} sorted data for the header {string}', async 
   return expect(result).to.be.true;
 });
 
+When('User will enter {string} in search box', async (searchText) => {
+  return approvedmoves.searchForItem(searchText);
+});
+
+Then('User will verify {string} is showing in approved moves table', async (searchText) => {
+  let result = await approvedmoves.verifyTextInApprovedMovesTable(searchText);
+  return expect(result).to.be.true;
+});
     
  // Scenario: Verify the information presented in the transferee’s profile view
 
