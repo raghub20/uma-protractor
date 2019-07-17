@@ -102,7 +102,6 @@ import { ServicesComponent } from './services/services.component';
     AddCostModelComponent,
     TransfereeDetailsComponent,
     TransfereeAssessmentComponent
-  ],
-  providers: [HighlightSearchPipe]
+  ]
 })
 export class ProjectAlphaModule { }

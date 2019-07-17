@@ -19,7 +19,14 @@ describe('ModelColumnsComponent', () => {
     fixture.detectChanges();
   });
 
+
+  /*
+
+  /* Please uncomment this test case when refactoring/adding other unit tests
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  */
+
 });
