@@ -16,7 +16,8 @@
 
 <div class="candidates-container">
 
-  <nav mat-tab-nav-bar>
+
+  <nav mat-tab-nav-bar class="mat-nav-bar"> 
     <a mat-tab-link *ngFor="let link of navLinks; let i = index;" [routerLink]="[link.path]"
       routerLinkActive #rla="routerLinkActive" [active]="rla.isActive" >
       {{link.label}}

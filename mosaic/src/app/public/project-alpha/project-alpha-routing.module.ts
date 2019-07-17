@@ -5,6 +5,8 @@ import { CostModelComponent } from './cost-model/cost-model.component';
 import { CandidateProfileComponent } from './candidate-profile/candidate-profile.component';
 import { ProjectAlphaComponent } from './project-alpha.component';
 import { LoginComponent} from './login/login.component';
+import { ServicesComponent } from './services/services.component';
+import { ExploreDestinationsComponent } from './explore-destinations/explore-destinations.component';
 
 const routes: Routes =
 [
@@ -33,6 +35,14 @@ const routes: Routes =
       {
         path: 'approved-moves',
         component: AuthorizedMoveComponent
+      },
+      {
+        path: 'explore-destinations',
+        component: ExploreDestinationsComponent
+      },
+      {
+        path: 'services',
+        component: ServicesComponent
       }
     ]
   },

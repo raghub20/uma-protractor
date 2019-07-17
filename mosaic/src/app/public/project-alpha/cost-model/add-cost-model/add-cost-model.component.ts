@@ -3,6 +3,10 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
+import { MaterialModule } from '../../../../material/material.module';
+import {MatExpansionModule} from '@angular/material/expansion';
+
+
 import { CandidateProfilesService } from '../../../../core/services/candidate-profiles.service';
 import { LocationService } from '../../../../core/services/location.service';
 import { LevelService } from '../../../../core/services/level.service';
@@ -13,6 +17,9 @@ import { Location } from '../../../../core/models/location';
 
 import { Observable, empty } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+
+import { CostModel } from '../../../../core/models/cost-model';
+import { CostModelsService } from '../../../../core/services/cost-models.service';
 
 /**
  * Exporting the errormessages
@@ -31,7 +38,7 @@ export const errorMessages: { [key: string]: string } = {
 export class AddCostModelComponent {
 
    /**Form group name */
-   addCandidateForm: FormGroup;
+   addCostModelForm: FormGroup;
    /* Title to display the dialog window page title */
    title: string;
    /**Flag mode for Create */
@@ -49,6 +56,8 @@ export class AddCostModelComponent {
    departures: Observable<Location[]>;
    /** variable declared for destinations */
    destinations: Observable<Location[]>;
+
+   panelOpenState = false;
  
    /**
     * Initializes form elements
@@ -60,14 +69,14 @@ export class AddCostModelComponent {
     */
    constructor(private formBuilder: FormBuilder,
      public dialogRef: MatDialogRef<AddCostModelComponent>,
-     @Inject(MAT_DIALOG_DATA) public data: Candidate,
-     private candidateProfilesService: CandidateProfilesService,
+     @Inject(MAT_DIALOG_DATA) public data: CostModel,
+     private costModelsService: CostModelsService,
      private locationService : LocationService,
      private levelService : LevelService,
      private changeDetectorRef: ChangeDetectorRef) {
  
        /* Setting default title of the dialof window */
-       this.title = 'Add Candidate';
+       this.title = 'Add Cost Model';
  
        /* Get all the locations for destination and departure */
        this.options = this.locationService.getLocations();
@@ -76,50 +85,36 @@ export class AddCostModelComponent {
        this.levels = this.levelService.getLevels();
  
        /* Create the Add/Edit dialog window */
-       this.addCandidateForm = this.formBuilder.group({
-         FirstName: ['', Validators.compose([
+       this.addCostModelForm = this.formBuilder.group({
+        ModelName: ['', Validators.compose([
              Validators.required, 
-             Validators.pattern('^[a-zA-Z0-9]*$')]
-           )],
-         LastName: ['', Validators.compose([
-             Validators.required, 
-             Validators.minLength(1),
-             Validators.maxLength(30), 
-             Validators.pattern('^[a-zA-Z0-9]*$')]
-           )],
-         Email: ['', Validators.compose([
-             Validators.required,
-             Validators.pattern('[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]
+             Validators.pattern('^[a-z A-Z0-9]*$')]
            )],
          Level: ['', Validators.required],
          Departure: [''],
-         BusinessUnit: [''],
          Destination: ['', Validators.required]
        });
  
        /* If the data is present - it will open and pre-populate dialog window */
        if (this.data) {
          /* set page title to edit candidate */
-         this.title = 'Edit Candidate';
+         this.title = 'Edit Cost Model';
  
          /* Setting the default values for form elements in edit candidate dialog */
-         this.addCandidateForm.get('FirstName').setValue(this.data.fullname.substr(data.fullname.indexOf(',') + 2, data.fullname.length));
-         this.addCandidateForm.get('LastName').setValue(this.data.fullname.substr(0, data.fullname.indexOf(',')));
-         this.addCandidateForm.get('Destination').setValue(this.data.destination);
-         this.addCandidateForm.get('Departure').setValue(this.data.departure);
-         this.addCandidateForm.get('Email').setValue(this.data.emailAddress);
-         this.addCandidateForm.get('BusinessUnit').setValue(this.data.businessUnit);
-         this.addCandidateForm.get('Level').setValue(this.data.level.levelName);
+         this.addCostModelForm.get('ModelName').setValue(this.data.modelName);
+         this.addCostModelForm.get('Destination').setValue(this.data.destination);
+         this.addCostModelForm.get('Departure').setValue(this.data.departure);
+         this.addCostModelForm.get('Level').setValue(this.data.level.levelName);
        }
  
        /* Enable the event listener for departure drop down form element */
-       this.departures = this.addCandidateForm.get('Departure').valueChanges
+       this.departures = this.addCostModelForm.get('Departure').valueChanges
        .pipe(
          startWith(''),
          map(name => name ? this._filter(name) : this.options.slice())
        );
        /* Enable the event listener for the destination drop down form element */
-       this.destinations = this.addCandidateForm.get('Destination').valueChanges
+       this.destinations = this.addCostModelForm.get('Destination').valueChanges
        .pipe(
          startWith(''),
          map(name => name ? this._filter(name) : this.options.slice())
@@ -137,10 +132,10 @@ export class AddCostModelComponent {
    /**
     * Click on Submit button inside the addCandidateForm dialog window
     */
-   sendInvite() {
-     const levelDetails =  this.levelService.getLevelId(this.addCandidateForm.value.Level);
+   saveModel() {
+     const levelDetails =  this.levelService.getLevelId(this.addCostModelForm.value.Level);
  
-     this.candidateProfilesService.addCandidateProfile(this.addCandidateForm.value, levelDetails);
+     this.costModelsService.addCostModel(this.addCostModelForm.value, levelDetails);
      this.dialogRef.close();
    }
  
@@ -150,15 +145,11 @@ export class AddCostModelComponent {
    onNoClick(): void {
      this.dialogRef.close();
  
-     this.addCandidateForm = this.formBuilder.group({
+     this.addCostModelForm = this.formBuilder.group({
  
-       FirstName: ['', Validators.required],
-       LastName: ['', Validators.required, Validators.minLength(1), Validators.maxLength(30)],
-       Email: ['', Validators.required, Validators.email],
+      ModelName: ['', Validators.required],
        Departure: [''],
-       BusinessUnit: [''],
        Destination: ['', Validators.required],
- 
      });
    }
  
@@ -167,20 +158,10 @@ export class AddCostModelComponent {
     * @param field_name - field parameter to check for errors
     */
    getErrorMessage(field_name) {
-     if (field_name === 'FIRST_NAME')
+     if (field_name === 'MODEL_NAME')
      {
-        return this.addCandidateForm.get('FirstName').hasError('required') ? 'You must enter first name' :
-         this.addCandidateForm.get('FirstName').hasError('pattern') ? 'Special characters are not allowed' : '';
-     }
-     if (field_name === 'LAST_NAME')
-     {
-        return this.addCandidateForm.get('LastName').hasError('required') ? 'You must enter last name' :
-         this.addCandidateForm.get('LastName').hasError('pattern') ? 'Special characters are not allowed' : '';
-     }
-     if (field_name === 'EMAIL')
-     {
-        return this.addCandidateForm.get('Email').hasError('required') ? 'You must enter email address' :
-         this.addCandidateForm.get('Email').hasError('pattern') ? 'You must enter a valid email address' : '';
+        return this.addCostModelForm.get('ModelName').hasError('required') ? 'You must enter Cost Model name' :
+         this.addCostModelForm.get('ModelName').hasError('pattern') ? 'Special characters are not allowed' : '';
      }
    }
 

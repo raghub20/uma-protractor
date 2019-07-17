@@ -9,6 +9,11 @@ export class CostModelsService {
   costModelList: CostModel[] = [{
     'costModelId': '7867877',
     'modelName': 'Mid-Level Manager',
+    'level': {
+      'levelId': 'level2',
+      'levelName': 'Level 2 (100,001 to 250,000 USD)',
+      'levelDescription': 'Level 2 - Salary details'
+    },
     'departure':'NJ, Nutley',
     'destination':'TX, Austin',
     'hrLinks': [{
@@ -23,6 +28,11 @@ export class CostModelsService {
   {
     'costModelId': '45434',
     'modelName': 'Group Move to LA',
+    'level': {
+      'levelId': 'level2',
+      'levelName': 'Level 2 (100,001 to 250,000 USD)',
+      'levelDescription': 'Level 2 - Salary details'
+    },
     'departure':'NJ, Nutley',
     'destination':'CA, Los Angeles',
     'hrLinks': [{
@@ -37,6 +47,11 @@ export class CostModelsService {
   {
     'costModelId': '66564',
     'modelName': 'L1 Dev Dallas Move',
+    'level': {
+      'levelId': 'level2',
+      'levelName': 'Level 2 (100,001 to 250,000 USD)',
+      'levelDescription': 'Level 2 - Salary details'
+    },
     'departure':'UT, Ogden',
     'destination':'TX, Dallas',
     'hrLinks': [{
@@ -56,4 +71,30 @@ export class CostModelsService {
   getCostModels(): CostModel[] {
     return this.costModelList;
   }
+
+  addCostModel(formData, levelDetails){
+
+    const newCostModelObj = {
+      'costModelId': '66564',
+        'modelName': formData.ModelName,
+        'level': {
+          'levelId': levelDetails.levelId,
+          'levelName': levelDetails.levelName,
+          'levelDescription': levelDetails.levelDescription
+        },
+        'departure': formData.Departure,
+        'destination': formData.Destination,
+        'hrLinks': [{
+          'linkId': '2356',
+        'Hr_link_url': 'https://www.americanfunds.com/individual/products/401k.html?gclid=Cj0KCQjw9pDpBRCkARIsAOzRzivDBTefgPTgDMd6YaguZJ0Dwg7JTr81JUlEhbrWphh-dmnSkcNH1YcaAkbJEALw_wcB&gclsrc=aw.ds',
+        'link_type': '401K Plan',
+        }],
+        'createdDate': '21-JUN-19',
+        'createdBy': 'Matthew, Maturity',
+        'updateDate': '21-JUN-19'
+    };
+
+    this.costModelList.push(newCostModelObj);
+  }
+
 }

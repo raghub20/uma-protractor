@@ -28,6 +28,12 @@ export class ModelColumnsComponent implements OnInit {
       disabled: true
     },
     {
+      displayName: 'Level',
+      value: 'level.levelName',
+      flag: true,
+      disabled: false
+    },
+    {
       displayName: 'Departure',
       value: 'departure',
       flag: true,
@@ -103,6 +109,12 @@ export class ModelColumnsComponent implements OnInit {
         disabled: true
       },
       {
+        displayName: 'Level',
+        value: 'level.levelName',
+        flag: true,
+        disabled: false
+      },
+      {
         displayName: 'Departure',
         value: 'departure',
         flag: true,
@@ -112,12 +124,6 @@ export class ModelColumnsComponent implements OnInit {
         displayName: 'Destination',
         value: 'destination',
         flag: true,
-        disabled: false
-      },
-      {
-        displayName: 'Last Update Date',
-        value: 'updateDate',
-        flag: false,
         disabled: false
       },
       {
@@ -167,7 +173,7 @@ export class ModelColumnsComponent implements OnInit {
   resetValues(): void {
     this.populateArray();
     this.columnsList.forEach((col, ind) => {
-      if ((col.value !== 'modelName') && (col.value != 'departure') && (col.value != 'destination') && (col.value != 'action')) {
+      if ((col.value !== 'modelName') && (col.value != 'level.levelName') && (col.value != 'departure') && (col.value != 'destination') && (col.value != 'action')) {
         col.flag = false;
       }
     });

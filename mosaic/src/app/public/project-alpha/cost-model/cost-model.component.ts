@@ -21,7 +21,7 @@ import { AddCostModelComponent } from './add-cost-model/add-cost-model.component
 export class CostModelComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['modelName', 'departure', 'destination', 'action',];
+  displayedColumns: string[] = ['select','modelName', 'level','departure', 'destination', 'action',];
 
   addCandidateForm: FormGroup;
   dataSource: any;
@@ -62,11 +62,32 @@ export class CostModelComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
+   /* Method to check if all the rows in the mat table were selected*/
+   isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  /* Method to toggle select all or clear all for rows inside in the mat table */
+  masterToggle() {
+    this.isAllSelected() ?
+      this.selection.clear() :
+      this.dataSource.data.forEach(row => this.selection.select(row));
+  }
+
+  checkboxLabel(row?: CostModel): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.modelName + 1}`;
+  }
+
   /* Open the dialog box AddCandidateComponent in EDIT mode when any row is clicked of the mat table*/
   public open(event, data) {
-    /*
-    const dialogRef = this.dialog.open(AddCandidateComponent, {
-      panelClass: 'addCandidateModal',
+   
+    const dialogRef = this.dialog.open(AddCostModelComponent, {
+      panelClass: 'addCostModelModal',
       data: data
     });
 
@@ -81,7 +102,7 @@ export class CostModelComponent implements OnInit {
       console.log('The dialog was closed');
     });
 
-    */
+  
   }
 
   openDialog(): void {
@@ -135,7 +156,8 @@ export class CostModelComponent implements OnInit {
           });
         }
       });
-     
+    if (this.displayedColumns.findIndex(val => val === 'select') < 0) {
+      this.displayedColumns.unshift('select');
+    }
   }
-
 }

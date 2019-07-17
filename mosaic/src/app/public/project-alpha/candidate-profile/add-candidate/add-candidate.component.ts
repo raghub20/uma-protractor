@@ -28,8 +28,8 @@ export const errorMessages: { [key: string]: string } = {
  */
 @Component({
   selector: 'app-add-candidate',
-  templateUrl: './add-candidate.html',
-  styleUrls: ['./add-candidate.scss']
+  templateUrl: './add-edit-component.html',
+  styleUrls: ['./add-edit-candidate.scss']
 })
 export class AddCandidateComponent {
 
@@ -186,4 +186,5 @@ export class AddCandidateComponent {
         this.addCandidateForm.get('Email').hasError('pattern') ? 'You must enter a valid email address' : '';
     }
   }
+  
 }

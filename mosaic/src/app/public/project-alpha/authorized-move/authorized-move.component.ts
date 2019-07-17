@@ -20,7 +20,6 @@ export class AuthorizedMoveComponent implements OnInit {
 
   displayedColumns: string[] = ['select', 'fullname', 'authorizedAmount', 'departure', 'destination', 'status'];
 
-  addCandidateForm: FormGroup;
   dataSource: any;
   ELEMENT_DATA: any;
   filterText = '';

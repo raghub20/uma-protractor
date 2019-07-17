@@ -26,6 +26,14 @@ export class ProjectAlphaComponent {
             {
                 label: 'Approved Moves',
                 path: 'approved-moves'
+            },
+            {
+                label: 'Explore Destinations',
+                path: 'explore-destinations'
+            },
+            {
+                label: 'Services',
+                path: 'services'
             }
         ];
     }

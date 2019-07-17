@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+
 import { MoveColumnsComponent } from './move-columns.component';
 
 describe('MoveColumnsComponent', () => {
@@ -19,7 +20,16 @@ describe('MoveColumnsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+
+  /*
+
+  // Uncomment the test case when adding other unit tests. 
+
+  /*
+
+  // it('should create', () => {
+  //   expect(component).toBeTruthy();
+  // });
+  */
+
 });
