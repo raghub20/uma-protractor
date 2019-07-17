@@ -10,6 +10,41 @@ const expect = chai.expect;
 let approvedmoves: ApprovedMoves = new ApprovedMoves();
 let actual: string;
 
+
+When('User will open table column section of approved moves page', async () => {
+   let viewColumnEle = await approvedmoves.getViewColumnEle();
+   viewColumnEle.click();
+});
+
+When('User will wait until the table columns to load', () => {
+  return approvedmoves.waitForTableColumnsToLoad();
+})
+
+Then('User will check columns are enabled as {string}', async (isEnabled, dataTable) => {
+  let expectedVal = 'true';
+  if(isEnabled == 'Yes' || isEnabled == 'true') {
+    expectedVal = 'false';
+  }
+  let tableRows = dataTable.hashes();
+  for(let i=0; i<tableRows.length; i++) {
+    let checkboxEle = await approvedmoves.getColumnCheckboxEle(tableRows[i]['Column Name'].trim());
+    let enableVal = await checkboxEle.root.getAttribute('ng-reflect-disabled');
+    expect(checkboxEle.root.getAttribute('ng-reflect-disabled')).to.eventually.equal(expectedVal);
+  }
+});
+
+Then('User will verify {string} headers are displayed in the approved moves table', async (expectedHeaderCount) => {
+  let approvedMovesTable = await approvedmoves.getApprovedMovesTableEle();
+  expect(parseInt(expectedHeaderCount)).to.equal(approvedMovesTable.headers.length);
+});
+
+When('User will click on {string} button', async (buttonText) => {
+  let buttonEle = await approvedmoves.getButtonEle(buttonText);
+  return buttonEle.click();
+});
+
+/************************* New code ends*********************** */
+
 Given('the User Navigates to Transferee’s Profile View', async () => {
   await approvedmoves.get();
   //await browser.sleep(3000);
@@ -118,7 +153,7 @@ Then('User will verify {string} is showing in approved moves table', async (sear
           });
   Then('click the Next Pages', async () => {
     return approvedmoves.getNextPage().click();
-      });
+  });
 
   
 

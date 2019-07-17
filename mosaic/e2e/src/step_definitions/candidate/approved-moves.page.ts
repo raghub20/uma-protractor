@@ -1,4 +1,4 @@
-import { browser, element, by, promise, ElementFinder, protractor } from 'protractor';
+import { browser, element, by, promise, ElementFinder, protractor, ExpectedConditions as EC } from 'protractor';
 import _ from 'lodash';
 export class ApprovedMoves {
     get() {
@@ -9,6 +9,41 @@ export class ApprovedMoves {
     async getHeader(headerName: string): Promise<ElementFinder> {
         return await element(by.cssContainingText('button.mat-sort-header-button', headerName));
     }
+    /************************* new code starts ********************* */
+    async getViewColumnEle() {
+        return await element(by.css('[ng-reflect-message="view_column"]'));
+    }
+
+    async waitForTableColumnsToLoad() {
+        return await browser.wait(EC.visibilityOf(element(by.cssContainingText('h2', 'Table Columns'))), 5000);
+    }
+
+    async getColumnCheckboxEle(columnName:string) {
+        let root = await element(by.xpath('//span[text()="' + columnName + '"]//ancestor::mat-checkbox'));
+        return {
+            root : root,
+            input : root.element(by.tagName('input')),
+            label : root.element(by.tagName('label'))
+        }
+    }
+
+    async getApprovedMovesTableEle(index=0) {
+        let table = await element.all(by.tagName('table')).get(index);
+        let rows = await table.all(by.css('tbody tr'));
+        let headers = await table.all(by.css('thead th'));
+        return {
+            root : table,
+            rows : rows,
+            headers : headers
+        }
+    }
+
+    async getButtonEle(buttonText: string) {
+        let el = await element(by.buttonText(buttonText));
+        return el;
+    }
+/************************* new code ends ********************* */
+
 
     async performSort(headerName: string, sortType) {
         let headerEle = await this.getHeader(headerName);

@@ -45,7 +45,7 @@
     "posttest:coverage": "cd reports/coverage/html && cross-env mkdir -p vsts && inline-css -i index.html -o vsts/index.html",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "e2e:local:test" : "protractor e2e/protractor.mocked.conf.js",
+    "e2e:local:test" : "protractor e2e/local.conf.js",
     "e2e:mocked": "cross-env ng e2e --port 4202 --protractor-config e2e/protractor.mocked.conf.js",
     "e2e:mocked-multi": "cross-env ng e2e --port 4202 --protractor-config e2e/protractor.mocked-multi.conf.js",
     "e2e:mocked-wip": "cross-env CUCUMBER_TAGS='@wip' ng e2e --port 4202 --protractor-config e2e/protractor.mocked-wip.conf.js",

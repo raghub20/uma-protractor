@@ -37,5 +37,31 @@ Then User will verify "<Search Item>" is showing in approved moves table
 
 Examples:
 | Search Item |
-| 20,000      |           
+| 20,000      |
+
+@12
+Scenario: Verify the configuration of transferre profile summary view and default selected headers.
+When User will open table column section of approved moves page
+And User will wait until the table columns to load
+Then User will check columns are enabled as "false"
+  | Column Name |
+  | Full Name   |
+  | Status      |
+And User will check columns are enabled as "true"
+  | Column Name         |
+  |Authorized Amount    |
+  | Departure           |
+  | Destination |
+  | Last Updated Date |
+  | Email |
+  | Level |
+  | Business Unit |
+  | Created By |
+  | Authorized By |
+And User will click on "OK" button
+And User will verify "6" headers are displayed in the approved moves table
+
+
+
+
   
