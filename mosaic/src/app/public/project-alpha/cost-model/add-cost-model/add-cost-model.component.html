@@ -31,15 +31,18 @@
           </mat-form-field>
           </div>
         </div>
-      <div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="2em" fxLayout.xs="column" fxLayoutGap.xs="0" style="margin-top: 0.9em;">
+      <div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="2em" fxLayout.xs="column" fxLayoutGap.xs="0" >
         <div fxFlex="50%" fxLayoutAlign="start" fxLayout.xs="column" fxFlex.xs="100%">
             <mat-form-field>
-                <input type="text" placeholder="Departure (Optional)" matInput formControlName="Departure" [matAutocomplete]="departureList" >
+                <input type="text" placeholder="Departure" matInput formControlName="Departure" [matAutocomplete]="departureList" >
                 <mat-autocomplete #departureList="matAutocomplete" >
                   <mat-option *ngFor="let departure of departures | async" [value]="departure.name">
                     {{departure.name}}
                   </mat-option>
                 </mat-autocomplete>
+                <mat-error>
+                  {{ errors.Departure }}
+              </mat-error>
             </mat-form-field>
           </div>
           <div fxFlex fxLayout.xs="column" class="hide-arrow-xs">
@@ -76,13 +79,7 @@
                       </mat-panel-description>
                     </mat-expansion-panel-header>
                 
-                    <mat-form-field>
-                      <input matInput placeholder="First name">
-                    </mat-form-field>
-                
-                    <mat-form-field>
-                      <input matInput placeholder="Age">
-                    </mat-form-field>
+                    <p>I'm visible because I am open</p>
                   </mat-expansion-panel>
                   <mat-expansion-panel (opened)="panelOpenState = true"
                                        (closed)="panelOpenState = false">

@@ -10,7 +10,7 @@ export class CandidateProfilesService {
   // Method is implemented below to return the data
   candidateList: Candidate[] = [
     {
-      'fullname': 'Matthew, Maturity',
+      'fullname': 'Maturity, Matthew',
       'level': {
         'levelId': 'level2',
         'levelName': 'Level 2 (100,001 to 250,000 USD)',
@@ -28,7 +28,7 @@ export class CandidateProfilesService {
       'lastUpdatedDate': '21-JUN-19'
     },
     {
-      'fullname': 'Christopher, Beal',
+      'fullname': 'Beal, Christopher',
       'level': {
         'levelId': 'level1',
         'levelName': 'Level 1 (250,000+ USD)',
@@ -46,7 +46,7 @@ export class CandidateProfilesService {
       'lastUpdatedDate': '2-MAY-19'
     },
     {
-      'fullname': 'Dan, Goulet',
+      'fullname': 'Goulet, Dan',
       'level': {
         'levelId': 'level2',
         'levelName': 'Level 2 (100,001 to 250,000 USD)',
@@ -64,7 +64,7 @@ export class CandidateProfilesService {
       'lastUpdatedDate': '25-JAN-19'
     },
     {
-      'fullname': 'James, Cordon',
+      'fullname': 'Cordon, James',
       'level': {
         'levelId': 'level3',
         'levelName': 'Level 3 (0 to 100,000 USD)',
@@ -82,7 +82,7 @@ export class CandidateProfilesService {
       'lastUpdatedDate': '30-JAN-19'
     },
     {
-      'fullname': 'Francesca, Hayes',
+      'fullname': 'Hayes, Francesca',
       'level': {
         'levelId': 'level1',
         'levelName': 'Level 1 (250,000+ USD)',
@@ -100,7 +100,7 @@ export class CandidateProfilesService {
       'lastUpdatedDate': '23-MAR-19'
     },
     {
-      'fullname': 'Adam, Hu',
+      'fullname': 'Hu, Adam',
       'level': {
         'levelId': 'level2',
         'levelName': 'Level 2 (100,001 to 250,000 USD)',
@@ -118,7 +118,7 @@ export class CandidateProfilesService {
       'lastUpdatedDate': '21-JUN-19'
     },
     {
-      'fullname': 'Suehong, Jones',
+      'fullname': 'Jones, Suehong',
       'level': {
         'levelId': 'level2',
         'levelName': 'Level 2 (100,001 to 250,000 USD)',
@@ -136,7 +136,7 @@ export class CandidateProfilesService {
       'lastUpdatedDate': '20-JUN-19'
     },
     {
-      'fullname': 'Aleksandr, Rector',
+      'fullname': 'Rector, Aleksandr',
       'level': {
         'levelId': 'level2',
         'levelName': 'Level 2 (100,001 to 250,000 USD)',
@@ -154,7 +154,7 @@ export class CandidateProfilesService {
       'lastUpdatedDate': '21-JUN-19'
     },
     {
-      'fullname': 'Matthew, Richardson',
+      'fullname': 'Richardson, Matthew',
       'level': {
         'levelId': 'level2',
         'levelName': 'Level 2 (100,001 to 250,000 USD)',
@@ -172,7 +172,7 @@ export class CandidateProfilesService {
       'lastUpdatedDate': '21-JUN-19'
     },
     {
-      'fullname': 'Pritpal, Varaha',
+      'fullname': 'Varaha, Pritpal',
       'level': {
         'levelId': 'level1',
         'levelName': 'Level 1 (250,000+ USD)',
@@ -190,7 +190,7 @@ export class CandidateProfilesService {
       'lastUpdatedDate': '21-JUN-19'
     },
     {
-      'fullname': 'Robin, Ellacott',
+      'fullname': 'Ellacott, Robin',
       'level': {
         'levelId': 'level3',
         'levelName': 'Level 3 (0 to 100,000 USD)',

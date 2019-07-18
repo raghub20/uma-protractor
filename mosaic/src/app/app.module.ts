@@ -26,6 +26,7 @@ import { UserContextComponent } from './public/components/user-context/user-cont
 import { NavListComponent } from './public/components/nav-list/nav-list.component';
 import { ProjectAlphaModule } from './public/project-alpha/project-alpha.module';
 import { ExternRouteComponent } from './public/components/extern-route/extern-route.component';
+import { HighlightSearchPipe } from './public/project-alpha/highlight-search.pipe';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { ExternRouteComponent } from './public/components/extern-route/extern-ro
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy
-    }
+    },
+  HighlightSearchPipe
   ],
   bootstrap: [
     AppComponent

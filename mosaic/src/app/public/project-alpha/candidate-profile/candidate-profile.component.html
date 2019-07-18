@@ -4,11 +4,12 @@
     <span fxFlex="60%" fxLayoutAlign="start">
     <mat-form-field appearance="outline" class="search-within-table search-box">
         <mat-icon matPrefix>search</mat-icon>
+        
         <input matInput (keyup)="filterResults($event.target.value)" placeholder="Search within table for..." width="80%" fxFlex.sm="65">
       </mat-form-field>
       <span fxLayoutAlign="start center" >
         <a (click)="openModal()">
-            <mat-icon matTooltip="view_column" matTooltipPosition="right" class="viewsetting-icon">view_column</mat-icon>
+            <mat-icon matTooltip="Select Columns" matTooltipPosition="right" class="viewsetting-icon">view_column</mat-icon>
         </a>
     </span>
     </span>

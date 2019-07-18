@@ -1,6 +1,6 @@
-import { browser, element, by, promise, ElementFinder, protractor, ExpectedConditions as EC} from 'protractor';
+import { browser, element, by, promise, ElementFinder, protractor } from 'protractor';
 import _ from 'lodash';
-export class ApprovedMoves {
+export class AssertTable {
     get() {
         return browser.get('http://localhost:4202/');
         //return browser.get('/#/project-alpha');
@@ -156,37 +156,31 @@ export class ApprovedMoves {
     getApprovedMovesView():ElementFinder{
         return element(by.css("h2"));
     }
-
-    async getViewColumnEle() {
-        return await element(by.xpath('//mat-icon[text()="view_column"]'));
-    }
-
-    async waitForTableColumnsToLoad() {
-        return await browser.wait(EC.visibilityOf(element(by.cssContainingText('h2', 'Select Columns'))), 5000);
-    }
-
-    async getColumnCheckboxEle(columnName:string) {
-        let root = await element(by.xpath('//span[text()="' + columnName + '"]//ancestor::mat-checkbox'));
-        return {
-            root : root,
-            input : root.element(by.tagName('input')),
-            label : root.element(by.tagName('label'))
-        }
-    }
-
-    async getApprovedMovesTableEle(index=0) {
-        let table = await element.all(by.tagName('table')).get(index);
-        let rows = await table.all(by.css('tbody tr'));
-        let headers = await table.all(by.css('thead th'));
-        return {
-            root : table,
-            rows : rows,
-            headers : headers
-        }
-    }
-
-    async getButtonEle(buttonText: string) {
-        let el = await element(by.buttonText(buttonText));
-        return el;
-    }   
+    // getfullname():ElementFinder{
+    //     return element(by.cssContainingText("button.mat-sort-header-button"," Full Name "));
+    // }
+    // getdeparture():ElementFinder{
+    //     return element(by.cssContainingText("button.mat-sort-header-button"," Departure "));
+    // }
+    // getdesination():ElementFinder{
+    //     return element(by.cssContainingText("button.mat-sort-header-button"," Destination "));
+    // }
+    // getstatus():ElementFinder{
+    //     return element(by.cssContainingText("button.mat-sort-header-button"," Status "));
+    // }
+    // getauthorizedamount():ElementFinder{
+    //     return element(by.cssContainingText("button.mat-sort-header-button"," Authorized Amount "));
+    // }
+    // getsortsymbolfullname():ElementFinder{
+    //     return element(by.xpath("(//div[@class='mat-sort-header-stem'])[1]")); 
+    // }
+    // getsortsymbolauthorizedamount():ElementFinder{
+    //     return element(by.xpath("(//div[@class='mat-sort-header-stem'])[2]")); 
+    // }
+    // getsortsymboldeparture(): ElementFinder{
+    //     return element(by.xpath("(//div[@class='mat-sort-header-stem'])[3]"));
+    // }
+    // getsortsymbolstatus(): ElementFinder{
+    //     return element(by.xpath("(//div[@class='mat-sort-header-stem'])[4]"));
+    // }    
 }

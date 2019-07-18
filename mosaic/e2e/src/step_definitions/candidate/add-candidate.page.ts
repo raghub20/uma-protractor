@@ -76,10 +76,10 @@ export class CandidatesProfile {
         return element(by.xpath("//mat-error[contains(text(),' You must enter a valid email address ')]"));
     }
     gettotalrecordsE1(): ElementFinder{
-        return element(by.xpath("//div[contains(text(),'1 - 5 of 12')]"));
+        return element(by.xpath("//div[contains(text(),'1 - 5 of 11')]"));
     }
     getupdatedtotalrecordsE1(): ElementFinder{
-        return element(by.xpath("//div[contains(text(),'1 - 5 of 13')]"));
+        return element(by.xpath("//div[contains(text(),'1 - 5 of 12')]"));
     }
     getverify(){
         browser.get("http://localhost:4202/#/project-alpha/candidate-profiles");

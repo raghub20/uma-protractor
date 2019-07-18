@@ -21,7 +21,7 @@ import { AddCostModelComponent } from './add-cost-model/add-cost-model.component
 export class CostModelComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['select','modelName', 'level','departure', 'destination', 'action',];
+  displayedColumns: string[] = ['select','modelName', 'level.levelName','departure', 'destination', 'action'];
 
   addCandidateForm: FormGroup;
   dataSource: any;
@@ -47,8 +47,22 @@ export class CostModelComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sortingDataAccessor = (data, sortHeaderId: string) => {
+      return this.getPropertyByPath(data, sortHeaderId);
+    };
+    this.dataSource.filterPredicate = (data, filter) => {
+      const dataStr = data.destination + data.modelName + data.departure + data.level.levelName;
+      return dataStr.indexOf(filter) !== -1;
+    }
+  }
 
-    this.refresh();
+  applyFilter(filterValue: string) {
+    this.filterText = filterValue.trim();
+    this.dataSource.filter = filterValue;
+  }
+
+  getPropertyByPath(obj: Object, pathString: string) {
+    return pathString.split('.').reduce((o, i) => o[i], obj);
   }
 
   refresh() {
@@ -60,6 +74,9 @@ export class CostModelComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sortingDataAccessor = (data, sortHeaderId: string) => {
+      return this.getPropertyByPath(data, sortHeaderId);
+    };
   }
 
    /* Method to check if all the rows in the mat table were selected*/
@@ -114,13 +131,6 @@ export class CostModelComponent implements OnInit {
       this.updateDataSource();
     });
   }
-
-  /* Mat data table filtering matching wild characters */
-  applyFilter(filterValue) {
-    this.filterText = filterValue.trim();
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
   /* Resend Invite Modal window */
   openAlert(event: any) {
     /*
@@ -133,7 +143,11 @@ export class CostModelComponent implements OnInit {
     event.stopPropagation();
     */
   }
-  filterResults(test){}
+
+  filterResults(filterVal) {
+    this.applyFilter(filterVal);
+  }
+
   openModal(): void {
     const dialogRef = this.dialog.open(ModelColumnsComponent, {
       panelClass: 'DisplayedColumnsModal',

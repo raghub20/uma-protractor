@@ -6,36 +6,30 @@ To verify client able to view the candidate profiles for all candidates created 
   
   @Desktop
   Scenario: To verify client able to view profiles of all candidates created for the client
-     Then The client sees profiles of all candidates
+     When The client sees profiles of all candidates
   
   Scenario: To verify the default information displayed
-     Then client sees Candidate first name and last name
-      And Client sees Level
-      And Client sees Departure City and State
-      And client sees Destination City and State
-      And Client sees Status
+     When client sees Candidate first name and last name
+        And Client sees Level
+        And Client sees Departure City and State
+        And client sees Destination City and State
+        And Client sees Status
   
-  Scenario: To verify sort of all columns available in summary
-     When Client clicks on Candidate name sort
-     Then The candidate name should be sortable
-     When Client clicks on Level sort
-     Then The Level should be sortable
-     When Client clicks on Departure City and State sort
-     Then The Departure City and State should be sortable
-     When Client clicks on Destination City and State sort
-     Then The Destination City and State should be sortable
-     When Client clicks on Status sort
-     Then The Status should be sortable
-     When Client clicks on Status date sort
-     Then The Status date should be sortable
-     When Client clicks on Invitation sent date sort
-     Then The Invitation sent date should be sortable
-     When Client clicks on created by sort
-     Then The created by should be sortable
+    Scenario: To verify sort of all columns available in summary
+       When Client clicks on Candidate name sort
+       Then The candidate name should be sortable
+       When Client clicks on Level sort
+       Then The Level should be sortable
+       When Client clicks on Departure City and State sort
+       Then The Departure City and State should be sortable
+       When Client clicks on Destination City and State sort
+       Then The Destination City and State should be sortable
+       When Client clicks on Status sort
+       Then The Status should be sortable
+
   
   Scenario: To verify client able to inactivate candidate record
      When Client inactivates a candidate record
-     Then The candidate record becomes inactive
   
   Scenario: To verify if client able to navigate to a candidate profile
      When Client navigates to a candidate profile

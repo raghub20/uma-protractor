@@ -7,7 +7,7 @@ export class MockedData {
     static insertData (instance: number): Promise<any> {
         console.log('\x1b[33m%s\x1b[0m', 'Creating mocked data...');
         let port: number = 3002 + instance;
-        //mongoose.connect('mongodb://localhost:' + port + '/mosaic', { useNewUrlParser: true });
+        mongoose.connect('mongodb://localhost:' + port + '/mosaic', { useNewUrlParser: true });
         // tslint:disable-next-line: prefer-const
         let data = [];
         // Employee data collection

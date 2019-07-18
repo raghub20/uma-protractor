@@ -30,7 +30,7 @@ export class CostModelsService {
     'modelName': 'Group Move to LA',
     'level': {
       'levelId': 'level2',
-      'levelName': 'Level 2 (100,001 to 250,000 USD)',
+      'levelName': 'Level 1 (250,000+ USD)',
       'levelDescription': 'Level 2 - Salary details'
     },
     'departure':'NJ, Nutley',
@@ -49,7 +49,7 @@ export class CostModelsService {
     'modelName': 'L1 Dev Dallas Move',
     'level': {
       'levelId': 'level2',
-      'levelName': 'Level 2 (100,001 to 250,000 USD)',
+      'levelName': 'Level 3 (0 to 100,000 USD)',
       'levelDescription': 'Level 2 - Salary details'
     },
     'departure':'UT, Ogden',

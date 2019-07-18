@@ -10,7 +10,7 @@ import { FormGroup } from '@angular/forms';
 import { ResendInviteComponent } from '../resend-invite/resend-invite.component';
 import { RouterLinkWithHref } from '@angular/router';
 import { Selection } from '../../../models/selection.model';
-import {TransfereeAssessmentComponent} from '../transferee-assessment/transferee-assessment.component';
+import { TransfereeAssessmentComponent } from '../transferee-assessment/transferee-assessment.component';
 
 @Component({
   selector: 'app-candidate-details',
@@ -20,7 +20,7 @@ import {TransfereeAssessmentComponent} from '../transferee-assessment/transferee
 })
 export class CandidateDetailsComponent implements OnInit {
 
-  displayedColumns: string[] = ['select', 'fullname', 'level', 'departure', 'destination', 'status'];
+  displayedColumns: string[] = ['select', 'fullname', 'level.levelName', 'departure', 'destination', 'status'];
 
   addCandidateForm: FormGroup;
   dataSource: any;
@@ -39,15 +39,24 @@ export class CandidateDetailsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   /** Input prop for receiving data*/
   @Input() selectedCols: Selection[];
-  
 
   ngOnInit() {
     this.ELEMENT_DATA = this.candidateProfilesService.getCandidateProfiles();
     this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sortingDataAccessor = (data, sortHeaderId: string) => {
+      return this.getPropertyByPath(data, sortHeaderId);
+    };
+    this.dataSource.filterPredicate = (data, filter) => {
+      const dataStr = data.level.levelName + data.destination + data.fullname + data.departure +
+      data.emailAddress + data.businessUnit + data.status + data.createdBy;
+      return dataStr.indexOf(filter) !== -1;
+    };
+  }
 
-    this.refresh();
+  getPropertyByPath(obj: Object, pathString: string) {
+    return pathString.split('.').reduce((o, i) => o[i], obj);
   }
 
   refresh() {
@@ -59,6 +68,9 @@ export class CandidateDetailsComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sortingDataAccessor = (data, sortHeaderId: string) => {
+      return this.getPropertyByPath(data, sortHeaderId);
+    };
   }
 
   /* Method to check if all the rows in the mat table were selected*/
@@ -89,31 +101,31 @@ export class CandidateDetailsComponent implements OnInit {
         panelClass: 'transfereeAssessmentModal',
         data: data
       });
-  
+
       //    this.selection.select = data;
       console.log(data, 'ok you clicked on a table row....');
-  
+
       dialogRef.afterOpened().subscribe(result => {
         console.log('This dialog was opened');
       });
-  
+
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
       });
     }
-    else{
+    else {
       const dialogRef = this.dialog.open(AddCandidateComponent, {
         panelClass: 'addCandidateModal',
         data: data
       });
-  
+
       //    this.selection.select = data;
       console.log(data, 'ok you clicked on a table row....');
-  
+
       dialogRef.afterOpened().subscribe(result => {
         console.log('This dialog was opened');
       });
-  
+
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
       });
@@ -121,10 +133,12 @@ export class CandidateDetailsComponent implements OnInit {
   }
 
   /* Mat data table filtering matching wild characters */
-  applyFilter(filterValue) {
+  applyFilter(filterValue: string) {
     this.filterText = filterValue.trim();
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filter = filterValue;
+    // this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
 
   /* Resend Invite Modal window */
   openAlert(event: any) {
@@ -136,21 +150,41 @@ export class CandidateDetailsComponent implements OnInit {
 
     event.stopPropagation();
   }
+  // public ngOnChanges(changes: SimpleChanges) {
+  //   if ('selectedCols' in changes) {
+  //     this.selectedCols.forEach((item, index) => {
+  //       console.log(this.selectedCols);
+
+  //       if (this.displayedColumns.indexOf(item.value) < 0) {
+  //         console.log(item.value);
+  //         this.displayedColumns.push(item.value);
+  //       }
+  //       else {
+  //         this.displayedColumns = this.displayedColumns.filter((val) => {
+  //           return item.value == val;
+  //         });
+  //       }
+  //     });
+  //     if (this.displayedColumns.findIndex(val => val === 'select') < 0) {
+  //       this.displayedColumns.unshift('select');
+  //     }
+  //   }
+  // }
   public ngOnChanges(changes: SimpleChanges) {
     if ('selectedCols' in changes) {
+      let tempStr: string[] = [];
       this.selectedCols.forEach((item, index) => {
-        console.log(this.selectedCols);
-
         if (this.displayedColumns.indexOf(item.value) < 0) {
-          console.log(item.value);
-          this.displayedColumns.push(item.value);
-        }
-        else {
-          this.displayedColumns = this.displayedColumns.filter((val) => {
-            return item.value == val;
-          });
+          this.displayedColumns.splice(this.displayedColumns.length - 1, 0, item.value);
         }
       });
+      this.displayedColumns.forEach(element => {
+        const ind = this.selectedCols.findIndex(col => col.value == element);
+        if (ind !== -1) {
+          tempStr.push(element);
+        }
+      });
+      this.displayedColumns = tempStr.length > 0 ? tempStr : this.displayedColumns;
       if (this.displayedColumns.findIndex(val => val === 'select') < 0) {
         this.displayedColumns.unshift('select');
       }

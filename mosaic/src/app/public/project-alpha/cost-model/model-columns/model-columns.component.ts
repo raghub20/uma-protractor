@@ -93,7 +93,11 @@ export class ModelColumnsComponent implements OnInit {
         if (item === col.value) {
           col.flag = true;
           this.selectedColumnsList.push(col);
-        }
+        }else {
+          if (this.columnsList.findIndex(val => val.value !==item) > 0) {
+          col.flag = false;
+          }
+          }
       });
     });
   }

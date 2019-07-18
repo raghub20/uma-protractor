@@ -1,5 +1,5 @@
 @import '../../../../sass/cartus-palette.scss';
-
+/*
 .project_alpha {
   padding: 1.2em;
 }
@@ -13,7 +13,7 @@
     padding-left: 15px;
     padding-top: 8px;
 }
-
+/*
 
 .mat-form-field.mat-form-field-invalid .mat-form-field-label {
   color: map-get($cartus-palette, 'cartus_light_gray' );
@@ -34,6 +34,7 @@
 //   color: #575A5D;
 // }
 
+/*
 .search_table .mat-form-field-wrapper {
   margin:0px !important;
   padding:0px !important;
@@ -44,7 +45,9 @@
 .search_table .search-input{
   vertical-align: text-top;
 }
+*/
 
+/*
 .mat-raised-button.mat-primary {
   background-color: map-get($cartus-palette, 'cartus_accent_blue' ) !important;    
   height: 3.5em;
@@ -63,7 +66,7 @@ height: 3.5em;
   height: 3.5em;
 }
 
-
+/*
 .table_views mat-icon {
   color:map-get($cartus-palette, 'cartus_light_gray');
 }
@@ -79,7 +82,7 @@ height: 3.5em;
   
 }
 
-
+/*
 .search-within-table {
   background-color: #fff !important;
   font-size: 14px;
@@ -126,3 +129,12 @@ height: 3.5em;
 }
   
 
+*/
+
+.highlight-search {
+  background-color:map-get($cartus-palette, 'cartus_highlight')!important;
+}
+
+.highlighted {
+  background-color:map-get($cartus-palette, 'cartus_hover_tint');
+}

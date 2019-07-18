@@ -13,6 +13,8 @@ import { Location } from '../../../../core/models/location';
 
 import { Observable, empty } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { ApprovedMove } from '../../../../core/models/approved-move';
+import { ApprovedMovesService } from '../../../../core/services/approved-moves.service';
 
 /**
  * Exporting the errormessages
@@ -60,8 +62,8 @@ export class TransfereeDetailsComponent {
    */
   constructor(private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<TransfereeDetailsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Candidate,
-    private candidateProfilesService: CandidateProfilesService,
+    @Inject(MAT_DIALOG_DATA) public data: ApprovedMove,
+    private approvedMovesService: ApprovedMovesService,
     private locationService : LocationService,
     private levelService : LevelService,
     private changeDetectorRef: ChangeDetectorRef) {
@@ -85,33 +87,31 @@ export class TransfereeDetailsComponent {
             Validators.required, 
             Validators.minLength(1),
             Validators.maxLength(30), 
-            Validators.pattern('^[a-zA-Z0-9]*$')]
+            Validators.pattern('^[a-z A-Z0-9]*$')]
           )],
         Email: ['', Validators.compose([
-            Validators.required,
-            Validators.pattern('[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]
-          )],
-        Level: ['', Validators.required],
+          Validators.required,
+          Validators.pattern('[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]
+        )],
         Departure: [''],
-        BusinessUnit: [''],
-        Destination: ['', Validators.required]
+        Destination: ['', Validators.required],
+        AmountAuthorized: [''],
+        AmountRemaining: ['']
       });
 
       /* If the data is present - it will open and pre-populate dialog window */
       if (this.data) {
         /* set page title to edit candidate */
-        this.title = 'Edit Candidate';
+        this.title = 'Transferee Details';
 
         /* Setting the default values for form elements in edit candidate dialog */
-        this.transfereeDetailsForm.get('FirstName').setValue(this.data.fullname.substr(data.fullname.indexOf(',') + 2, data.fullname.length));
-        this.transfereeDetailsForm.get('Name').setValue(this.data.fullname.substr(0, data.fullname.indexOf(',')));
+        this.transfereeDetailsForm.get('FirstName').setValue(this.data.candidate.fullname.substr(data.candidate.fullname.indexOf(',') + 2, data.candidate.fullname.length));
+        this.transfereeDetailsForm.get('Name').setValue(this.data.candidate.fullname.substr(0, data.candidate.fullname.indexOf(','))+' '+this.data.candidate.fullname.substr(data.candidate.fullname.indexOf(',') + 2, data.candidate.fullname.length));
         this.transfereeDetailsForm.get('Destination').setValue(this.data.destination);
         this.transfereeDetailsForm.get('Departure').setValue(this.data.departure);
-        this.transfereeDetailsForm.get('Email').setValue(this.data.emailAddress);
-        this.transfereeDetailsForm.get('BusinessUnit').setValue(this.data.businessUnit);
-        this.transfereeDetailsForm.get('Level').setValue(this.data.level.levelName);
-        this.transfereeDetailsForm.get('AmountAuthorized').setValue('10,000 USD');
-        this.transfereeDetailsForm.get('AmountRemaining').setValue('10,000 USD');
+        this.transfereeDetailsForm.get('Email').setValue(this.data.candidate.emailAddress);
+        this.transfereeDetailsForm.get('AmountAuthorized').setValue(this.data.authorizedAmount);
+        this.transfereeDetailsForm.get('AmountRemaining').setValue(this.data.spentAmount);
       }
 
       /* Enable the event listener for departure drop down form element */
@@ -139,12 +139,12 @@ export class TransfereeDetailsComponent {
   /**
    * Click on Submit button inside the transfereeDetailsForm dialog window
    */
-  sendInvite() {
-    const levelDetails =  this.levelService.getLevelId(this.transfereeDetailsForm.value.Level);
+  // sendInvite() {
+  //   const levelDetails =  this.levelService.getLevelId(this.transfereeDetailsForm.value.Level);
 
-    this.candidateProfilesService.addCandidateProfile(this.transfereeDetailsForm.value, levelDetails);
-    this.dialogRef.close();
-  }
+  //   this.candidateProfilesService.addCandidateProfile(this.transfereeDetailsForm.value, levelDetails);
+  //   this.dialogRef.close();
+  // }
 
   /**
    * Closing the dialog box - we are setting the form to empty
@@ -156,11 +156,14 @@ export class TransfereeDetailsComponent {
 
       FirstName: ['', Validators.required],
       Name: ['', Validators.required, Validators.minLength(1), Validators.maxLength(30)],
-      Email: ['', Validators.required, Validators.email],
+      Email: ['', Validators.compose([
+        Validators.required,
+        Validators.pattern('[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]
+      )],
       Departure: [''],
-      BusinessUnit: [''],
       Destination: ['', Validators.required],
-
+      AmountAuthorized: ['', Validators.required],
+      AmountRemaining: ['', Validators.required]
     });
   }
 

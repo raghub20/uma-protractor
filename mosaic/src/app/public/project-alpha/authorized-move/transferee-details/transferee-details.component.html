@@ -57,23 +57,6 @@
           </mat-form-field>
         </div>
       </div>
-      
-      <div class="input-row" fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="2em" fxLayout.xs="column" fxLayoutGap.xs="0em" style="margin-top: 0.9em;">
-        <div fxFlex="50%" fxLayout.xs="column" fxFlex.xs="100%">
-          <div style="border: 1px solid #949494;border-radius: 4px;text-align: center;">
-            <p>Housing Details</p>
-            <p>Housing Type: Rent</p>
-            <p>#Bedrooms: 4</p>
-          </div>
-        </div>
-        <div fxFlex="50%" fxLayout.xs="column" fxFlex.xs="100%">
-          <div class="people-container" style="border: 1px solid #949494;border-radius: 4px;text-align: center;">
-            <p>Amount of People</p>
-            <p>Total: 4</p>
-            <p>#Childrens: 2</p>
-          </div>
-        </div>
-      </div>
       <div class="input-row" fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="2em" fxLayout.xs="column" fxLayoutGap.xs="0em" style="margin-top: 0.9em;">
         <div fxFlex="50%" fxLayoutAlign="start" fxLayout.xs="column" fxFlex.xs="100%">
           <mat-form-field>
@@ -93,10 +76,26 @@
         </div>
       </div>
       <div class="input-row" fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="2em" fxLayout.xs="column" fxLayoutGap.xs="0em" style="margin-top: 0.9em;">
+        <div fxFlex="50%" fxLayout.xs="column" fxFlex.xs="100%">
+          <div style="border: 1px solid #949494;border-radius: 4px;text-align: center;">
+            <p>Housing Details</p>
+            <p>Housing Type: Rent</p>
+            <p>#Bedrooms: 4</p>
+          </div>
+        </div>
+        <div fxFlex="50%" fxLayout.xs="column" fxFlex.xs="100%" class="people-container">
+          <div style="border: 1px solid #949494;border-radius: 4px;text-align: center;">
+            <p>Amount of People</p>
+            <p>Total: 4</p>
+            <p>#Children: 2</p>
+          </div>
+        </div>
+      </div>
+      <div class="input-row" fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="2em" fxLayout.xs="column" fxLayoutGap.xs="0em" style="margin-top: 0.9em;">
         <div fxFlex="100%" fxLayout.xs="column" fxFlex.xs="100%">
           <mat-accordion>
             <mat-expansion-panel style="border: 1px solid #949494;box-shadow: none;">
-              <mat-expansion-panel-header>
+              <mat-expansion-panel-header class="disable_ripple">
                 <mat-panel-title>
                   Activity History
                 </mat-panel-title>

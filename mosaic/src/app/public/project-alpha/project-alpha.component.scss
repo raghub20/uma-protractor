@@ -49,3 +49,11 @@
     margin-bottom:1.3em;
 }
 
+.search-within-table {
+  background-color: #fff !important;
+  font-size: 0.75em;
+  font-weight: normal !important;
+  color: #575A5D;
+  border:1px solid map-get($cartus-palette, 'cartus_gray') !important;
+}
+

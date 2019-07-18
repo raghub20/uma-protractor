@@ -1,20 +1,24 @@
+
+
 <section class="search_table">
 
-  <div fxLayout="row" fxLayoutAlign="space-between center">
-    <span fxFlex="60%" fxLayoutAlign="start">
-    <mat-form-field appearance="outline" class="search-within-table search-box">
-        <mat-icon matPrefix>search</mat-icon>
-        <input matInput (keyup)="filterResults($event.target.value)" placeholder="Search within table for..." width="80%" fxFlex.sm="65">
-      </mat-form-field>
-      <span fxLayoutAlign="start center" >
-        <a (click)="openModal()">
-            <mat-icon matTooltip="view_column" matTooltipPosition="right" class="viewsetting-icon">view_column</mat-icon>
-        </a>
-    </span>
-    </span>
-</div>
-</section>  
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+  
+      <span fxFlex="60%" fxLayoutAlign="start">
+      <mat-form-field appearance="outline" class="search-within-table search-box">
+          <mat-icon matPrefix>search</mat-icon>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search within table for..." width="80%" fxFlex.sm="65">
+        </mat-form-field>
+        <span fxLayoutAlign="start center" >
+          <a (click)="openModal()">
+              <mat-icon matTooltip="Select Columns" matTooltipPosition="right" class="viewsetting-icon">view_column</mat-icon>
+          </a>
+      </span>
+      </span>
+  </div>
+  </section> 
 
+  
 <section class="content_table">
     <h2>Approved Moves</h2>
   
@@ -32,7 +36,7 @@
               </mat-checkbox>
           </th>
           <td mat-cell *matCellDef="let row" >
-              <mat-checkbox (click)="$event.stopPropagation()"
+              <mat-checkbox (click)="selection.toggle(row)"
               (change)="$event ? selection.toggle(row) : null"
               [checked]="selection.isSelected(row)"
               [aria-label]="checkboxLabel(row)" >
@@ -41,22 +45,22 @@
       </ng-container>
   
       <!-- Full Name Column -->
-      <ng-container matColumnDef="fullname" sticky>
+      <ng-container matColumnDef="candidate.fullname" sticky>
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Full Name </th>
-          <td mat-cell *matCellDef="let element" class="cLinks" [ngClass]="{highlighted: selection.isSelected(row)}" (click)="open($event, element)"><span class="text-as-link" [innerHTML]="element.candidate.fullname | highlightSearch: filterText">{{element.candidate.fullname}}</span> </td>
+          <td mat-cell *matCellDef="let element" class="cLinks" [ngClass]="{highlighted: selection.isSelected(row)}" ><span class="text-as-link" [innerHTML]="element.candidate.fullname | highlightSearch: filterText">{{element.candidate.fullname}}</span> </td>
       </ng-container>
   
       <!-- Authorized Amount Column -->
       <ng-container matColumnDef="authorizedAmount">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Authorized/Remaining Amount </th>
-          <td mat-cell *matCellDef="let element"> {{element.authorizedAmount}}<br> Remaining: {{element.spentAmount }}</td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Authorized Amount </th>
+          <td mat-cell *matCellDef="let element"><strong><span [innerHTML]="element.authorizedAmount | highlightSearch: filterText">{{element.authorizedAmount}}</span></strong></td>
       </ng-container>
   
-      <!-- Departure Column -->
-      <ng-container matColumnDef="departure">
+       <!-- Departure Column -->
+       <ng-container matColumnDef="departure">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Departure </th>
           <td mat-cell *matCellDef="let element" [innerHTML]="element.departure | highlightSearch: filterText"> {{element.departure}}</td>
-      </ng-container>
+        </ng-container>
   
       <!-- Destination Column -->
       <ng-container matColumnDef="destination">
@@ -71,7 +75,7 @@
       </ng-container>
   
       <!-- Level Column -->
-      <ng-container matColumnDef="level">
+      <ng-container matColumnDef="candidate.level.levelName">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Level </th>
           <td mat-cell *matCellDef="let element" [innerHTML]="element.candidate.level.levelName | highlightSearch: filterText"> {{element.candidate.level.levelName}}</td>
       </ng-container>
@@ -120,7 +124,7 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
-    <tr mat-row (click)="selection.toggle(row)"  *matRowDef="let row; columns: displayedColumns;" [ngClass]="{highlighted: selection.isSelected(row)}"></tr>
+    <tr mat-row (click)="open($event, row)"  *matRowDef="let row; columns: displayedColumns;" [ngClass]="{highlighted: selection.isSelected(row)}"></tr>
     </table>
   </div>
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" ></mat-paginator>

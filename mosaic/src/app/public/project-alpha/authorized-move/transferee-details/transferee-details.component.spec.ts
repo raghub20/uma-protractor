@@ -19,7 +19,14 @@ describe('TransfereeDetailsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  /*
+
+  // Uncomment the test case when adding other unit tests. 
+
+  /*
+
+  // it('should create', () => {
+  //   expect(component).toBeTruthy();
+  // });
+  */
 });

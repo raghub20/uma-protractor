@@ -38,6 +38,11 @@ export class NavigationProfile  {
         return element(ApprovedMovesTab);
     }
 
+    navigateToTab(tabId){
+        this.waitForPageLoad();
+        element(tabId).click();
+    }
+    /*
     navigateToCostModel() {
         this.waitForPageLoad();
         element(costModelTab).click();
@@ -47,7 +52,7 @@ export class NavigationProfile  {
         this.waitForPageLoad();
         element(candidatesTab).click();
     }
-
+    */
     waitForPageLoad(){
         browser.sleep(3000);
     }

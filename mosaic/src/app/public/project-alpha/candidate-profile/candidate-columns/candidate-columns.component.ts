@@ -38,7 +38,7 @@ export class CandidateColumnsComponent implements OnInit, OnDestroy {
     },
     {
       displayName: 'Level',
-      value: 'level',
+      value: 'level.levelName',
       flag: true,
       disabled: false
     },
@@ -115,19 +115,18 @@ export class CandidateColumnsComponent implements OnInit, OnDestroy {
    * It resets the value for the view props
    */
   ngOnInit() {
-    this.data.forEach((item, index) => {
-      this.columnsList.forEach((col, index) => {
-        if (item === col.value) {
-          col.flag = true;
-          this.selectedColumnsList.push(col);
-        }
-        else {
-          if (this.columnsList.findIndex(y => y.value != item) > 0) {
-            col.flag = false;
-          }
-        }
+    this.columnsList.forEach((col, ind) => {
+      this.data.forEach((data, index) => {
+      if (col.value === data) {
+      col.flag = true;
+      this.selectedColumnsList.push(col);
+      } else {
+      if (this.columnsList.findIndex(val => val.value !== data) > 0) {
+      col.flag = false;
+      }
+      }
       });
-    });
+      });
   }
   /**
    * Method to initialize the selected array list
@@ -142,7 +141,7 @@ export class CandidateColumnsComponent implements OnInit, OnDestroy {
       },
       {
         displayName: 'Level',
-        value: 'level',
+        value: 'level.levelName',
         flag: true,
         disabled: false
       },
@@ -171,28 +170,42 @@ export class CandidateColumnsComponent implements OnInit, OnDestroy {
    * @param selected - sends the selected array value
    * @param isChecked - prop for check box selected value
    */
-  updateChkbxArray(selected: any, isChecked: boolean) {
-    if (isChecked) {
-      if (this.columnsList.findIndex(x => x.value === selected.value)) {
-        this.selectedColumnsList.splice(this.selectedColumnsList.length-1, 0,{ displayName: selected.displayName, value: selected.value, flag: isChecked, disabled: selected.disabled });
-        this.columnsList.forEach((col, index) => {
-          if (selected.value === col.value) {
-            col.flag = true;
-          }
-        });
-      }
-    } else {
-      const ind: number = this.selectedColumnsList.findIndex(y => y.value === selected.value);
-      if (ind !== -1) {
-        this.selectedColumnsList.splice(ind, 1);
-        this.columnsList.forEach((col, index) => {
-          if (selected.value === col.value) {
-            col.flag = false;
-          }
-        });
-      }
+  // updateChkbxArray(selected: any, isChecked: boolean) {
+  //   if (isChecked) {
+  //     if (this.columnsList.findIndex(x => x.value === selected.value)) {
+  //       this.selectedColumnsList.splice(this.selectedColumnsList.length-1, 0,{ displayName: selected.displayName, value: selected.value, flag: isChecked, disabled: selected.disabled });
+  //       this.columnsList.forEach((col, index) => {
+  //         if (selected.value === col.value) {
+  //           col.flag = true;
+  //         }
+  //       });
+  //     }
+  //   } else {
+  //     const ind: number = this.selectedColumnsList.findIndex(y => y.value === selected.value);
+  //     if (ind !== -1) {
+  //       this.selectedColumnsList.splice(ind, 1);
+  //       this.columnsList.forEach((col, index) => {
+  //         if (selected.value === col.value) {
+  //           col.flag = false;
+  //         }
+  //       });
+  //     }
+  //   }
+  // }
+  updateChkbxArray(selected: any) {
+    const index = this.columnsList.findIndex(x => x.value === selected.value);
+    this.columnsList[index].flag = !selected.flag;
+     if (this.columnsList[index].flag===true) {
+         this.selectedColumnsList.splice(this.selectedColumnsList.length - 1, 
+          0, { displayName: selected.displayName, value: selected.value, flag: !selected.flag, disabled: selected.disabled }); }
+     else
+     {
+       const ind: number = this.selectedColumnsList.findIndex(y=>y.value == selected.value);
+       if (ind !== -1) {
+          this.selectedColumnsList.splice(ind, 1);
+     }
     }
-  }
+   }
   /**
     * Closing the dialog box - we are setting the form to empty
     */
@@ -202,24 +215,24 @@ export class CandidateColumnsComponent implements OnInit, OnDestroy {
   /**
    * Resets the value to default version
    */
-  resetValues(): void {
+  resetValues(): void {
     this.populateArray();
-    this.columnsList.forEach((col, ind) => {
-      if ((col.value === 'fullname') || (col.value === 'status') || (col.value === 'level') ||
-       (col.value === 'departure') || (col.value === 'destination')) {
-        col.flag = true;
-      } else {
-        col.flag = false;
-      }
+    this.columnsList.forEach((obj) => {
+    const existData = this.selectedColumnsList.find(({ value }) => obj.value === value);
+    if (!existData) {
+    obj.flag = false;
+    } else{
+    obj.flag = true;
+    }
     });
-  }
+    }
   /**
    * Emits the updated array to parent component
    */
   save(): void {
     this.dialogRef.close();
     this.columnsListUpdated.emit(this.selectedColumnsList);
-  };
+  }
   /**
    * destroys the object
    */

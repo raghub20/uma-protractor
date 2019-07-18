@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewChild, ViewEncapsulation, ChangeDetectorRef, Inject, Input, SimpleChanges } from '@angular/core';
-import { MatSort, MatPaginator } from '@angular/material';
-import { MatTableDataSource } from '@angular/material/table';
+import { Component, OnInit, ViewChild, ViewEncapsulation, Inject, Input, SimpleChanges } from '@angular/core';
+import {VERSION} from '@angular/material';
+import {MatTableDataSource} from '@angular/material';
+
+import { MatSort, MatPaginator } from '@angular/material'
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SelectionModel } from '@angular/cdk/collections';
 import { FormGroup } from '@angular/forms';
@@ -13,46 +15,61 @@ import {TransfereeDetailsComponent} from './transferee-details/transferee-detail
 
 @Component({
   selector: 'app-authorized-move',
-  templateUrl: './authorized-move.component.html',
-  styleUrls: ['./authorized-move.component.scss']
+  templateUrl: './authorized-move.component.html'
 })
-export class AuthorizedMoveComponent implements OnInit {
+export class AuthorizedMoveComponent {
 
-  displayedColumns: string[] = ['select', 'fullname', 'authorizedAmount', 'departure', 'destination', 'status'];
+  //displayedColumns: string[] = ['select', 'candidate.fullname', 'authorizedAmount', 'departure', 'destination', 'status'];
+  displayedColumns: string[] = ['select', 'candidate.fullname', 'authorizedAmount', 'departure', 'destination', 'status'];
 
-  dataSource: any;
   ELEMENT_DATA: any;
+  dataSource: any;
   filterText = '';
 
   columnList: Selection[] = [];
 
+    /** To sort the mat table columns */
+    @ViewChild(MatSort) sort: MatSort;
+    /** To paginate in a mat table */
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+  
+     /** Input prop for receiving data*/
+    @Input() selectedCols: Selection[];
+
   /** Input prop for receiving data*/
 
   selection = new SelectionModel<ApprovedMove>(true, []);
-
-  constructor(public dialog: MatDialog,
-    private aprovedMovesService: ApprovedMovesService,
-    private changeDetectorRefs: ChangeDetectorRef) { }
-
-  /** To sort the mat table columns */
-  @ViewChild(MatSort) sort: MatSort;
-  /** To paginate in a mat table */
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
-   /** Input prop for receiving data*/
-  @Input() selectedCols: Selection[];
-
+  
   ngOnInit() {
     this.ELEMENT_DATA = this.aprovedMovesService.getApprovedMoves();
     this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sortingDataAccessor = (data, sortHeaderId: string) => {
+      return this.getPropertyByPath(data, sortHeaderId);
+    };
+    this.dataSource.filterPredicate = (data, filter) => {
+      const dataStr = data.destination + data.candidate.fullname + data.departure + data.authorizedAmount +
+      data.candidate.emailAddress + data.candidate.businessUnit + data.candidate.level.levelName;
+      return dataStr.indexOf(filter) !== -1;
+    }
+  }
 
-    this.refresh();
+  constructor(public dialog: MatDialog,
+    private aprovedMovesService: ApprovedMovesService) {
+   
+  }
+
+  applyFilter(filterValue: string) {
+    this.filterText = filterValue.trim();
+    this.dataSource.filter = filterValue;
+  }
+
+  getPropertyByPath(obj: Object, pathString: string) {
+    return pathString.split('.').reduce((o, i) => o[i], obj);
   }
 
   refresh() {
-    this.changeDetectorRefs.detectChanges();
   }
 
   updateDataSource() {
@@ -60,6 +77,9 @@ export class AuthorizedMoveComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sortingDataAccessor = (data, sortHeaderId: string) => {
+      return this.getPropertyByPath(data, sortHeaderId);
+    };
   }
 
   /* Method to check if all the rows in the mat table were selected*/
@@ -86,7 +106,8 @@ export class AuthorizedMoveComponent implements OnInit {
   /* Open the dialog box AddCandidateComponent in EDIT mode when any row is clicked of the mat table*/
   public open(event, data) {
     const dialogRef = this.dialog.open(TransfereeDetailsComponent, {
-      panelClass: 'tranfereeDetailsModal'
+      panelClass: 'tranfereeDetailsModal',
+      data:data
     });
 
     //    this.selection.select = data;
@@ -100,26 +121,9 @@ export class AuthorizedMoveComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
-  /* Mat data table filtering matching wild characters */
-  applyFilter(filterValue) {
-    //this.filterText = filterValue.trim();
-    //console.log(this.dataSource);
-   // console.log(this.filterText);
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
+ 
   /* Resend Invite Modal window */
-  openAlert(event: any) {
-    /*
-    const dialogRef = this.dialog.open(ResendInviteComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-    });
-
-    event.stopPropagation();
-    */
-  }
+  openAlert(event: any) {}
 
   public ngOnChanges(changes: SimpleChanges) {
     if ('selectedCols' in changes) {
@@ -142,7 +146,6 @@ export class AuthorizedMoveComponent implements OnInit {
   filterResults(filterVal) {
     this.applyFilter(filterVal);
   }
-
 
   openModal(): void {
     const dialogRef = this.dialog.open(MoveColumnsComponent, {
@@ -172,3 +175,4 @@ export class AuthorizedMoveComponent implements OnInit {
     }
 }
 }
+

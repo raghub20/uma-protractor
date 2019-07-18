@@ -17,7 +17,7 @@ export class MoveColumnsComponent implements OnInit, OnDestroy {
   columnsList: Selection[] = [
     {
       displayName: 'Full Name',
-      value: 'fullname',
+      value: 'candidate.fullname',
       flag: true,
       disabled: true
     },
@@ -30,7 +30,7 @@ export class MoveColumnsComponent implements OnInit, OnDestroy {
     {
       displayName: 'Authorized Amount',
       value: 'authorizedAmount',
-      flag: false,
+      flag: true,
       disabled: false
     },
     {
@@ -59,8 +59,8 @@ export class MoveColumnsComponent implements OnInit, OnDestroy {
     },
     {
       displayName: 'Level',
-      value: 'level',
-      flag: true,
+      value: 'candidate.level.levelName',
+      flag: false,
       disabled: false
     },
     {
@@ -123,7 +123,11 @@ export class MoveColumnsComponent implements OnInit, OnDestroy {
         if (item === col.value) {
           col.flag = true;
           this.selectedColumnsList.push(col);
-        }
+        }else {
+          if (this.columnsList.findIndex(val => val.value !==item) > 0) {
+          col.flag = false;
+          }
+          }
       });
     });
   }
@@ -134,14 +138,14 @@ export class MoveColumnsComponent implements OnInit, OnDestroy {
     this.selectedColumnsList = [
       {
         displayName: 'Full Name',
-        value: 'fullname',
+        value: 'candidate.fullname',
         flag: true,
         disabled: true
       },
       {
         displayName: 'Authorized Amount',
         value: 'authorizedAmount',
-        flag: false,
+        flag: true,
         disabled: false
       },
       {
@@ -191,6 +195,7 @@ export class MoveColumnsComponent implements OnInit, OnDestroy {
       }
     }
   }
+  
   /**
     * Closing the dialog box - we are setting the form to empty
     */
@@ -203,7 +208,7 @@ export class MoveColumnsComponent implements OnInit, OnDestroy {
   resetValues(): void {
     this.populateArray();
     this.columnsList.forEach((col, ind) => {
-      if ((col.value !== 'fullname') && (col.value != 'authorizedAmount') && (col.value != 'departure') && (col.value != 'destination') && (col.value !== 'status')) {
+      if ((col.value !== 'candidate.fullname') && (col.value != 'authorizedAmount') && (col.value != 'departure') && (col.value != 'destination') && (col.value !== 'status')) {
         col.flag = false;
       }
     });

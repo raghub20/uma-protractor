@@ -26,6 +26,7 @@ import { CostModelsService } from '../../../../core/services/cost-models.service
  */
 export const errorMessages: { [key: string]: string } = {
   Email: 'You must enter Email address',
+  Departure: 'You must select departure',
   Destination: 'You must select destination',
   Level: 'You must select level'
 };
@@ -76,7 +77,7 @@ export class AddCostModelComponent {
      private changeDetectorRef: ChangeDetectorRef) {
  
        /* Setting default title of the dialof window */
-       this.title = 'Add Cost Model';
+       this.title = 'Create Cost Model';
  
        /* Get all the locations for destination and departure */
        this.options = this.locationService.getLocations();
@@ -91,7 +92,7 @@ export class AddCostModelComponent {
              Validators.pattern('^[a-z A-Z0-9]*$')]
            )],
          Level: ['', Validators.required],
-         Departure: [''],
+         Departure: ['', Validators.required],
          Destination: ['', Validators.required]
        });
  
@@ -148,8 +149,9 @@ export class AddCostModelComponent {
      this.addCostModelForm = this.formBuilder.group({
  
       ModelName: ['', Validators.required],
-       Departure: [''],
-       Destination: ['', Validators.required],
+      Level: ['', Validators.required],
+       Departure: ['', Validators.required],
+       Destination: ['', Validators.required]
      });
    }
  

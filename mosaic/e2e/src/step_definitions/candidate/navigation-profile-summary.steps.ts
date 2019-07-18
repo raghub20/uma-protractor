@@ -29,7 +29,7 @@ When('The user sees the Cost Models Tab', async () => {
 });
 
 Then('The user clicks the Cost Models Tab', async () => {
-  await navigationprofile.navigateToCostModel();
+  await navigationprofile.navigateToTab('costModelTab');
 });
 
 Then('The user sees the Cost Models Page', async () => {
@@ -42,7 +42,7 @@ When('The user sees the Candidates Tab', async () => {
 });
 
 Then('The user clicks the Candidates Tab', async () => {
-  await navigationprofile.navigateToCandidates();
+  await navigationprofile.navigateToTab('candidatesTab');
 });
 
 Then('The user sees the Candidates Page', async () => {

@@ -4,8 +4,7 @@ import { AddCandidateComponent } from './add-candidate/add-candidate.component';
 import { CandidateDetailsComponent } from './candidate-details/candidate-details.component';
 import { CandidateColumnsComponent } from './candidate-columns/candidate-columns.component';
 import { Selection } from '../../models/selection.model';
-import { NotificationsService } from '../../../core/services/notifications.service';
-
+import { NotificationsService } from '../../../../../src/app/core/services/notifications.service';
 @Component({
   selector: 'app-candidate-profile',
   templateUrl: './candidate-profile.component.html',
@@ -15,11 +14,11 @@ import { NotificationsService } from '../../../core/services/notifications.servi
 /**Class for  CandidateProfileComponent*/
 export class CandidateProfileComponent implements OnInit {
 
-  @ViewChild(CandidateDetailsComponent) childObj: CandidateDetailsComponent;
+  @ViewChild(CandidateDetailsComponent) childObj :CandidateDetailsComponent;
 
   columnList: Selection[] = [];
 
-  constructor(public dialog: MatDialog, private notificationsService: NotificationsService) { }
+  constructor(public dialog: MatDialog, private notificationsService: NotificationsService ) { }
 /**To write  */
   ngOnInit() {
   }
@@ -31,7 +30,7 @@ export class CandidateProfileComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.childObj.updateDataSource();
-      this.notificationsService.flashNotification('success', 'User Added Successfully', true, 'Undo');
+      this.notificationsService.flashNotification('success','Candidate added successfully', true, 'dismiss');
     });
   }
 
@@ -46,9 +45,6 @@ export class CandidateProfileComponent implements OnInit {
     });
     const res = dialogRef.componentInstance.columnsListUpdated.subscribe((response: Selection[]) => {    
       this.columnList = response;
-
-      this.notificationsService.flashNotification('error', 'Unable to add user');
     });
-
   }
 }

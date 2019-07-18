@@ -26,7 +26,7 @@ const config = {
     //require: ['../e2e/src/support/setup.ts', '../e2e/src/step_definitions/**/Layout_AggregateView.steps.ts'],
     //require: ['../e2e/src/support/setup.ts', '../e2e/src/step_definitions/**/AggregateView_Destination_Country.steps.ts'],
     
-    tags: ['@12'],                           // <string[]> (expression) only execute the features or scenarios with tags matching the expression
+    tags: ['@SR_157'],                           // <string[]> (expression) only execute the features or scenarios with tags matching the expression
     strict: true,                       // <boolean> fail if there are any undefined or pending steps
     format: 'json:' + jsonReportFile,   //["summary"],            // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)
     'dry-run': false,                   // <boolean> invoke formatters without executing steps
@@ -49,8 +49,7 @@ const config = {
     // Ensure ts-node uses our custom tsconfig.
     require('ts-node').register({ project: 'e2e/src/tsconfig.json'});
     browser.params['rootUrl'] = browser.baseUrl + '/' + browser.params.app_base;
-    browser.manage().window().maximize();
-    //browser.manage().window().setSize(1400, 900); // Set initial browser size
+    browser.manage().window().setSize(1400, 900); // Set initial browser size
     // Ensure that the reports directory has been created.
     if (!existsSync(cucumberReportDirectory)) {
       mkdirSync(cucumberReportDirectory);

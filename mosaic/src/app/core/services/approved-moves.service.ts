@@ -6,7 +6,7 @@ import { ApprovedMove } from '../models/approved-move';
 })
 export class ApprovedMovesService {
 
-   // SAMPLE JSON data - will be replaced once we have httpclient implemented
+  // SAMPLE JSON data - will be replaced once we have httpclient implemented
   // Method is implemented below to return the data
   approveMovesList: ApprovedMove[] = [
     {
@@ -66,7 +66,7 @@ export class ApprovedMovesService {
   'spentAmount': '60,000 USD',
   'departure': 'NJ, Jersey City',
   'destination': 'CA, San Francisco',
-  'status': 'Authorized',
+  'status': 'Move in Progress',
   'lastUpdateDate': '05/20/2019',
   'paymentReceived': 'YES',
   'authorizedBy': 'Tom Jefferson',
@@ -132,7 +132,7 @@ export class ApprovedMovesService {
 'spentAmount': '10,000 USD',
 'departure': 'NJ, Nutley',
 'destination': 'TX, Austin',
-'status': 'Authorized',
+'status': 'HHG Booked',
 'lastUpdateDate': '05/20/2019',
 'paymentReceived': 'YES',
 'authorizedBy': 'Tom Jefferson',
@@ -198,7 +198,7 @@ export class ApprovedMovesService {
 'spentAmount': '18,000 USD',
 'departure': 'NY, New York',
 'destination': 'NJ, Jersey City',
-'status': 'Authorized',
+'status': 'Move in Progress',
 'lastUpdateDate': '05/20/2019',
 'paymentReceived': 'YES',
 'authorizedBy': 'Tom Jefferson',
@@ -231,7 +231,7 @@ export class ApprovedMovesService {
 'spentAmount': '12,000 USD',
 'departure': 'NJ, Nutley',
 'destination': 'TX, Austin',
-'status': 'Authorized',
+'status': 'HHG Booked',
 'lastUpdateDate': '05/20/2019',
 'paymentReceived': 'YES',
 'authorizedBy': 'Tom Jefferson',
@@ -247,8 +247,7 @@ export class ApprovedMovesService {
 
   /* Return the candidate json list and loop to display in the table */
   getApprovedMoves(): ApprovedMove[] {
-    //console.log(this.approveMovesList);
+    // console.log(this.approveMovesList);
     return this.approveMovesList;
   }
-
 }

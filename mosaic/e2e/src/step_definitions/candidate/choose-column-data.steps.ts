@@ -488,7 +488,7 @@ Then('The first column is full name',async function(){
     return await expect(text).equals("Full Name");
   })
 });
-Then('The last column is status ',async function(){
+Then('The last column is status',async function(){
   await choosecolumn.getlastcolumn().getText().then(async(text)=>{
     return await expect(text).equals("Status");
   })

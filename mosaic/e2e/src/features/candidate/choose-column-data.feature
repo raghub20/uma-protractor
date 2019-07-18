@@ -127,6 +127,6 @@ To verify filtered columns are displayed in profile summary
       And The client contact checks Email as true
       And The client contact clicks apply filter
      Then The first column is full name
-  #And The last column is status 
+      And The last column is status
   
   
