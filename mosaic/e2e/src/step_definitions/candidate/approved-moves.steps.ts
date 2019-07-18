@@ -2,7 +2,7 @@ import { Given, Then, When, Before, setDefaultTimeout } from 'cucumber';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import { ApprovedMoves } from './approved-moves.page';
-import { browser } from 'protractor';
+import { browser, ExpectedConditions as EC } from 'protractor';
 
 chai.use(chaiAsPromised);
 const expect = chai.expect;
@@ -89,11 +89,39 @@ Then('User will check columns are enabled as {string}', async (isEnabled, dataTa
 });
 
 Then('User will verify {string} headers are displayed in the approved moves table', async (expectedHeaderCount) => {
- let approvedMovesTable = await approvedmoves.getApprovedMovesTableEle();
- expect(parseInt(expectedHeaderCount)).to.equal(approvedMovesTable.headers.length);
+  let approvedMovesTable = await approvedmoves.getApprovedMovesTableEle();
+  expect(parseInt(expectedHeaderCount)).to.equal(approvedMovesTable.headers.length);
 });
 
 When('User will click on {string} button', async (buttonText) => {
  let buttonEle = await approvedmoves.getButtonEle(buttonText);
- return buttonEle.click();
+ return await buttonEle.click();
+});
+
+When('User will select the {string} from select column view', async(columnNamesStr) => {
+  let columnNamesArr = columnNamesStr.split(',');
+  for(let i=0; i<columnNamesArr.length; i++) {
+    if(columnNamesArr[i].trim() != '') {
+      let checkboxEle = await approvedmoves.getColumnCheckboxEle(columnNamesArr[i].trim());
+      await checkboxEle.label.click();
+    }
+  }
+});
+
+When('User will click on RESET button', async() => {
+  let el = await approvedmoves.getResetButton();
+  el.click();
+});
+
+Then('User will check columns are {string}', async (checkedOrUnchecked : string, dataTable) => {
+  let rows = dataTable.hashes();
+  let isChecked = 'false';
+  if(checkedOrUnchecked.toLowerCase() == 'checked') {
+    isChecked = 'true';
+  }
+  for(let i=0; i<rows.length; i++) {
+    let el = await approvedmoves.getColumnCheckboxEle(rows[i]['Column Name'].trim());
+    let actualVal = await el.input.getAttribute('aria-checked');
+    expect(actualVal).to.be.equal(isChecked);
+  }
 });

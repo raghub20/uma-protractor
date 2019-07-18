@@ -188,5 +188,9 @@ export class ApprovedMoves {
     async getButtonEle(buttonText: string) {
         let el = await element(by.buttonText(buttonText));
         return el;
-    }   
+    }
+    
+    async getResetButton() {
+        return await element(by.cssContainingText('span','RESET'));
+    }
 }

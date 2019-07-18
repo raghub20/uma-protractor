@@ -66,3 +66,32 @@ And User will check columns are enabled as "true"
   | Authorized By |
 And User will click on "OK" button
 And User will verify "6" headers are displayed in the approved moves table
+
+@SR_157
+Scenario Outline: Verify the approved moves table headers based on the column section
+When User will open table column section of approved moves page
+And User will wait until the table columns to load
+And User will select the "<Columns>" from select column view
+And User will click on "OK" button
+Then User will verify "<Expected Header Count>" headers are displayed in the approved moves table
+Examples:
+| Columns | Expected Header Count |
+| Last Updated Date, Email, Level, Business Unit, Created By, Authorized By | 12 |
+# verifying default header count
+| | 6 |
+| Authorized Amount, Departure, Destination  | 3 |
+
+#Issue in the application, hence this scenario will fail.
+@SR_157
+Scenario: Verify the approved moves default columns are checked after click on reset button
+When User will open table column section of approved moves page
+And User will wait until the table columns to load
+And User will select the "Authorized Amount, Departure, Destination" from select column view
+And User will click on RESET button
+Then User will check columns are "unchecked"
+|Column Name|
+|Authorized Amount |
+| Departure |
+| Destination |
+And User will click on "OK" button
+Then User will verify "6" headers are displayed in the approved moves table
