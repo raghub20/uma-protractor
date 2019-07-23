@@ -17,23 +17,19 @@ import {
   MatCheckboxModule,
   MatDialogModule,
   MatAutocompleteModule,
-  MatSelectModule
+  MatSelectModule,
+  MatToolbarModule,
+  MatListModule
 } from '@angular/material';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
-import { UserContextComponent } from './public/components/user-context/user-context.component';
-import { NavListComponent } from './public/components/nav-list/nav-list.component';
 import { ProjectAlphaModule } from './public/project-alpha/project-alpha.module';
-import { ExternRouteComponent } from './public/components/extern-route/extern-route.component';
 import { HighlightSearchPipe } from './public/project-alpha/highlight-search.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    UserContextComponent,
-    NavListComponent,
-    ExternRouteComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +48,8 @@ import { HighlightSearchPipe } from './public/project-alpha/highlight-search.pip
     MatDialogModule,
     MatSelectModule,
     MatAutocompleteModule,
+    MatToolbarModule,
+    MatListModule,
     AppRoutingModule // I must be last!! https://angular.io/guide/router#module-import-order-matters
   ],
   providers: [

@@ -90,7 +90,7 @@
   <mat-dialog-actions>
    
     <button (click)="onNoClick()" mat-button color="primary" id="cancel">CANCEL</button>
-    <button mat-button class="mat-button outlined-button"  (click)="sendInvite()" id="save">Save Draft</button>
+    <button mat-button class="mat-button outlined-button"  (click)="saveDraft()" id="save" [disabled]="addCandidateForm.get('FirstName').errors?.required || addCandidateForm.get('LastName').errors?.required">Save</button>
     <button [disabled]="!addCandidateForm.valid" class="mat-button contained-button" (click)="sendInvite()" id="invite">Send Invite</button>
 
   </mat-dialog-actions>

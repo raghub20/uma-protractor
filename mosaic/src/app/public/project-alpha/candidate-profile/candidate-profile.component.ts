@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddCandidateComponent } from './add-candidate/add-candidate.component';
 import { CandidateDetailsComponent } from './candidate-details/candidate-details.component';
 import { CandidateColumnsComponent } from './candidate-columns/candidate-columns.component';
-import { Selection } from '../../models/selection.model';
+import { Selection } from '../../../core/models/selection.model';
 import { NotificationsService } from '../../../../../src/app/core/services/notifications.service';
 @Component({
   selector: 'app-candidate-profile',

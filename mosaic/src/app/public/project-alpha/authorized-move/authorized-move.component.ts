@@ -10,7 +10,7 @@ import { RouterLinkWithHref } from '@angular/router';
 import { ApprovedMove } from '../../../core/models/approved-move';
 import { ApprovedMovesService } from '../../../core/services/approved-moves.service';
 import { MoveColumnsComponent } from '../authorized-move/move-columns/move-columns.component';
-import { Selection } from '../../models/selection.model';
+import { Selection } from '../../../core/models/selection.model';
 import {TransfereeDetailsComponent} from './transferee-details/transferee-details.component';
 
 @Component({
@@ -19,7 +19,6 @@ import {TransfereeDetailsComponent} from './transferee-details/transferee-detail
 })
 export class AuthorizedMoveComponent {
 
-  //displayedColumns: string[] = ['select', 'candidate.fullname', 'authorizedAmount', 'departure', 'destination', 'status'];
   displayedColumns: string[] = ['select', 'candidate.fullname', 'authorizedAmount', 'departure', 'destination', 'status'];
 
   ELEMENT_DATA: any;
@@ -57,7 +56,6 @@ export class AuthorizedMoveComponent {
 
   constructor(public dialog: MatDialog,
     private aprovedMovesService: ApprovedMovesService) {
-   
   }
 
   applyFilter(filterValue: string) {
@@ -160,19 +158,19 @@ export class AuthorizedMoveComponent {
   }
 
   updateTable(){
-    this.selectedCols.forEach((item, index) => {
-      if (this.displayedColumns.indexOf(item.value) < 0) {
-        this.displayedColumns.push(item.value);
+      this.selectedCols.forEach((item, index) => {
+        if (this.displayedColumns.indexOf(item.value) < 0) {
+          this.displayedColumns.push(item.value);
+        }
+        else {
+          this.displayedColumns = this.displayedColumns.filter((val) => {
+            return item.value == val;
+          });
+        }
+      });
+      if (this.displayedColumns.findIndex(val => val === 'select') < 0) {
+        this.displayedColumns.unshift('select');
       }
-      else {
-        this.displayedColumns = this.displayedColumns.filter((val) => {
-          return item.value == val;
-        });
-      }
-    });
-    if (this.displayedColumns.findIndex(val => val === 'select') < 0) {
-      this.displayedColumns.unshift('select');
-    }
-}
+  }
 }
 

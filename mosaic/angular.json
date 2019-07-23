@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "mosaic": {
+    "alpha": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,9 +17,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/mosaic",
+            "outputPath": "dist/alpha",
             "baseHref": "/",
-            "deployUrl": "http://localhost:4202/",
+            "deployUrl": "http://localhost:4200/",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -36,7 +36,6 @@
               "src/sass/app.scss",
               "src/sass/cartus-palette.scss",
               "src/sass/app-theme.scss",
-              "src/sass/fonts.scss",
               "src/sass/common-styles.scss",
               "src/assets/material/material-icons.css"
             ],
@@ -44,7 +43,7 @@
           },
           "configurations": {
             "mocked": {
-              "deployUrl": "http://localhost:4202/",
+              "deployUrl": "http://localhost:4200/",
               "tsConfig": "src/tsconfig.app.json",
               "aot": true,
               "statsJson": true
@@ -53,7 +52,7 @@
               "index": "src/index.html",
               "main": "src/main.ts",
               "polyfills": "src/polyfills.ts",
-              "deployUrl": "http://localhost:4202/",
+              "deployUrl": "http://localhost:4200/",
               "tsConfig": "src/tsconfig.app.json",
               "aot": true,
               "statsJson": true,
@@ -78,8 +77,8 @@
               ]
             },
             "dev": {
-              "deployUrl": "https://mosaicdev.cartus.com/",
-              "outputPath": "dist/mosaic-dev",
+              "deployUrl": "https://alphadev.cartus.com/",
+              "outputPath": "dist/alpha-dev",
               "baseHref": "/",
               "fileReplacements": [
                 {
@@ -103,8 +102,8 @@
               "serviceWorker": false
             },
             "ft": {
-              "deployUrl": "https://mosaicft.cartus.com/",
-              "outputPath": "dist/mosaic-ft",
+              "deployUrl": "https://alphaft.cartus.com/",
+              "outputPath": "dist/alpha-ft",
               "baseHref": "/",
               "fileReplacements": [
                 {
@@ -128,8 +127,8 @@
               "serviceWorker": false
             },
             "qa": {
-              "deployUrl": "https://mosaicqa.cartus.com/",
-              "outputPath": "dist/mosaic-qa",
+              "deployUrl": "https://alphaqa.cartus.com/",
+              "outputPath": "dist/alpha-qa",
               "baseHref": "/",
               "fileReplacements": [
                 {
@@ -153,8 +152,8 @@
               "serviceWorker": false
             },
             "production": {
-              "deployUrl": "https://mosaic.cartus.com/",
-              "outputPath": "dist/mosaic-prod",
+              "deployUrl": "https://alpha.cartus.com/",
+              "outputPath": "dist/alpha-prod",
               "baseHref": "/",
               "fileReplacements": [
                 {
@@ -178,8 +177,8 @@
               "serviceWorker": false
             },
             "integration": {
-              "outputPath": "dist/mosaic-integration",
-              "deployUrl": "https://localhost:4202/",
+              "outputPath": "dist/alpha-integration",
+              "deployUrl": "https://localhost:4200/",
               "aot": true,
               "statsJson": true,
               "fileReplacements": [
@@ -200,29 +199,29 @@
           "options": {
             "servePath": "",
             "proxyConfig": "proxy.conf.ts",
-            "browserTarget": "mosaic:build"
+            "browserTarget": "alpha:build"
           },
           "configurations": {
             "mocked": {
               "servePath": "",
               "proxyConfig": "proxy.conf.ts",
-              "browserTarget": "mosaic:build:mocked"
+              "browserTarget": "alpha:build:mocked"
             },
             "integration": {
               "ssl": true,
               "servePath": "",
               "proxyConfig": "proxy.integration.conf.ts",
-              "browserTarget": "mosaic:build:integration"
+              "browserTarget": "alpha:build:integration"
             },
             "production": {
-              "browserTarget": "mosaic:build:production"
+              "browserTarget": "alpha:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "mosaic:build"
+            "browserTarget": "alpha:build"
           }
         },
         "test": {
@@ -237,9 +236,7 @@
               "src/styles.scss",
               "src/sass/app.scss",
               "src/sass/cartus-palette.scss",
-              "src/sass/app-theme.scss",
-              "src/sass/fonts.scss",
-              "src/sass/common-styles.scss"
+              "src/sass/app-theme.scss"
             ],
             "scripts": [
             ],
@@ -272,7 +269,7 @@
         }
       }
     },
-    "mosaic-e2e": {
+    "alpha-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -280,21 +277,21 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.mocked.conf.js",
-            "devServerTarget": "mosaic:serve",
+            "devServerTarget": "alpha:serve",
             "webdriverUpdate": true
           },
           "configurations": {
             "production": {
               "protractorConfig": "e2e/protractor.conf.js",
-              "devServerTarget": "mosaic:serve:production"
+              "devServerTarget": "alpha:serve:production"
             },
             "integration": {
               "protractorConfig": "e2e/protractor.integration.conf.js",
-              "devServerTarget": "mosaic:serve:integration"
+              "devServerTarget": "alpha:serve:integration"
             },
             "ie": {
               "protractorConfig": "e2e/protractor.ie.conf.js",
-              "devServerTarget": "mosaic:serve:mocked",
+              "devServerTarget": "alpha:serve:mocked",
               "webdriverUpdate": false
             }
           }
@@ -311,5 +308,5 @@
       }
     }
   },
-  "defaultProject": "mosaic"
+  "defaultProject": "alpha"
 }

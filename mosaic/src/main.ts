@@ -3,7 +3,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
 import { RemoteLoggingService } from './app/core/services/remote-logging.service';
-import { MaybeLoadLocaleProvidersFromQuerymap } from './app/core/services/language-detection.service';
+import { MaybeLoadLocaleProvidersFromQuerymap } from 'src/app/core/services/language-detection.service';
 
 /** load configuration and startup the application */
 function loadConfig() {
@@ -22,7 +22,7 @@ function startApp(config) {
   if (config && config.environment === 'production') {
     enableProdMode();
   }
-  const injector = Injector.create({providers: [{ deps: [ Injector ], provide: RemoteLoggingService, useClass: RemoteLoggingService }]});
+  const injector = Injector.create([{ deps: [ Injector ], provide: RemoteLoggingService, useClass: RemoteLoggingService }]);
   const logger = injector.get(RemoteLoggingService);
 
   platformBrowserDynamic([

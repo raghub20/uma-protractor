@@ -1,27 +1,27 @@
 
-
-<section class="search_table">
-
-    <div fxLayout="row" fxLayoutAlign="space-between center">
-  
-      <span fxFlex="60%" fxLayoutAlign="start">
-      <mat-form-field appearance="outline" class="search-within-table search-box">
-          <mat-icon matPrefix>search</mat-icon>
-          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search within table for..." width="80%" fxFlex.sm="65">
-        </mat-form-field>
-        <span fxLayoutAlign="start center" >
-          <a (click)="openModal()">
-              <mat-icon matTooltip="Select Columns" matTooltipPosition="right" class="viewsetting-icon">view_column</mat-icon>
-          </a>
-      </span>
-      </span>
-  </div>
-  </section> 
-
-  
-<section class="content_table">
+<section>
     <h2>Approved Moves</h2>
-  
+  </section>  
+  <section class="search_table">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <span fxFlex="60%" fxLayoutAlign="start">
+            <mat-form-field appearance="outline" class="search-within-table search-box">
+                <mat-icon matPrefix>search</mat-icon>
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search within table for..." width="80%" fxFlex.sm="65">
+              </mat-form-field>
+              <span fxLayoutAlign="start center" >
+                  <a (click)="openModal()">
+                      <mat-icon matTooltip="Select columns" matTooltipPosition="right" class="viewsetting-icon">view_column</mat-icon>
+                  </a>
+              </span>
+          </span>
+        <span fxFlex="12.5em" fxLayoutAlign="end" fxFlex.xs="10.5em">
+      </span>
+    </div>
+  </section>  
+<p></p>
+<section class="content_table">
+   
   <section class="mat-elevation-z8">
 <div style="overflow:auto;">
     <table mat-table [dataSource]="dataSource" matSort>

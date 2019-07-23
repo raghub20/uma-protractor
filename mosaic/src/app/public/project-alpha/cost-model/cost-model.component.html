@@ -1,28 +1,34 @@
-<section class="search_table">
 
+<section>
+  <h2>Cost Models</h2>
+</section>  
+<section class="search_table">
     <div fxLayout="row" fxLayoutAlign="space-between center">
       <span fxFlex="60%" fxLayoutAlign="start">
-        <mat-form-field appearance="outline" class="search-within-table search-box">
-            <mat-icon matPrefix>search</mat-icon>
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search within table for..." width="80%" fxFlex.sm="65">
-          </mat-form-field>
-          <span fxLayoutAlign="start center" >
-            <a (click)="openModal()">
-                <mat-icon matTooltip="Select columns" matTooltipPosition="right" class="viewsetting-icon">view_column</mat-icon>
-            </a>
-        </span>
+          <mat-form-field appearance="outline" class="search-within-table search-box">
+              <mat-icon matPrefix>search</mat-icon>
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search within table for..." width="80%" fxFlex.sm="65">
+            </mat-form-field>
+            <span fxLayoutAlign="start center" >
+                <a (click)="openModal()">
+                    <mat-icon matTooltip="Select columns" matTooltipPosition="right" class="viewsetting-icon">view_column</mat-icon>
+                </a>
+            </span>
         </span>
       <span fxFlex="12.5em" fxLayoutAlign="end" fxFlex.xs="10.5em">
-        <button mat-raised-button color="primary" (click)="openDialog()">
-            <mat-icon matPrefix>person_add</mat-icon>
-            Create Cost Model
-        </button>
+          <span fxFlex="12.5em" fxLayoutAlign="end" fxFlex.xs="10.5em">
+              <button mat-raised-button color="primary" (click)="openDialog()">
+                  <mat-icon matPrefix>person_add</mat-icon>
+                  Create Cost Model
+              </button>
+          </span>
     </span>
   </div>
-  </section>  
+</section>  
 
+<p></p>
 <section class="content_table">
-    <h2>Model Details</h2>
+   
   
   <section class="mat-elevation-z8">
 <div style="overflow:auto;">

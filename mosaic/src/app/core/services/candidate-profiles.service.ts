@@ -22,7 +22,7 @@ export class CandidateProfilesService {
       'isAssessmentReceived': false,
       'emailAddress': 'mathew.maturity@gmail.com',
       'businessUnit': 'Human Resources',
-      'invitationSentDate': '21-JUN-19',
+      'invitationSentDate': '',
       'createdDate': '21-JUN-19',
       'createdBy': 'Matthew, Maturity',
       'lastUpdatedDate': '21-JUN-19'
@@ -209,6 +209,7 @@ export class CandidateProfilesService {
     }
 ];
 
+
   newCandidate: Candidate;
   constructor() { }
 
@@ -218,7 +219,8 @@ export class CandidateProfilesService {
   }
 
   /* Return the candidate json list and loop to display in the table */
-  addCandidateProfile(formData, levelDetails){
+  /*
+  addCandidateProfile(formData, levelDetails, isInvitationSent){
 
     const newCandidateObj = {
         'fullname': formData.LastName + ', ' + formData.FirstName,
@@ -243,6 +245,56 @@ export class CandidateProfilesService {
     };
 
     this.candidateList.push(newCandidateObj);
+  } */
+  addCandidateProfile(formData, levelDetails, isInvitationSent){
+    const dateString = new Date().toISOString();
+    console.log(this.candidateList.find(v => v.fullname == formData.LastName + ', ' + formData.FirstName));
+    if (this.candidateList.find(v => v.fullname == formData.LastName + ', ' + formData.FirstName) == undefined){
+      console.log("New Candidate");
+      const newCandidateObj = {
+        'fullname': formData.LastName + ', ' + formData.FirstName,
+        'level': {
+          'levelId': levelDetails.levelId,
+          'levelName': levelDetails.levelName,
+          'levelDescription': levelDetails.levelDescription
+        },
+        'departure': formData.Departure,
+        'destination': formData.Destination,
+        'status': isInvitationSent? 'Invitation Sent' : 'Invitation Not Sent' ,
+        'isInvitationSent': isInvitationSent,
+        'invitationText': 'Resend',
+        'isAssessmentReceived': false,
+        'email': formData.Email,
+        'businessUnit': formData.BusinessUnit,
+        'emailAddress': formData.Email,
+        'invitationSentDate':  isInvitationSent? dateString : '',
+        'createdDate': '21-JUN-19',
+        'createdBy': 'Matthew, Maturity',
+        'lastUpdatedDate': '21-JUN-19'
+      };
+      this.candidateList.push(newCandidateObj);
+    }else{
+      console.log("Update Candidate");
+      console.log(formData.businessUnit);
+      console.log(formData.Email);
+      this.candidateList.filter(function(item){
+      return item.fullname === formData.LastName + ', ' + formData.FirstName;
+      }).map(function(item){
+      item.fullname = formData.LastName + ', ' + formData.FirstName
+      item.level.levelId = levelDetails.levelId
+      item.level.levelName = levelDetails.levelName
+      item.level.levelDescription = levelDetails.levelDescription
+      item.departure = formData.Departure
+      item.destination = formData.Destination
+      item.status =  isInvitationSent? 'Invitation Sent' : 'Invitation Not Sent'
+      item.isAssessmentReceived = false
+      item.businessUnit = formData.BusinessUnit
+      item.invitationSentDate = isInvitationSent? dateString : ''
+      item.emailAddress = formData.Email
+      return item;
+    });
+    }
   }
+
 
 }

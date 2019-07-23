@@ -7,11 +7,12 @@ import { ProjectAlphaComponent } from './project-alpha.component';
 import { LoginComponent} from './login/login.component';
 import { ServicesComponent } from './services/services.component';
 import { ExploreDestinationsComponent } from './explore-destinations/explore-destinations.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes =
 [
   {
-    path: '',
+    path: 'dashboard',
     redirectTo: 'project-alpha',
     pathMatch: 'full'
   },
@@ -20,9 +21,8 @@ const routes: Routes =
     component: ProjectAlphaComponent,
     children: [
       {
-        path: '',
-        redirectTo: 'candidate-profiles',
-        pathMatch: 'full'
+        path:'dashboard',
+        component:DashboardComponent
       },
       {
         path: 'cost-models',

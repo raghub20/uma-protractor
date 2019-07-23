@@ -57,3 +57,6 @@
   border:1px solid map-get($cartus-palette, 'cartus_gray') !important;
 }
 
+.mat-nav-bar a:last-child {
+  float:right;
+}

@@ -27,9 +27,7 @@ module.exports = function (config) {
           '--disable-gpu',
           '--headless',
           '--no-sandbox',
-          '--remote-debugging-port=9222',
-          '--remote-debugging-address=0.0.0.0',
-          '--disable-dev-shm-usage'
+          '--remote-debugging-port=9222'
         ]
       }
     },

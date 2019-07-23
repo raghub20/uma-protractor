@@ -43,8 +43,7 @@ import { TransfereeDetailsComponent } from './authorized-move/transferee-details
 import { TransfereeAssessmentComponent } from './candidate-profile/transferee-assessment/transferee-assessment.component';
 import { ExploreDestinationsComponent } from './explore-destinations/explore-destinations.component';
 import { ServicesComponent } from './services/services.component';
-
-
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -65,9 +64,10 @@ import { ServicesComponent } from './services/services.component';
     TransfereeDetailsComponent,
     TransfereeAssessmentComponent,
     ExploreDestinationsComponent,
-    ServicesComponent
+    ServicesComponent,
+    DashboardComponent
   ],
-  imports: [  
+  imports: [
   CommonModule,
     FormsModule,
     HttpClientModule,

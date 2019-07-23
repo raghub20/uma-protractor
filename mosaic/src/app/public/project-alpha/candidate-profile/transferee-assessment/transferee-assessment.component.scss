@@ -58,29 +58,3 @@ form {
 .mat-expansion-panel-header {
   font-size: 14px;
 }
-
-// Corebenefit style starts
-.corebenefit-section{
-  background-color: map-get($cartus-palette , 'cartus_pale_gray');
-  color:map-get($cartus-palette, 'cartus_primary_dark_brown');
-  padding: 0.8em;
-  margin-top: 0.625em;
-}
-.corenbenefit{
-  display: flex;
-  justify-content: space-between;
-  font-size:1em;
-  p{
-    margin: 0;
-    font-size: 0.7em;
-  }
-  .budget{
-    font-weight: bold;
-    font-size:0.9em;
-  }
-  .total-budget{
-    font-weight: bold;
-    font-size:1.1em;
-  }
-}
-// Corebenefit style starts

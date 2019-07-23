@@ -1,27 +1,21 @@
 <div class="project_alpha">
  
-  <section class="page_header">
-      <div fxLayout="row" fxLayoutGap="15px">
-          <span fxLayoutAlign="start"> 
-              <h1>Project Alpha</h1>
-          </span>
-          <span fxLayoutAlign="start center" >
-              <a (click)="openModal();">
-                  <mat-icon matTooltip="Settings" matTooltipPosition="right">settings</mat-icon>
-              </a>
-          </span>
-        </div>
-      </section>
   </div>
 
 <div class="candidates-container">
+    <nav mat-tab-nav-bar class="mat-nav-bar" fxHide.lt-sm> 
+       
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+          
+        <span fxFlex="60%" fxLayoutAlign="start">
+            <a mat-tab-link *ngFor="let link of navLinks; let i = index;" [routerLink]="[link.path]"
+            routerLinkActive #rla="routerLinkActive" [active]="rla.isActive" >
+              <span *ngIf="link.path != 'admin'">{{link.label}}</span>
+            </a>
+        </span>
+    
+    </div>
 
-
-  <nav mat-tab-nav-bar class="mat-nav-bar"> 
-    <a mat-tab-link *ngFor="let link of navLinks; let i = index;" [routerLink]="[link.path]"
-      routerLinkActive #rla="routerLinkActive" [active]="rla.isActive" >
-      {{link.label}}
-    </a>
   </nav>
 
   <router-outlet></router-outlet>

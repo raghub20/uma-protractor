@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, OnDestroy, Input, EventEmitter, Inject } from '@angular/core';
-import { Selection } from '../../../models/selection.model';
+import { Selection } from '../../../../core/models/selection.model';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';

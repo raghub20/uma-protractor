@@ -7,7 +7,7 @@ import { CandidateProfilesService } from '../../../core/services/candidate-profi
 import { Candidate } from '../../../core/models/candidate';
 import { FormGroup } from '@angular/forms';
 import { RouterLinkWithHref } from '@angular/router';
-import { Selection } from '../../models/selection.model';
+import { Selection } from '../../../core/models/selection.model';
 import { CostModel } from '../../../core/models/cost-model';
 import { CostModelsService } from '../../../core/services/cost-models.service';
 import { ModelColumnsComponent } from './model-columns/model-columns.component';

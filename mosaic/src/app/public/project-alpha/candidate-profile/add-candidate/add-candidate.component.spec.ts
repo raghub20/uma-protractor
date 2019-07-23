@@ -12,7 +12,6 @@ import { MatFormFieldModule, MatInputModule, MatMenuModule, MatButtonModule, Mat
 MatExpansionModule, MatIconModule, MatCheckboxModule, MatDialogModule, MatSelectModule, MatAutocompleteModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from 'src/app/app-routing.module';
-import { ExternRouteComponent } from 'src/app/public/components/extern-route/extern-route.component';
 import { Candidate } from '../../../../core/models/candidate';
 
 describe('AddCandidateComponent', () => {
@@ -44,8 +43,7 @@ describe('AddCandidateComponent', () => {
   };
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AddCandidateComponent,
-        ExternRouteComponent
+      declarations: [AddCandidateComponent
       ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ],
       imports: [
@@ -163,12 +161,12 @@ describe('AddCandidateComponent', () => {
     expect(component.onNoClick).toHaveBeenCalledTimes(1);
   }));
 
-  it('should call sendInvite method on click of save draft', async(() => {
+  it('should call saveDraft method on click of save draft', async(() => {
 
-    spyOn(component, 'sendInvite');
+    spyOn(component, 'saveDraft');
     el = fixture.debugElement.query(By.css('#save')).nativeElement;
     el.click();
-    expect(component.sendInvite).toHaveBeenCalledTimes(1);
+    expect(component.saveDraft).toHaveBeenCalledTimes(1);
   }));
 
   /*
@@ -196,7 +194,7 @@ describe('AddCandidateComponent', () => {
         const email = data[2].nativeElement;
         expect(email.value).toBe('mathew.maturity@gmail.com');
         const bussinessunit = data[3].nativeElement;
-        expect(bussinessunit.value).toBe('HR');
+        expect(bussinessunit.value).toBe('Human Resources');
         const departure = data[4].nativeElement;
         expect(departure.value).toBe('NJ, Nutley');
         const destination = data[5].nativeElement;

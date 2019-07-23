@@ -11,6 +11,4 @@ export class ResendInviteComponent implements OnInit {
 
   ngOnInit() {
   }
-  onNoClick() {}
-  save() {}
 }

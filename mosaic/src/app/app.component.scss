@@ -6,6 +6,10 @@ $sidebar-desktop-minimized-width: 60px !important;
 $sidebar-desktop-transition-speed: .5s;
 $drop-shadow-color: rgba(0, 0, 0, 0.1); /* Use rgba for better alpha rendering */
 
+.header-links .mat-button{
+    margin-right:20px!important;
+}
+
 .header-desktop {
     height: $header-height-desktop;
     z-index: 3;
@@ -36,7 +40,7 @@ $drop-shadow-color: rgba(0, 0, 0, 0.1); /* Use rgba for better alpha rendering *
 }
 
 .header-desktop-r span:last-child {
-    border-left: 2px solid #ccc;
+    border-left: 4px solid #ccc;
     padding-left: .5em;
 }
 
@@ -53,7 +57,7 @@ $drop-shadow-color: rgba(0, 0, 0, 0.1); /* Use rgba for better alpha rendering *
 
 .header-mobile {
     color: #fff;
-    background-color: #4b85ff;
+    background-color: #5A5D5F;
     height: $header-height-mobile;
     position: relative;
     z-index: 2;
@@ -197,7 +201,7 @@ $drop-shadow-color: rgba(0, 0, 0, 0.1); /* Use rgba for better alpha rendering *
 }
 
 button[mat-button]:hover {
-    background-color: #edf4d9;
+    text-decoration: underline;
 }
 
 button[mat-button]:hover mat-icon, .sidebar-mobile-logout button[mat-button]:hover span {
@@ -210,4 +214,8 @@ button[mat-button]:hover mat-icon, .sidebar-mobile-logout button[mat-button]:hov
 
 .header-mobile button[mat-button]:hover mat-icon {
     color: #fff !important;
+}
+
+.mat-list-item {
+    font-size: 1em!important;
 }

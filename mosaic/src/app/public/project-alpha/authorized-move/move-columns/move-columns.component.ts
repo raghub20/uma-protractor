@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, OnDestroy, Input, EventEmitter, Inject } from '@angular/core';
-import { Selection } from '../../../models/selection.model';
+import { Selection } from '../../../../core/models/selection.model';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
@@ -210,6 +210,8 @@ export class MoveColumnsComponent implements OnInit, OnDestroy {
     this.columnsList.forEach((col, ind) => {
       if ((col.value !== 'candidate.fullname') && (col.value != 'authorizedAmount') && (col.value != 'departure') && (col.value != 'destination') && (col.value !== 'status')) {
         col.flag = false;
+      } else{
+        col.flag = true;
       }
     });
   }

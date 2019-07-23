@@ -15,18 +15,11 @@ const config = {
   frameworkPath: require.resolve('protractor-cucumber-framework'),  // path relative to the current config file
   specs: [
     '../e2e/src/features/**/approved-moves.feature'     // Specs here are the cucumber feature files
-    //'../e2e/src/features/**/EmployeeStatusSummary.feature'
-    //'../e2e/src/features/**/Layout_AggregateView.feature'
-    //'../e2e/src/features/**/AggregateView_Destination_Country.feature'
   ],
   // cucumber command line options
   cucumberOpts: {
     require: ['../e2e/src/support/setup.ts', '../e2e/src/step_definitions/**/*.steps.ts'],  // require setup and step definition files before executing features
-    //require: ['../e2e/src/support/setup.ts', '../e2e/src/step_definitions/**/EmployeeStatusSummary.steps.ts'],
-    //require: ['../e2e/src/support/setup.ts', '../e2e/src/step_definitions/**/Layout_AggregateView.steps.ts'],
-    //require: ['../e2e/src/support/setup.ts', '../e2e/src/step_definitions/**/AggregateView_Destination_Country.steps.ts'],
-    
-    tags: ['@SR_157'],                           // <string[]> (expression) only execute the features or scenarios with tags matching the expression
+    tags: ['@SR_157_1'],                           // <string[]> (expression) only execute the features or scenarios with tags matching the expression
     strict: true,                       // <boolean> fail if there are any undefined or pending steps
     format: 'json:' + jsonReportFile,   //["summary"],            // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)
     'dry-run': false,                   // <boolean> invoke formatters without executing steps
@@ -36,8 +29,8 @@ const config = {
     {
       package: 'protractor-multiple-cucumber-html-reporter-plugin',
       options: {
-        reportName: 'Mosaic e2e Test Suite', // customize name in top-left corner
-        pageTitle: 'Mosaic e2e Test Suite',  // customize <head><title>
+        reportName: 'New Angular App e2e Test Suite', // customize name in top-left corner
+        pageTitle: 'New Angular App e2e Test Suite',  // customize <head><title>
         automaticallyGenerateReport: true,  // particularly for the benefit of CI
         removeOriginalJsonReportFile: true, // otherwise cucumber will create a new file
         removeExistingJsonReportFile: true, // avoid stale results, especially when switching profiles.

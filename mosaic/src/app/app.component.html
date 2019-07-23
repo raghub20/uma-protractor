@@ -1,12 +1,16 @@
+
+
+
 <div fxLayout="row" fxFill>
-  <div fxFlex="250px" fxHide.lt-md class="sidebar-desktop" [ngClass]="{ 'sidebar-desktop-min' : sidebarMinimized }">
+
+ <!-- <div fxFlex="250px" #sidebardesktop fxHide.lt-md class="sidebar-desktop" [ngClass]="{ 'sidebar-desktop-min' : sidebarMinimized }">
     <div fxFill fxLayout="column" fxLayoutAlign="space-between stretch">
       <div fxFlex="nogrow" fxLayoutAlign="center center" class="header-desktop product-desktop">
         <span>M</span>
         <span class="sidebar-desktop-logo" [ngClass]="{ 'sidebar-desktop-logo-min' : sidebarMinimized }">OSAIC</span>
       </div>
       <div fxFlex class="nav-container-desktop">
-        <app-nav-list #desktopNavList [minimizable]="true"></app-nav-list>
+        
       </div>
       <div fxFlex="nogrow">
         <hr class="sidebar-hr" />
@@ -19,10 +23,31 @@
         </button>
       </div>
     </div>
-  </div>
+    
+  </div> -->
+
   <div fxFlex="100">
     <div class="content-col-desktop">
-      <div fxLayout="row" fxLayoutAlign="space-between center" fxHide.lt-md class="header-desktop header-desktop-r">
+      <mat-toolbar class="header-desktop header-desktop-r" fxHide.lt-md  style="background-color:#3C72B9; color:#fff"  fxFill fxLayout="row" fxLayoutAlign="space-between center">
+        <span>Mobility Hub</span>
+        <span class="header-links">
+          <button mat-button [matMenuTriggerFor]="animals">Admin</button>
+      <mat-menu #animals>
+        <button mat-menu-item>Mat Menu 1</button>
+        <button mat-menu-item>Mat Menu 2</button>
+      </mat-menu>
+        <button type="button" mat-button>
+            Settings
+          </button>
+          <button type="button" mat-button>
+              Logout
+            </button>
+      </span>
+      </mat-toolbar>
+
+    
+     
+      <!-- <div fxLayout="row" fxLayoutAlign="space-between center" fxHide.lt-md class="header-desktop header-desktop-r">
         <span fxFlex="60px" fxLayoutAlign="center">
           <button type="button" mat-button class="header-desktop-search-btn">
             <mat-icon>search</mat-icon>
@@ -47,9 +72,11 @@
           </button>
         </span>
         <span fxFlex="220px" fxLayoutAlign="end">
-            <app-user-context></app-user-context>
+          <app-user-context></app-user-context>
         </span>
       </div>
+    -->
+      
       <div fxHide.gt-sm>
         <div class="header-mobile">
           <div fxFill fxLayout="row" fxLayoutAlign="space-between center">
@@ -57,7 +84,7 @@
             class="header-mobile-menu">
                 <mat-icon>menu</mat-icon>
             </button>
-            <span>MOSAIC</span>
+            <span>Mobility Hub</span>
             <button type="button" mat-button (click)="nav.close();mobsearch.toggle()" 
             class="header-mobile-search">
               <mat-icon>search</mat-icon>
@@ -75,10 +102,26 @@
       <mat-drawer fxHide.gt-sm #nav mode="over" class="nav-mobile" (window:resize)="nav.close()" [autoFocus]="false">
         <div fxFill fxLayout="column" fxLayoutAlign="space-between">
           <div fxFlex>
-            <app-nav-list #mobileNavList></app-nav-list>
+          <!--<app-nav-list #mobileNavList></app-nav-list>-->
+            <mat-nav-list>
+              <mat-list-item *ngFor="let link of navLinks; let i = index;"  [routerLink]="[link.path]">
+                  {{link.label}}
+              </mat-list-item>
+            </mat-nav-list>
+            <strong style="padding-left:10px;">Admin Access</strong>
+            <hr/>
+            <mat-nav-list>
+                <mat-list-item>
+                   Manage Client Contacts
+                </mat-list-item>
+                <mat-list-item>
+                    Trash
+                 </mat-list-item>
+              </mat-nav-list>
           </div>
           <div fxFlex="nogrow">
             <hr class="sidebar-hr" />
+            
           </div>
           <div fxFlex="nogrow" class="sidebar-mobile-logout">
             <button fxFill fxLayoutAlign="end" type="button" mat-button (click)="logout()">

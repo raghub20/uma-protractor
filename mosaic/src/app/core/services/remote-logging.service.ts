@@ -42,12 +42,13 @@ export class RemoteLoggingService {
     // if (false) {
     //   this.postToServer(message, url, stack, isError);
     // }
-
+    /*
     if (isError) {
       console.error('Logged to server - message: ' + message + '  URL: ' +  url + '  stack: ' + stack);
     } else {
       console.log('Logged to server - message: ' + message + '  URL: ' +  url + '  stack: ' + stack);
     }
+    */
   }
 
   /**

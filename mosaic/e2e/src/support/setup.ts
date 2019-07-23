@@ -1,16 +1,14 @@
 import { setDefaultTimeout, After, Status, BeforeAll, AfterAll } from 'cucumber';
 import { browser } from 'protractor';
-import { MockedSetup} from './mocked-setup';
+import { MockedSetup} from './mocked-setup'
 
 setDefaultTimeout(300 * 1000); // Bump step timeout to 300 seconds for older OS/browsers and VMs
 
-// tslint:disable-next-line: prefer-const
 let mockedSetup = new MockedSetup();
 
 BeforeAll(async () => {
   if (browser.params.useMockedApi) {
-// tslint:disable-next-line: prefer-const
-    let instance = 0; // browser.params.instance;
+    let instance: number = 0; //browser.params.instance;
     return mockedSetup.startMockedApi(instance);
   }
 });

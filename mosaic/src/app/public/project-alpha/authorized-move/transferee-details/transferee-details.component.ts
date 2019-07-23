@@ -139,12 +139,6 @@ export class TransfereeDetailsComponent {
   /**
    * Click on Submit button inside the transfereeDetailsForm dialog window
    */
-  // sendInvite() {
-  //   const levelDetails =  this.levelService.getLevelId(this.transfereeDetailsForm.value.Level);
-
-  //   this.candidateProfilesService.addCandidateProfile(this.transfereeDetailsForm.value, levelDetails);
-  //   this.dialogRef.close();
-  // }
 
   /**
    * Closing the dialog box - we are setting the form to empty

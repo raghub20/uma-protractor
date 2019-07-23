@@ -1,0 +1,688 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>alpha documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">alpha documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>LanguageDetectionService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/core/services/language-detection.service.ts</code>
+        </p>
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Detects the user&#39;s language configuration from the browser
+and can compare against the list of localized languages,
+returning the closest match.</p>
+
+            </p>
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#DefaultLanguage">DefaultLanguage</a>
+                            </li>
+                            <li>
+                                <a href="#SupportedLangs">SupportedLangs</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getAllUserLanguages">getAllUserLanguages</a>
+                            </li>
+                            <li>
+                                <a href="#getAlternateUserLanguages">getAlternateUserLanguages</a>
+                            </li>
+                            <li>
+                                <a href="#getCurrentLanguage">getCurrentLanguage</a>
+                            </li>
+                            <li>
+                                <a href="#getUserLanguage">getUserLanguage</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(logger: <a href="../injectables/RemoteLoggingService.html">RemoteLoggingService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/core/services/language-detection.service.ts:26</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>initialize the supported languages</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>logger</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/RemoteLoggingService.html" target="_self" >RemoteLoggingService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAllUserLanguages"></a>
+                    <span class="name">
+                        <b>
+                            getAllUserLanguages
+                        </b>
+                        <a href="#getAllUserLanguages"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAllUserLanguages()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">src/app/core/services/language-detection.service.ts:58</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Returns all configured languages <em>besides</em> the current language.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>ReadonlyArray&lt;string&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAlternateUserLanguages"></a>
+                    <span class="name">
+                        <b>
+                            getAlternateUserLanguages
+                        </b>
+                        <a href="#getAlternateUserLanguages"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAlternateUserLanguages()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="51"
+                            class="link-to-prism">src/app/core/services/language-detection.service.ts:51</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Returns all configured languages <em>besides</em> the current language.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>ReadonlyArray&lt;string&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCurrentLanguage"></a>
+                    <span class="name">
+                        <b>
+                            getCurrentLanguage
+                        </b>
+                        <a href="#getCurrentLanguage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getCurrentLanguage()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">src/app/core/services/language-detection.service.ts:44</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Returns the current language the user has selected in their browser.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUserLanguage"></a>
+                    <span class="name">
+                        <b>
+                            getUserLanguage
+                        </b>
+                        <a href="#getUserLanguage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getUserLanguage()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="67"
+                            class="link-to-prism">src/app/core/services/language-detection.service.ts:67</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Finds the supported language that most closely matches the user&#39;s preferred language.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="DefaultLanguage"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Static</span>
+                            DefaultLanguage</b>
+                            <a href="#DefaultLanguage"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;en-US&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/core/services/language-detection.service.ts:20</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The application&#39;s default language.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="SupportedLangs"></a>
+                        <span class="name">
+                            <b>
+                            SupportedLangs</b>
+                            <a href="#SupportedLangs"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Map&lt;string | string[]&gt;</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/core/services/language-detection.service.ts:26</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The languages supported by this application
+as defined in the index <code>src/locale/langs.json</code>.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, Injector, StaticProvider, LOCALE_ID, TRANSLATIONS, TRANSLATIONS_FORMAT } from &#x27;@angular/core&#x27;;
+import { RemoteLoggingService } from &#x27;./remote-logging.service&#x27;;
+
+/** Grab a handle to webpack&#x27;s &#x60;require&#x60; */
+declare const require;
+
+/**
+ * Detects the user&#x27;s language configuration from the browser
+ * and can compare against the list of localized languages,
+ * returning the closest match.
+ */
+@Injectable({
+  providedIn: &#x27;root&#x27;
+})
+export class LanguageDetectionService {
+  /**
+   * The application&#x27;s default language.
+   */
+  public static DefaultLanguage &#x3D; &#x27;en-US&#x27;;
+
+  /**
+   * The languages supported by this application
+   * as defined in the index &#x60;src/locale/langs.json&#x60;.
+   */
+  SupportedLangs: Map&lt;string, string[]&gt;;
+
+  /**
+   * initialize the supported languages
+   */
+  constructor(private logger: RemoteLoggingService) {
+    try {
+      const langs: Iterable&lt;[string, string[]]&gt; &#x3D; require(&#x27;../../../locale/langs.json&#x27;);
+      this.SupportedLangs &#x3D; new Map&lt;string, string[]&gt;(langs);
+    } catch (err) {
+      this.logger.logError(err);
+      this.SupportedLangs &#x3D; new Map&lt;string, string[]&gt;([[&#x27;en&#x27;, [&#x27;en-US&#x27;]]]); // Fallback to just the default lang.
+    }
+  }
+
+  /**
+   * Returns the current language the user has selected in their browser.
+   */
+  getCurrentLanguage(): string {
+    return window.navigator.language;
+  }
+
+  /**
+   * Returns all configured languages _besides_ the current language.
+   */
+  getAlternateUserLanguages(): ReadonlyArray&lt;string&gt; {
+    return window.navigator.languages.slice(1);
+  }
+
+  /**
+   * Returns all configured languages _besides_ the current language.
+   */
+  getAllUserLanguages(): ReadonlyArray&lt;string&gt; {
+    // IE doesn&#x27;t support window.navigator.languages nor any graceful fallback, so manually handle it
+    const langs: ReadonlyArray&lt;string&gt; &#x3D; window.navigator.languages ? window.navigator.languages : [&#x27;en-US&#x27;, &#x27;en&#x27;];
+    return langs;
+  }
+
+  /**
+   * Finds the supported language that most closely matches the user&#x27;s preferred language.
+   */
+  getUserLanguage(): string {
+    const preferredLang &#x3D; this.getCurrentLanguage();
+
+    if (preferredLang &#x3D;&#x3D;&#x3D; LanguageDetectionService.DefaultLanguage) {
+      return preferredLang;
+    }
+
+    const userLangs: string[] &#x3D; [];
+
+    // Expand all user languages.
+    this.getAllUserLanguages().forEach((v, i, a) &#x3D;&gt; {
+      // Add this language as is, avoiding duplicates
+      if (userLangs.findIndex(existing &#x3D;&gt; existing &#x3D;&#x3D;&#x3D; lang) &#x3D;&#x3D;&#x3D; -1) {
+        userLangs.push(v);
+      }
+
+      // Now strip down to the country-less language (e.g. &#x27;es_US&#x27; &#x3D;&gt; &#x27;es&#x27;).
+      const parts &#x3D; v.split(&#x27;-&#x27;);
+      const lang &#x3D; parts[0];
+
+      // Avoid duplicates
+      if (lang &#x3D;&#x3D;&#x3D; v) {
+        return;
+      }
+      // Avoid duplicates
+      if (userLangs.findIndex(existing &#x3D;&gt; existing &#x3D;&#x3D;&#x3D; lang) &gt;&#x3D; 0) {
+        return;
+      }
+      userLangs.push(lang);
+    });
+
+    // Find the first user language to intersect with the list of supported langs.
+    const findIntersection &#x3D; (previous: string, current: string, index: Number, uls: string[]): string &#x3D;&gt; {
+      if (previous !&#x3D;&#x3D; undefined) {
+        return previous;
+      }
+    };
+
+    // Find the closest match.
+    const findBestMatch &#x3D; (previous: string, current: string, index: Number, uls: string[]): string &#x3D;&gt; {
+      // If we already had a match then we&#x27;re done, so just return that.
+      if (previous !&#x3D;&#x3D; null) {
+        return previous;
+      }
+
+      const parts &#x3D; current.split(&#x27;-&#x27;);
+      const lang &#x3D; parts[0];
+
+      let langs &#x3D; this.SupportedLangs.get(lang);
+
+      // This really shouldn&#x27;t happen since langs.json is an inverted index,
+      // but someone may have made an innocent mistake. Do our best to move on.
+      if (langs &#x3D;&#x3D;&#x3D; undefined || langs &#x3D;&#x3D;&#x3D; null || langs.length &#x3D;&#x3D;&#x3D; 0) {
+        langs &#x3D; [ lang ]; // e.g. just plain &#x27;es&#x27;
+      }
+
+      return langs.indexOf(current) &gt;&#x3D; 0
+        ? current
+        : (() &#x3D;&gt; {
+          const i &#x3D; langs.findIndex((v) &#x3D;&gt; v.startsWith(&#x60;${lang}-&#x60;));
+          return i &gt;&#x3D; 0 ? langs[i] : null;
+        })();
+      };
+    // Propagate nulls so we can fallback to the default if no
+    // good matches are found.
+    return userLangs.reduce(findBestMatch, null) || LanguageDetectionService.DefaultLanguage;
+  }
+}
+
+/** Gets the supported language based on the browser language setting, if possible, or returns the default language (US-en) */
+export function DetectSupportedUserLanguage() {
+  const injector &#x3D; Injector.create([{ deps: [ Injector ], provide: RemoteLoggingService, useClass: RemoteLoggingService }]);
+  const lds &#x3D; new LanguageDetectionService(injector.get(RemoteLoggingService));
+  return lds.getUserLanguage();
+}
+
+/** Returns locale providers if the detected user langauge (based on browser settings) is a language the site supports */
+export function MaybeLoadLocaleProviders(logger: RemoteLoggingService) {
+  let localeProviders: StaticProvider[] &#x3D; null;
+  const currentLocale &#x3D; DetectSupportedUserLanguage();
+  if (currentLocale !&#x3D;&#x3D; LanguageDetectionService.DefaultLanguage) {
+    // Load our language file for any non-default locale.
+    try {
+      const translations &#x3D; require(&#x60;raw-loader!../../../locale/messages.${currentLocale}.xlf&#x60;);
+      localeProviders &#x3D; [
+        { provide: LOCALE_ID, useValue: currentLocale },
+        { provide: TRANSLATIONS, useValue: translations },
+        { provide: TRANSLATIONS_FORMAT, useValue: &#x27;xlf&#x27; }
+      ];
+    } catch (err) {
+      logger.logError(err);
+    }
+  }
+  return localeProviders;
+}
+
+/** Returns locale providers if the user langauge (based on the current URL or browser setteing) is a language the site supports */
+export function MaybeLoadLocaleProvidersFromQuerymap(logger: RemoteLoggingService) {
+  let localeProviders: StaticProvider[] &#x3D; null;
+  const currentLocale &#x3D; window.location.search.length &gt; 5 ? window.location.search.substr(6) : DetectSupportedUserLanguage();
+  if (currentLocale !&#x3D;&#x3D; LanguageDetectionService.DefaultLanguage) {
+    // Load our language file for any non-default locale.
+    try {
+      const translations &#x3D; require(&#x60;raw-loader!../../../locale/messages.${currentLocale}.xlf&#x60;);
+      localeProviders &#x3D; [
+        { provide: LOCALE_ID, useValue: currentLocale },
+        { provide: TRANSLATIONS, useValue: translations },
+        { provide: TRANSLATIONS_FORMAT, useValue: &#x27;xlf&#x27; }
+      ];
+    } catch (err) {
+      logger.logError(err);
+    }
+  }
+  return localeProviders;
+}
+
+/** Gets all site supported languages */
+export function GetAllSupportedLanguages(): string[] {
+  const langs &#x3D; [];
+
+  const injector &#x3D; Injector.create([{ deps: [ Injector ], provide: RemoteLoggingService, useClass: RemoteLoggingService }]);
+  const lds &#x3D; new LanguageDetectionService(injector.get(RemoteLoggingService));
+
+  lds.SupportedLangs.forEach(v &#x3D;&gt; langs.push(...v));
+  return langs;
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'LanguageDetectionService.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

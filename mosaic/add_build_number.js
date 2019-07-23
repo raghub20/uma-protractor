@@ -2,10 +2,10 @@ const fs = require('fs');
 const path = require('path');
 
 const envName = process.argv[2];
-const buildNumber = process.env.BITBUCKET_BUILD_NUMBER;
+const buildNumber = process.env.BUILD_NUMBER;
 
 const BASE_PATH = path.join(__dirname);
-const CONTENT_FOLDER = path.join(BASE_PATH, 'dist', 'mosaic-' + envName);
+const CONTENT_FOLDER = path.join(BASE_PATH, 'dist', 'alpha-' + envName);
 
 if (envName && buildNumber) {
   const indexFilePath = path.join(CONTENT_FOLDER, 'index.html');

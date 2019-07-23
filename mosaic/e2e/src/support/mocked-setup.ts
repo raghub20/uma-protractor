@@ -11,8 +11,8 @@ export class MockedSetup {
       this.mongod = new MongoMemoryServer(
         {
           instance: {
-            port: 3002 + instance,
-            dbName: 'mosaic'
+            port: 3003 + instance,
+            dbName: 'a7new'
           }
         }
       );
@@ -32,7 +32,7 @@ export class MockedSetup {
         });
       });
     }
-
+    
     async stopMockedApi(): Promise<any> {
       console.log('\x1b[33m%s\x1b[0m', `\nStopping mongo-memory-server...`);
       return mongoose.disconnect().then(() => this.mongod.stop());

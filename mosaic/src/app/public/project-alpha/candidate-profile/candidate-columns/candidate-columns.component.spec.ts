@@ -1,9 +1,7 @@
 import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
 import { CandidateColumnsComponent } from './candidate-columns.component';
 import { By, BrowserModule } from '@angular/platform-browser';
-import { ExternRouteComponent } from 'src/app/public/components/extern-route/extern-route.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -11,7 +9,7 @@ import { MatFormFieldModule, MatInputModule, MatMenuModule, MatButtonModule, Mat
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Selection } from '../../../../public/models/selection.model';
+import { Selection } from '../../../../core/models/selection.model';
 import { Subscription } from 'rxjs';
 import { DebugElement } from '@angular/core';
 
@@ -88,8 +86,7 @@ describe('CandidateColumnsComponent', () => {
   };
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CandidateColumnsComponent,
-        ExternRouteComponent
+      declarations: [CandidateColumnsComponent
       ],
       imports: [
         BrowserModule,
@@ -185,12 +182,14 @@ describe('CandidateColumnsComponent', () => {
      spyOn(component, 'save');
      el=fixture.debugElement.query(By.css('#save')).nativeElement;
      el.click();
+     fixture.detectChanges();
      expect(component.save).toHaveBeenCalledTimes(1);
 });
   it ('should check whether onclick of Reset button calls resetValues function',()=>{
       spyOn(component,'resetValues')
       el=fixture.debugElement.query(By.css('#reset')).nativeElement;      
       el.click();
+      fixture.detectChanges();
       expect(component.resetValues).toHaveBeenCalledTimes(1);
   });
 
@@ -198,6 +197,7 @@ describe('CandidateColumnsComponent', () => {
     spyOn(component,'onNoClick')
     el=fixture.debugElement.query(By.css('#close')).nativeElement;
     el.click();
+    fixture.detectChanges();
     expect(component.onNoClick).toHaveBeenCalledTimes(1);
 });
 

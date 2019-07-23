@@ -8,8 +8,7 @@ import { Candidate } from '../../../../core/models/candidate';
 import { AddCandidateComponent } from '../add-candidate/add-candidate.component';
 import { FormGroup } from '@angular/forms';
 import { ResendInviteComponent } from '../resend-invite/resend-invite.component';
-import { RouterLinkWithHref } from '@angular/router';
-import { Selection } from '../../../models/selection.model';
+import { Selection } from '../../../../core/models/selection.model';
 import { TransfereeAssessmentComponent } from '../transferee-assessment/transferee-assessment.component';
 
 @Component({
@@ -139,7 +138,6 @@ export class CandidateDetailsComponent implements OnInit {
     // this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-
   /* Resend Invite Modal window */
   openAlert(event: any) {
     const dialogRef = this.dialog.open(ResendInviteComponent);
@@ -150,26 +148,7 @@ export class CandidateDetailsComponent implements OnInit {
 
     event.stopPropagation();
   }
-  // public ngOnChanges(changes: SimpleChanges) {
-  //   if ('selectedCols' in changes) {
-  //     this.selectedCols.forEach((item, index) => {
-  //       console.log(this.selectedCols);
 
-  //       if (this.displayedColumns.indexOf(item.value) < 0) {
-  //         console.log(item.value);
-  //         this.displayedColumns.push(item.value);
-  //       }
-  //       else {
-  //         this.displayedColumns = this.displayedColumns.filter((val) => {
-  //           return item.value == val;
-  //         });
-  //       }
-  //     });
-  //     if (this.displayedColumns.findIndex(val => val === 'select') < 0) {
-  //       this.displayedColumns.unshift('select');
-  //     }
-  //   }
-  // }
   public ngOnChanges(changes: SimpleChanges) {
     if ('selectedCols' in changes) {
       let tempStr: string[] = [];

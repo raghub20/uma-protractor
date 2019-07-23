@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog} from '@angular/material/dialog';
 import { SettingsComponent} from './settings/settings.component';
-
+import { DashboardComponent } from './dashboard/dashboard.component';
 @Component({
     selector: 'app-project-alpha',
     templateUrl: './project-alpha.component.html',
@@ -15,6 +15,10 @@ export class ProjectAlphaComponent {
     }[];
     constructor(private router: Router, public dialog: MatDialog) {
         this.navLinks = [
+            {
+                label: 'Dashboard',
+                path: 'dashboard'
+            },
             {
                 label: 'Cost Models',
                 path: 'cost-models'
@@ -34,6 +38,10 @@ export class ProjectAlphaComponent {
             {
                 label: 'Services',
                 path: 'services'
+            },
+            {
+                label: 'Admin',
+                path: 'admin'
             }
         ];
     }

@@ -20,12 +20,11 @@ exports.config = Object.assign(config, {
     browserName: 'chrome',
     chromeOptions: {
       args: [
-        '--disable-gpu',
         '--headless',
         '--no-sandbox',
-        '--remote-debugging-port=9222',
-        '--remote-debugging-address=0.0.0.0',
-        '--disable-dev-shm-usage'
+        '--disable-dev-shm-usage',
+        '--disable-gpu',
+        '--disable-extensions'
       ]
     },
   },

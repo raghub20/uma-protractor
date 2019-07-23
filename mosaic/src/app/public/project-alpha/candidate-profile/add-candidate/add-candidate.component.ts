@@ -53,6 +53,7 @@ export class AddCandidateComponent {
   /** variable declared for destinations */
   destinations: Observable<Location[]>;
 
+  isSaveEnabled: Boolean = false;
   /**
    * Initializes form elements
    * @param formBuilder - property for form elements
@@ -82,13 +83,13 @@ export class AddCandidateComponent {
       this.addCandidateForm = this.formBuilder.group({
         FirstName: ['', Validators.compose([
             Validators.required, 
-            Validators.pattern('^[a-zA-Z0-9]*$')]
+            Validators.pattern('^[a-z A-Z0-9-`]*$')]
           )],
         LastName: ['', Validators.compose([
             Validators.required, 
             Validators.minLength(1),
             Validators.maxLength(30), 
-            Validators.pattern('^[a-zA-Z0-9]*$')]
+            Validators.pattern('^[a-z A-Z0-9-`]*$')]
           )],
         Email: ['', Validators.compose([
             Validators.required,
@@ -143,7 +144,23 @@ export class AddCandidateComponent {
   sendInvite() {
     const levelDetails =  this.levelService.getLevelId(this.addCandidateForm.value.Level);
 
-    this.candidateProfilesService.addCandidateProfile(this.addCandidateForm.value, levelDetails);
+    this.candidateProfilesService.addCandidateProfile(this.addCandidateForm.value, levelDetails, true);
+    this.dialogRef.close();
+  }
+
+  /**
+   * Click on Save Draft button inside the addCandidateForm dialog window
+   */
+  saveDraft() {
+    var levelDetails =  this.levelService.getLevelId(this.addCandidateForm.value.Level);
+    if (levelDetails == undefined) {
+        levelDetails = {
+          'levelId': '',
+        'levelName': '',
+        'levelDescription': ''
+        };
+    }
+    this.candidateProfilesService.addCandidateProfile(this.addCandidateForm.value, levelDetails, false);
     this.dialogRef.close();
   }
 

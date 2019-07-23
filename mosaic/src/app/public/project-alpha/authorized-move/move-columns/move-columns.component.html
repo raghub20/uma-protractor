@@ -2,7 +2,7 @@
   
   <div mat-dialog-title disableTypography className={styles.dialogTitle} fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="20px">
       <h2>Select Columns</h2>
-      <button mat-icon-button (click)="onNoClick()">
+      <button id="close" mat-icon-button (click)="onNoClick()">
         <mat-icon>close</mat-icon>
       </button>
     </div>  
@@ -20,7 +20,7 @@
     <div class="settings-selectedcount"><span>{{selectedColumnsList.length}}</span> Selected</div>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button (click)="resetValues()" mat-button color="primary">RESET</button>
-  <button class="contained-button" (click)="save()">OK</button>
+  <button (click)="resetValues()" id="reset" mat-button color="primary">RESET</button>
+  <button class="contained-button" id="save" (click)="save()">OK</button>
 </mat-dialog-actions>
 </div>
