@@ -1,4 +1,4 @@
-<div class="addcandidateformcontainer" flexLayout fxLayout.xs="column">
+<div class="transfereeAssessmentFormContainer" flexLayout fxLayout.xs="column">
   <div mat-dialog-title disableTypography className={styles.dialogTitle} fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="20px" fxLayoutGap.xs="0em">
     <h2>{{ title }}</h2>
     <a  class="close-icon" (click)="onNoClick()">
@@ -7,7 +7,7 @@
   </div>
   
   <mat-dialog-content>    
-    <form fxLayout="column" [formGroup]="addCandidateForm">
+    <form fxLayout="column" [formGroup]="transfereeAssessmentForm">
       <div class="input-row" fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="2em" fxLayout.xs="column" fxLayoutGap.xs="0em">
         <div fxFlex="50%" fxLayoutAlign="start" fxLayout.xs="column" fxFlex.xs="100%">
           <mat-form-field>
@@ -42,11 +42,7 @@
               <mat-option *ngFor="let level of levels" [value]="level.levelName">
                   {{level.levelName}}
                 </mat-option>
-              </mat-select>
-              <mat-error>
-                  {{ errors.Level }}
-              </mat-error>
-              
+              </mat-select>              
             </mat-form-field>
           </div>
         <div fxFlex="50%" fxLayout.xs="column" fxFlex.xs="100%">
@@ -79,60 +75,49 @@
                   {{destination.name}}
                 </mat-option>
               </mat-autocomplete>
-              <mat-error>
-                {{ errors.Destination }}
-            </mat-error>
           </mat-form-field>
         </div>
       </div>
-      <div class="input-row" fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="2em" fxLayout.xs="column" fxLayoutGap.xs="0em" style="margin-top: 0.9em;">
-        <div fxFlex="50%" fxLayout.xs="column" fxFlex.xs="100%">
-          <div style="border: 1px solid #949494;border-radius: 4px;text-align: center;">
-            <p>Housing Details</p>
-            <p>Housing Type: Rent</p>
-            <p>#Bedrooms: 4</p>
-          </div>
+      <!-- Assessment Content Start -->
+      <div class="input-row " fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="2em" fxLayout.xs="column" fxLayoutGap.xs="0" style="margin-top: 0.9em;padding-bottom: 1.25em">
+        <div fxFlex="33%" fxLayout.xs="column" fxFlex.xs="100%" class="assessmentDetails">
+          <mat-card>
+            <mat-card-content>
+              <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+              <p>Address</p>
+              <p> {{data.streetAddress}} </p>  
+              <strong> {{data.city}}, {{data.state}} {{data.zipcode}} </strong>
+            </mat-card-content>
+          </mat-card>
         </div>
-        <div fxFlex="50%" fxLayout.xs="column" fxFlex.xs="100%" class="people-container">
-          <div style="border: 1px solid #949494;border-radius: 4px;text-align: center;">
-            <p>Amount of People</p>
-            <p>Total: 4</p>
-            <p>#Children: 2</p>
-          </div>
+        <div fxFlex="33%" fxLayout.xs="column" fxFlex.xs="100%" class="assessmentDetails people-container">
+          <mat-card>
+              <mat-card-content>
+                  <mat-icon aria-hidden="false" aria-label="Example info icon">info</mat-icon>
+                <p>Housing Details</p>
+                <p># of Rooms: {{data.noOfRooms}} </p>  
+              <strong> {{data.housingType}} </strong>
+              </mat-card-content>
+            </mat-card>
+        </div>
+        <div fxFlex="33%" fxLayout.xs="column" fxFlex.xs="100%" class="assessmentDetails people-container">
+          <mat-card>
+              <mat-card-content>
+                  <mat-icon aria-hidden="false" aria-label="Example people icon">people</mat-icon>
+                <p>Amount of People</p>
+                <p> {{data.noOfChildren}} Children</p>  
+              <strong> {{data.total}} Total</strong>
+              </mat-card-content>
+            </mat-card>
         </div>
       </div>
-      <div class="input-row" fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="2em" fxLayout.xs="column" fxLayoutGap.xs="0em" style="margin-top: 0.9em;">
-        <div fxFlex="100%" fxLayout.xs="column" fxFlex.xs="100%">
-          <mat-accordion>
-            <mat-expansion-panel style="border: 1px solid #949494;box-shadow: none;">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  Recommended Budget
-                </mat-panel-title>
-                <mat-panel-description>
-                 
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <p>Recommended Budget Section</p>
-              <p>Coming Soon....</p>
-            </mat-expansion-panel>
-          </mat-accordion>
-        </div>
-      </div>
+      <!-- Assessment Content End -->
     </form>
   </mat-dialog-content>
 
-  <!-- <mat-dialog-actions>
-    <button (click)="onNoClick()" mat-button color="primary">CANCEL</button>
-    <button  [disabled]="!addCandidateForm.valid" class="mat-raised-button mat-primary" (click)="sendInvite()">Send Invite</button>
-  </mat-dialog-actions> -->
   <mat-dialog-actions>
-    <!-- <button (click)="onNoClick()" mat-button color="primary">CANCEL</button>
-    <button mat-button class="mat-button outlined-button" (click)="saveCandidate()">Save Draft</button>
-    <button [disabled]="!addCandidateForm.valid" class="mat-raised-button mat-send-button">Send Invite</button> -->
-
     <button (click)="onNoClick()" mat-button color="primary" id="cancel">CANCEL</button>
-    <button [disabled]="!addCandidateForm.valid" class="mat-button contained-button" (click)="sendInvite()" id="invite">Approve</button>
-    <!-- [ngClass]="{'outlined-button': addCandidateForm.valid === true, 'contained-button': addCandidateForm.valid === false }" -->
+    <!-- <button *ngIf="data.isAssessmentReceived" [disabled]="isDirty" class="mat-button contained-button" (click)="update()" id="invite">Update</button> -->
+    <button *ngIf="data.isAssessmentReceived" [disabled]="transfereeAssessmentForm.pristine" class="mat-button contained-button" (click)="update()" id="invite">Update</button>
   </mat-dialog-actions>
 </div>

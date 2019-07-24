@@ -161,12 +161,12 @@ describe('AddCandidateComponent', () => {
     expect(component.onNoClick).toHaveBeenCalledTimes(1);
   }));
 
-  it('should call saveDraft method on click of save draft', async(() => {
+  it('should call sendInvite method on click of save draft', async(() => {
 
-    spyOn(component, 'saveDraft');
+    spyOn(component, 'sendInvite');
     el = fixture.debugElement.query(By.css('#save')).nativeElement;
     el.click();
-    expect(component.saveDraft).toHaveBeenCalledTimes(1);
+    expect(component.sendInvite).toHaveBeenCalledTimes(1);
   }));
 
   /*
@@ -194,7 +194,7 @@ describe('AddCandidateComponent', () => {
         const email = data[2].nativeElement;
         expect(email.value).toBe('mathew.maturity@gmail.com');
         const bussinessunit = data[3].nativeElement;
-        expect(bussinessunit.value).toBe('Human Resources');
+        expect(bussinessunit.value).toBe('HR');
         const departure = data[4].nativeElement;
         expect(departure.value).toBe('NJ, Nutley');
         const destination = data[5].nativeElement;

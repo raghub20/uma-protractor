@@ -14,12 +14,12 @@ const config = {
   framework: 'custom',  // set to "custom" instead of cucumber.
   frameworkPath: require.resolve('protractor-cucumber-framework'),  // path relative to the current config file
   specs: [
-    '../e2e/src/features/**/approved-moves.feature'     // Specs here are the cucumber feature files
+    '../e2e/src/features/**/*.feature'     // Specs here are the cucumber feature files
   ],
   // cucumber command line options
   cucumberOpts: {
     require: ['../e2e/src/support/setup.ts', '../e2e/src/step_definitions/**/*.steps.ts'],  // require setup and step definition files before executing features
-    tags: ['@SR_157_1'],                           // <string[]> (expression) only execute the features or scenarios with tags matching the expression
+    tags: tags,                           // <string[]> (expression) only execute the features or scenarios with tags matching the expression
     strict: true,                       // <boolean> fail if there are any undefined or pending steps
     format: 'json:' + jsonReportFile,   //["summary"],            // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)
     'dry-run': false,                   // <boolean> invoke formatters without executing steps

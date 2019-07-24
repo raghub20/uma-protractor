@@ -61,9 +61,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   /** Component Angular destructor lifecycle hook */
   ngOnDestroy(): void {
-    if(this.navSub && !this.navSub.closed){
-        this.navSub.unsubscribe();
-    }
+    this.navSub.unsubscribe();
   }
-  
 }

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<testsuite name="HeadlessChrome 75.0.3738 (Mac OS X 10.14.4)" package="" timestamp="2019-05-29T18:33:44" id="0" hostname="Cartuss-MacBook-Pro.local" tests="16" errors="0" failures="0" time="0.638">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/75.0.3738.0 Safari/537.36"/>
+  </properties>
+  <testcase name="AppComponent should create the app" time="0.199" classname="HeadlessChrome_75_0_3738_(Mac_OS_X_10_14_4).AppComponent"/>
+  <testcase name="AppComponent should have a title 'Angular App'" time="0.118" classname="HeadlessChrome_75_0_3738_(Mac_OS_X_10_14_4).AppComponent"/>
+  <testcase name="AppComponent should render title in a h1 tag" time="0.11" classname="HeadlessChrome_75_0_3738_(Mac_OS_X_10_14_4).AppComponent"/>
+  <testcase name="ApiConfigService should be created" time="0.006" classname="HeadlessChrome_75_0_3738_(Mac_OS_X_10_14_4).ApiConfigService"/>
+  <testcase name="AppConfigService should be created" time="0.005" classname="HeadlessChrome_75_0_3738_(Mac_OS_X_10_14_4).AppConfigService"/>
+  <testcase name="BaseClientService should be created" time="0.005" classname="HeadlessChrome_75_0_3738_(Mac_OS_X_10_14_4).BaseClientService"/>
+  <testcase name="BaseService should be created" time="0.005" classname="HeadlessChrome_75_0_3738_(Mac_OS_X_10_14_4).BaseService"/>
+  <testcase name="HttpErrorHandlerService should be created" time="0.005" classname="HeadlessChrome_75_0_3738_(Mac_OS_X_10_14_4).HttpErrorHandlerService"/>
+  <testcase name="HttpErrorHandlerService should log a warning and logout user on a 401 error" time="0.006" classname="HeadlessChrome_75_0_3738_(Mac_OS_X_10_14_4).HttpErrorHandlerService"/>
+  <testcase name="HttpErrorHandlerService should log an error when the server sends back an error object a message" time="0.146" classname="HeadlessChrome_75_0_3738_(Mac_OS_X_10_14_4).HttpErrorHandlerService"/>
+  <testcase name="HttpErrorHandlerService should log an error when the server sends back an error without a message" time="0.006" classname="HeadlessChrome_75_0_3738_(Mac_OS_X_10_14_4).HttpErrorHandlerService"/>
+  <testcase name="LanguageDetectionService should be created" time="0.004" classname="HeadlessChrome_75_0_3738_(Mac_OS_X_10_14_4).LanguageDetectionService"/>
+  <testcase name="RemoteLoggingService should be created" time="0.006" classname="HeadlessChrome_75_0_3738_(Mac_OS_X_10_14_4).RemoteLoggingService"/>
+  <testcase name="RemoteLoggingService should call log with the stack trace when logging errors" time="0.006" classname="HeadlessChrome_75_0_3738_(Mac_OS_X_10_14_4).RemoteLoggingService"/>
+  <testcase name="RemoteLoggingService should call log with the stack trace when logging error text" time="0.005" classname="HeadlessChrome_75_0_3738_(Mac_OS_X_10_14_4).RemoteLoggingService"/>
+  <testcase name="RemoteLoggingService should call log with the stack trace when logging none errors" time="0.006" classname="HeadlessChrome_75_0_3738_(Mac_OS_X_10_14_4).RemoteLoggingService"/>
+  <system-out>
+    <![CDATA[HeadlessChrome 75.0.3738 (Mac OS X 10.14.4) LOG: false
+,HeadlessChrome 75.0.3738 (Mac OS X 10.14.4) ERROR: 'Logged to server - message: Error while parsing error: Error: While get objects user was noted as unauthenticated and logged out of the system. You are logged out  URL:   stack: N/A'
+,HeadlessChrome 75.0.3738 (Mac OS X 10.14.4) ERROR: 'Logged to server - message: Error while parsing error: Error: An error occurred while get objects: Server is down  URL:   stack: N/A'
+,HeadlessChrome 75.0.3738 (Mac OS X 10.14.4) ERROR: 'Logged to server - message: Error while parsing error: Error: Backend returned code 501, body was: "an error"  URL:   stack: N/A'
+,HeadlessChrome 75.0.3738 (Mac OS X 10.14.4) ERROR: 'Logged to server - message: testing  URL: http://test.com  stack: Call Stack Line 1'
+,HeadlessChrome 75.0.3738 (Mac OS X 10.14.4) ERROR: 'Logged to server - message: Testing  URL: http://localhost:9876/context.html  stack: N/A'
+,HeadlessChrome 75.0.3738 (Mac OS X 10.14.4) LOG: 'Logged to server - message: Testing  URL: undefined  stack: undefined'
+
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>

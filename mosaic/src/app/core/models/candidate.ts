@@ -13,4 +13,12 @@ export interface Candidate {
     createdDate: string;
     createdBy: string;
     lastUpdatedDate: string;
+    streetAddress: string;
+    city: string;
+    state: string;
+    zipcode: string;
+    noOfRooms: string;
+    housingType: string;
+    noOfChildren: string;
+    total: string;
 }

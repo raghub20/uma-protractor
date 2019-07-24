@@ -81,7 +81,6 @@
         <td mat-cell *matCellDef="let element">
           <div class="notification-important">
             <span *ngIf="element.isAssessmentReceived" (click)="open($event, element)">
-              <mat-icon> notification_important </mat-icon>
               <a> {{element.status}} </a>
             </span>
             <span *ngIf="!element.isAssessmentReceived">

@@ -28,12 +28,13 @@ export const errorMessages: { [key: string]: string } = {
   templateUrl: './transferee-assessment.component.html',
   styleUrls: ['./transferee-assessment.component.scss']
 })
-export class TransfereeAssessmentComponent{
+export class TransfereeAssessmentComponent {
 
   /**Form group name */
-  addCandidateForm: FormGroup;
+  transfereeAssessmentForm: FormGroup;
   /* Title to display the dialog window page title */
   title: string;
+
   /**Flag mode for Create */
   mode = 'create';
   /**Assign formready Variable as False */
@@ -62,12 +63,12 @@ export class TransfereeAssessmentComponent{
     public dialogRef: MatDialogRef<TransfereeAssessmentComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Candidate,
     private candidateProfilesService: CandidateProfilesService,
-    private locationService : LocationService,
-    private levelService : LevelService,
+    private locationService: LocationService,
+    private levelService: LevelService,
     private changeDetectorRef: ChangeDetectorRef) {
 
       /* Setting default title of the dialof window */
-      this.title = 'Add Candidate';
+      this.title = 'Candidate Assessment';
 
       /* Get all the locations for destination and departure */
       this.options = this.locationService.getLocations();
@@ -76,15 +77,15 @@ export class TransfereeAssessmentComponent{
       this.levels = this.levelService.getLevels();
 
       /* Create the Add/Edit dialog window */
-      this.addCandidateForm = this.formBuilder.group({
+      this.transfereeAssessmentForm = this.formBuilder.group({
         FirstName: ['', Validators.compose([
-            Validators.required, 
+            Validators.required,
             Validators.pattern('^[a-zA-Z0-9]*$')]
           )],
         LastName: ['', Validators.compose([
-            Validators.required, 
+            Validators.required,
             Validators.minLength(1),
-            Validators.maxLength(30), 
+            Validators.maxLength(30),
             Validators.pattern('^[a-zA-Z0-9]*$')]
           )],
         Email: ['', Validators.compose([
@@ -100,31 +101,35 @@ export class TransfereeAssessmentComponent{
       /* If the data is present - it will open and pre-populate dialog window */
       if (this.data) {
         /* set page title to edit candidate */
-        if (this.data.isAssessmentReceived){
-          this.title = 'Transferee Assessment';
-        }else{
+        if (this.data.isAssessmentReceived) {
+          this.title = 'Candidate Assessment';
+        } else {
           this.title = 'Edit Candidate';
         }
-        
 
         /* Setting the default values for form elements in edit candidate dialog */
-        this.addCandidateForm.get('FirstName').setValue(this.data.fullname.substr(data.fullname.indexOf(',') + 2, data.fullname.length));
-        this.addCandidateForm.get('LastName').setValue(this.data.fullname.substr(0, data.fullname.indexOf(',')));
-        this.addCandidateForm.get('Destination').setValue(this.data.destination);
-        this.addCandidateForm.get('Departure').setValue(this.data.departure);
-        this.addCandidateForm.get('Email').setValue(this.data.emailAddress);
-        this.addCandidateForm.get('BusinessUnit').setValue(this.data.businessUnit);
-        this.addCandidateForm.get('Level').setValue(this.data.level.levelName);
+        // tslint:disable-next-line: max-line-length
+        this.transfereeAssessmentForm.get('FirstName').setValue(this.data.fullname.substr(data.fullname.indexOf(',') + 2, data.fullname.length));
+        this.transfereeAssessmentForm.get('LastName').setValue(this.data.fullname.substr(0, data.fullname.indexOf(',')));
+        this.transfereeAssessmentForm.get('Destination').setValue(this.data.destination);
+        this.transfereeAssessmentForm.controls['Destination'].disable();
+        this.transfereeAssessmentForm.get('Departure').setValue(this.data.departure);
+        this.transfereeAssessmentForm.controls['Departure'].disable();
+        this.transfereeAssessmentForm.get('Email').setValue(this.data.emailAddress);
+        this.transfereeAssessmentForm.controls['Email'].disable();
+        this.transfereeAssessmentForm.get('BusinessUnit').setValue(this.data.businessUnit);
+        this.transfereeAssessmentForm.get('Level').setValue(this.data.level.levelName);
+        this.transfereeAssessmentForm.controls['Level'].disable();
       }
 
       /* Enable the event listener for departure drop down form element */
-      this.departures = this.addCandidateForm.get('Departure').valueChanges
+      this.departures = this.transfereeAssessmentForm.get('Departure').valueChanges
       .pipe(
         startWith(''),
         map(name => name ? this._filter(name) : this.options.slice())
       );
       /* Enable the event listener for the destination drop down form element */
-      this.destinations = this.addCandidateForm.get('Destination').valueChanges
+      this.destinations = this.transfereeAssessmentForm.get('Destination').valueChanges
       .pipe(
         startWith(''),
         map(name => name ? this._filter(name) : this.options.slice())
@@ -143,9 +148,9 @@ export class TransfereeAssessmentComponent{
    * Click on Submit button inside the addCandidateForm dialog window
    */
   sendInvite() {
-    const levelDetails =  this.levelService.getLevelId(this.addCandidateForm.value.Level);
+    const levelDetails =  this.levelService.getLevelId(this.transfereeAssessmentForm.value.Level);
 
-    this.candidateProfilesService.addCandidateProfile(this.addCandidateForm.value, levelDetails, false);
+    this.candidateProfilesService.addCandidateProfile(this.transfereeAssessmentForm.value, levelDetails, false);
     this.dialogRef.close();
   }
 
@@ -155,7 +160,7 @@ export class TransfereeAssessmentComponent{
   onNoClick(): void {
     this.dialogRef.close();
 
-    this.addCandidateForm = this.formBuilder.group({
+    this.transfereeAssessmentForm = this.formBuilder.group({
 
       FirstName: ['', Validators.required],
       LastName: ['', Validators.required, Validators.minLength(1), Validators.maxLength(30)],
@@ -163,7 +168,6 @@ export class TransfereeAssessmentComponent{
       Departure: [''],
       BusinessUnit: [''],
       Destination: ['', Validators.required],
-
     });
   }
 
@@ -172,21 +176,26 @@ export class TransfereeAssessmentComponent{
    * @param field_name - field parameter to check for errors
    */
   getErrorMessage(field_name) {
-    if (field_name === 'FIRST_NAME')
-    {
-       return this.addCandidateForm.get('FirstName').hasError('required') ? 'You must enter first name' :
-        this.addCandidateForm.get('FirstName').hasError('pattern') ? 'Special characters are not allowed' : '';
+    if (field_name === 'FIRST_NAME') {
+       return this.transfereeAssessmentForm.get('FirstName').hasError('required') ? 'You must enter first name' :
+        this.transfereeAssessmentForm.get('FirstName').hasError('pattern') ? 'Special characters are not allowed' : '';
     }
-    if (field_name === 'LAST_NAME')
-    {
-       return this.addCandidateForm.get('LastName').hasError('required') ? 'You must enter last name' :
-        this.addCandidateForm.get('LastName').hasError('pattern') ? 'Special characters are not allowed' : '';
+    if (field_name === 'LAST_NAME') {
+       return this.transfereeAssessmentForm.get('LastName').hasError('required') ? 'You must enter last name' :
+        this.transfereeAssessmentForm.get('LastName').hasError('pattern') ? 'Special characters are not allowed' : '';
     }
-    if (field_name === 'EMAIL')
-    {
-       return this.addCandidateForm.get('Email').hasError('required') ? 'You must enter email address' :
-        this.addCandidateForm.get('Email').hasError('pattern') ? 'You must enter a valid email address' : '';
+    if (field_name === 'EMAIL') {
+       return this.transfereeAssessmentForm.get('Email').hasError('required') ? 'You must enter email address' :
+        this.transfereeAssessmentForm.get('Email').hasError('pattern') ? 'You must enter a valid email address' : '';
     }
   }
 
+  update() {
+    const firstName = this.transfereeAssessmentForm.get('FirstName');
+    const lastName = this.transfereeAssessmentForm.get('LastName');
+    const businessUnit = this.transfereeAssessmentForm.get('BusinessUnit');
+    console.log(firstName.value);
+    console.log(lastName.value);
+    console.log(businessUnit.value);
+  }
 }

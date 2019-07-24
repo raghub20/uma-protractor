@@ -17,12 +17,11 @@ When('I visit the home page', (callback: CallbackStepDefinition) => {
 });
 
 Then('I see the home page', () => {
-   /* browser.getCurrentUrl().then((url) => {
+    browser.getCurrentUrl().then((url) => {
         expect(url).to.equal(browser.baseUrl + '/');
     });
-    */
 });
 
 Then('I see the title', () => {
-    //expect(home.getTitle().getText()).to.eventually.equal('Welcome To New Angular App!');
+    expect(home.getTitle().getText()).to.eventually.equal('Welcome To New Angular App!');
 });

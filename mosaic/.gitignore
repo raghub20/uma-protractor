@@ -48,6 +48,7 @@ Thumbs.db
 # blocks err files from Browserstack local failing
 *.err
 
-reports
+e2e/reports
+json-server/db_tmp.json
 src/environment-config.generated.json
 .scannerwork

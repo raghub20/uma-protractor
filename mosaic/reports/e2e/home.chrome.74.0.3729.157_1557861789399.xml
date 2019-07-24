@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+    <testsuite name="home.chrome.74.0.3729.157_1557861789399home;i-see-the-desktop-view-of-the-home-page" tests="7" failures="0" skipped="5">
+        <properties>
+            <property name="@desktop" value="true">
+            </property>
+            <property name="URI" value="e2e/src/features/home.feature">
+            </property>
+        </properties>
+        <testcase name="home.chrome.74.0.3729.157_1557861789399Given I am a user" classname="home;i-see-the-desktop-view-of-the-home-page" time="0.002">
+        </testcase>
+        <testcase name="home.chrome.74.0.3729.157_1557861789399When I visit the home page" classname="home;i-see-the-desktop-view-of-the-home-page" time="0.724">
+        </testcase>
+        <testcase name="home.chrome.74.0.3729.157_1557861789399Then I see the home page" classname="home;i-see-the-desktop-view-of-the-home-page">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="home.chrome.74.0.3729.157_1557861789399And I see the title" classname="home;i-see-the-desktop-view-of-the-home-page">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="home.chrome.74.0.3729.157_1557861789399And I see the icon" classname="home;i-see-the-desktop-view-of-the-home-page">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="home.chrome.74.0.3729.157_1557861789399And I see the help cards displayed horizonally" classname="home;i-see-the-desktop-view-of-the-home-page">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="home.chrome.74.0.3729.157_1557861789399And I see hyperlinks on the help cards" classname="home;i-see-the-desktop-view-of-the-home-page">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="home.chrome.74.0.3729.157_1557861789399home;i-see-the-mobile-view-of-the-home-page" tests="7" failures="0" skipped="5">
+        <properties>
+            <property name="@mobile" value="true">
+            </property>
+            <property name="URI" value="e2e/src/features/home.feature">
+            </property>
+        </properties>
+        <testcase name="home.chrome.74.0.3729.157_1557861789399Given I am a user" classname="home;i-see-the-mobile-view-of-the-home-page" time="0.001">
+        </testcase>
+        <testcase name="home.chrome.74.0.3729.157_1557861789399When I visit the home page" classname="home;i-see-the-mobile-view-of-the-home-page" time="0.437">
+        </testcase>
+        <testcase name="home.chrome.74.0.3729.157_1557861789399Then I see the home page" classname="home;i-see-the-mobile-view-of-the-home-page">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="home.chrome.74.0.3729.157_1557861789399And I see the title" classname="home;i-see-the-mobile-view-of-the-home-page">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="home.chrome.74.0.3729.157_1557861789399And I see the icon" classname="home;i-see-the-mobile-view-of-the-home-page">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="home.chrome.74.0.3729.157_1557861789399And I see the help cards displayed vertically" classname="home;i-see-the-mobile-view-of-the-home-page">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="home.chrome.74.0.3729.157_1557861789399And I see hyperlinks on the help cards" classname="home;i-see-the-mobile-view-of-the-home-page">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+</testsuites>

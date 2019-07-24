@@ -10,7 +10,6 @@ import { By } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Title } from '@angular/platform-browser';
-import { MaterialModule } from 'src/app/material/material.module';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -21,8 +20,7 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         AppModule,
-        RouterTestingModule,
-        MaterialModule
+        RouterTestingModule
       ],
       providers: [
         { provide: AppConfigService, useClass: MockedAppConfigService },
@@ -42,22 +40,15 @@ describe('AppComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should create the component', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('should create the component', () => {
+    expect(component).toBeTruthy();
+  });
 
-  /*
-
-  /* Commenting this unit case as we have removed the desktop side nav 
-
-  // it('should allow toggling minimized sidebar through code', () => {
-  //   component.sidebarMinimized = false;
-  //   component.sidebarToggle();
-  //   expect(component.sidebarMinimized).toBeTruthy();
-  //   component.sidebarToggle();
-  //   expect(component.sidebarMinimized).toBeFalsy();
-  // });
-
-  */
- 
+  it('should allow toggling minimized sidebar through code', () => {
+    component.sidebarMinimized = false;
+    component.sidebarToggle();
+    expect(component.sidebarMinimized).toBeTruthy();
+    component.sidebarToggle();
+    expect(component.sidebarMinimized).toBeFalsy();
+  });
 });

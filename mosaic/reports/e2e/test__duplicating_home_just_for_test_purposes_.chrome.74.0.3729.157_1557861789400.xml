@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+    <testsuite name="test__duplicating_home_just_for_test_purposes_.chrome.74.0.3729.157_1557861789400test-***-duplicating-home-just-for-test-purposes-***;i-see-the-desktop-view-of-the-home-page" tests="3" failures="0" skipped="3">
+        <properties>
+            <property name="@desktop" value="true">
+            </property>
+            <property name="URI" value="e2e/src/features/test.feature">
+            </property>
+        </properties>
+        <testcase name="test__duplicating_home_just_for_test_purposes_.chrome.74.0.3729.157_1557861789400Given I am a user 2" classname="test-***-duplicating-home-just-for-test-purposes-***;i-see-the-desktop-view-of-the-home-page">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="test__duplicating_home_just_for_test_purposes_.chrome.74.0.3729.157_1557861789400When I visit the home page 2" classname="test-***-duplicating-home-just-for-test-purposes-***;i-see-the-desktop-view-of-the-home-page">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="test__duplicating_home_just_for_test_purposes_.chrome.74.0.3729.157_1557861789400Then I see the title 2" classname="test-***-duplicating-home-just-for-test-purposes-***;i-see-the-desktop-view-of-the-home-page">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="test__duplicating_home_just_for_test_purposes_.chrome.74.0.3729.157_1557861789400test-***-duplicating-home-just-for-test-purposes-***;i-see-the-mobile-view-of-the-home-page" tests="3" failures="0" skipped="3">
+        <properties>
+            <property name="@mobile" value="true">
+            </property>
+            <property name="URI" value="e2e/src/features/test.feature">
+            </property>
+        </properties>
+        <testcase name="test__duplicating_home_just_for_test_purposes_.chrome.74.0.3729.157_1557861789400Given I am a user 2" classname="test-***-duplicating-home-just-for-test-purposes-***;i-see-the-mobile-view-of-the-home-page">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="test__duplicating_home_just_for_test_purposes_.chrome.74.0.3729.157_1557861789400When I visit the home page 2" classname="test-***-duplicating-home-just-for-test-purposes-***;i-see-the-mobile-view-of-the-home-page">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="test__duplicating_home_just_for_test_purposes_.chrome.74.0.3729.157_1557861789400Then I see the title 2" classname="test-***-duplicating-home-just-for-test-purposes-***;i-see-the-mobile-view-of-the-home-page">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+</testsuites>

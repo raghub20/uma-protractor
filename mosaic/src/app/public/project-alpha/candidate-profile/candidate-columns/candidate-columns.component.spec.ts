@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 import { CandidateColumnsComponent } from './candidate-columns.component';
 import { By, BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -182,14 +183,12 @@ describe('CandidateColumnsComponent', () => {
      spyOn(component, 'save');
      el=fixture.debugElement.query(By.css('#save')).nativeElement;
      el.click();
-     fixture.detectChanges();
      expect(component.save).toHaveBeenCalledTimes(1);
 });
   it ('should check whether onclick of Reset button calls resetValues function',()=>{
       spyOn(component,'resetValues')
       el=fixture.debugElement.query(By.css('#reset')).nativeElement;      
       el.click();
-      fixture.detectChanges();
       expect(component.resetValues).toHaveBeenCalledTimes(1);
   });
 
@@ -197,7 +196,6 @@ describe('CandidateColumnsComponent', () => {
     spyOn(component,'onNoClick')
     el=fixture.debugElement.query(By.css('#close')).nativeElement;
     el.click();
-    fixture.detectChanges();
     expect(component.onNoClick).toHaveBeenCalledTimes(1);
 });
 

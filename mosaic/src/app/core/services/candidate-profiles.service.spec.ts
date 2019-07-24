@@ -1,4 +1,4 @@
-import { async, TestBed, inject } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 
 import { CandidateProfilesService } from './candidate-profiles.service';
 import { LevelService } from './level.service';
@@ -8,16 +8,10 @@ import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 describe('CandidateProfilesService', () => {
   let service: CandidateProfilesService;
   let levelList: LevelService;
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ],
-      imports: [
-        MaterialModule
-      ]
-    })
-      .compileComponents();
+  beforeEach(() => TestBed.configureTestingModule({
+    imports: [ MaterialModule ],
+    schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ],
   }));
-  
   beforeEach(() => {
     service = new CandidateProfilesService();
     levelList = new LevelService();
@@ -35,24 +29,22 @@ describe('CandidateProfilesService', () => {
   });
   it('should call addCandidateProfile method', () => {
        const data = {
-        fullname: 'Matthew, Maturity',
-        level: {
-          levelId: 'level2',
-          levelName: 'Level 2 (100,001 to 250,000 USD)',
-          levelDescription: 'Level 2 - Salary details'
-        },
-        departure: 'NJ, Nutley',
-        destination: 'TX, Austin',
-        status: 'Invitation Not Sent',
-        isAssessmentReceived: false,
-        emailAddress: 'mathew.maturity@gmail.com',
-        businessUnit: 'Human Resources',
-        invitationSentDate: '21-JUN-19',
-        createdDate: '21-JUN-19',
-        createdBy: 'Matthew, Maturity',
-        lastUpdatedDate: '21-JUN-19'
+      fullname: 'George, Wesley',
+      level:
+      { levelId: 'L1',
+        levelName: 'Level 1 (salary $250,000+)',
+        levelDescription: 'Level 1 - Salary Range'
+      },
+      departure: 'NJ, Nutley',
+      destination: 'TX, Austin',
+      status: 'invitation sent',
+      isInvitationSent: true,
+      invitationText: 'Success',
+      isAssessmentReceived: true,
+      email: 'georgewesley@gmail.com',
+      businessUnit: 'HR'
     };
-    service.addCandidateProfile(data, levelList,false);
+    service.addCandidateProfile(data, levelList);
   });
 
   it('should call getCandidateProfiles  method', () => {

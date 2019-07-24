@@ -65,17 +65,15 @@
 }
 
 .transfereeAssessmentModal{
- 
-    .mat-dialog-container
-    {
-        border-radius: 4px;
-        padding: 24px;
-        overflow:hidden;
-        min-height: 450px;
-    }
+    width: 50%;
     .mat-dialog-content{
-        // max-height:100%;
-        // overflow: hidden;
+        text-align: center;
+        .mat-icon, p:first-of-type {
+            color: map-get($cartus-palette , 'cartus_dark_accent_blue');
+        }
+        p:first-of-type {
+            margin: 0em;
+        }
     }
    
     @media screen and (max-width: 599px){

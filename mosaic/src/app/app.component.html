@@ -31,10 +31,12 @@
       <mat-toolbar class="header-desktop header-desktop-r" fxHide.lt-md  style="background-color:#3C72B9; color:#fff"  fxFill fxLayout="row" fxLayoutAlign="space-between center">
         <span>Mobility Hub</span>
         <span class="header-links">
-          <button mat-button [matMenuTriggerFor]="animals">Admin</button>
-      <mat-menu #animals>
-        <button mat-menu-item>Mat Menu 1</button>
-        <button mat-menu-item>Mat Menu 2</button>
+
+        <button mat-button [matMenuTriggerFor]="animals">Admin</button>
+
+      <mat-menu #animals="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="vertebrates">Vertebrates</button>
+        <button mat-menu-item [matMenuTriggerFor]="invertebrates">Invertebrates</button>
       </mat-menu>
         <button type="button" mat-button>
             Settings

@@ -25,7 +25,15 @@ export class CandidateProfilesService {
       'invitationSentDate': '',
       'createdDate': '21-JUN-19',
       'createdBy': 'Matthew, Maturity',
-      'lastUpdatedDate': '21-JUN-19'
+      'lastUpdatedDate': '21-JUN-19',
+      'streetAddress': '41 Apple Ridge Rd',
+      'city': 'Danbury',
+      'state': 'CT',
+      'zipcode': '06810',
+      'noOfRooms': '4',
+      'housingType': 'Rents Apartment',
+      'noOfChildren': '3',
+      'total': '5'
     },
     {
       'fullname': 'Beal, Christopher',
@@ -36,14 +44,22 @@ export class CandidateProfilesService {
       },
       'departure': 'GA, Atlanta',
       'destination': 'TX, Dallas',
-      'status': 'Ready for Review',
+      'status': 'Pending Vanline Quote',
       'isAssessmentReceived': true,
       'emailAddress': 'chris.beal@gmail.com',
       'businessUnit': 'Finance',
       'invitationSentDate': '9-APR-19',
       'createdDate': '9-APR-19',
       'createdBy': 'Matthew, Maturity',
-      'lastUpdatedDate': '2-MAY-19'
+      'lastUpdatedDate': '2-MAY-19',
+      'streetAddress': '41 Apple Ridge Rd',
+      'city': 'Danbury',
+      'state': 'CT',
+      'zipcode': '06810',
+      'noOfRooms': '4',
+      'housingType': 'Rents Apartment',
+      'noOfChildren': '3',
+      'total': '5'
     },
     {
       'fullname': 'Goulet, Dan',
@@ -61,7 +77,15 @@ export class CandidateProfilesService {
       'invitationSentDate': '12-JAN-19',
       'createdDate': '8-JAN-19',
       'createdBy': 'Matthew, Maturity',
-      'lastUpdatedDate': '25-JAN-19'
+      'lastUpdatedDate': '25-JAN-19',
+      'streetAddress': '41 Apple Ridge Rd',
+      'city': 'Danbury',
+      'state': 'CT',
+      'zipcode': '06810',
+      'noOfRooms': '4',
+      'housingType': 'Rents Apartment',
+      'noOfChildren': '3',
+      'total': '5'
     },
     {
       'fullname': 'Cordon, James',
@@ -79,7 +103,15 @@ export class CandidateProfilesService {
       'invitationSentDate': '28-JAN-19',
       'createdDate': '23-JAN-19',
       'createdBy': 'Matthew, Maturity',
-      'lastUpdatedDate': '30-JAN-19'
+      'lastUpdatedDate': '30-JAN-19',
+      'streetAddress': '41 Apple Ridge Rd',
+      'city': 'Danbury',
+      'state': 'CT',
+      'zipcode': '06810',
+      'noOfRooms': '4',
+      'housingType': 'Rents Apartment',
+      'noOfChildren': '3',
+      'total': '5'
     },
     {
       'fullname': 'Hayes, Francesca',
@@ -90,14 +122,22 @@ export class CandidateProfilesService {
       },
       'departure': 'NJ, Nutley',
       'destination': 'TX, Austin',
-      'status': 'Invitation Not Sent',
-      'isAssessmentReceived': false,
+      'status': 'Pending Vanline Quote',
+      'isAssessmentReceived': true,
       'emailAddress': 'francesca.hayes@gmail.com',
       'businessUnit': 'Accounting',
       'invitationSentDate': '22-FEB-19',
       'createdDate': '2-FEB-19',
       'createdBy': 'Matthew, Maturity',
-      'lastUpdatedDate': '23-MAR-19'
+      'lastUpdatedDate': '23-MAR-19',
+      'streetAddress': '8 pacific Ave',
+      'city': 'Boston',
+      'state': 'MA',
+      'zipcode': '01234',
+      'noOfRooms': '6',
+      'housingType': 'Rents Apartment',
+      'noOfChildren': '4',
+      'total': '6'
     },
     {
       'fullname': 'Hu, Adam',
@@ -115,7 +155,15 @@ export class CandidateProfilesService {
       'invitationSentDate': '21-JUN-19',
       'createdDate': '21-JUN-19',
       'createdBy': 'Matthew, Maturity',
-      'lastUpdatedDate': '21-JUN-19'
+      'lastUpdatedDate': '21-JUN-19',
+      'streetAddress': '41 Apple Ridge Rd',
+      'city': 'Danbury',
+      'state': 'CT',
+      'zipcode': '06810',
+      'noOfRooms': '4',
+      'housingType': 'Rents Apartment',
+      'noOfChildren': '3',
+      'total': '5'
     },
     {
       'fullname': 'Jones, Suehong',
@@ -133,7 +181,15 @@ export class CandidateProfilesService {
       'invitationSentDate': '2-JUN-19',
       'createdDate': '2-JUN-19',
       'createdBy': 'Matthew, Maturity',
-      'lastUpdatedDate': '20-JUN-19'
+      'lastUpdatedDate': '20-JUN-19',
+      'streetAddress': '41 Apple Ridge Rd',
+      'city': 'Danbury',
+      'state': 'CT',
+      'zipcode': '06810',
+      'noOfRooms': '4',
+      'housingType': 'Rents Apartment',
+      'noOfChildren': '3',
+      'total': '5'
     },
     {
       'fullname': 'Rector, Aleksandr',
@@ -151,7 +207,15 @@ export class CandidateProfilesService {
       'invitationSentDate': '21-JUN-19',
       'createdDate': '21-JUN-19',
       'createdBy': 'Matthew, Maturity',
-      'lastUpdatedDate': '21-JUN-19'
+      'lastUpdatedDate': '21-JUN-19',
+      'streetAddress': '41 Apple Ridge Rd',
+      'city': 'Danbury',
+      'state': 'CT',
+      'zipcode': '06810',
+      'noOfRooms': '4',
+      'housingType': 'Rents Apartment',
+      'noOfChildren': '3',
+      'total': '5'
     },
     {
       'fullname': 'Richardson, Matthew',
@@ -169,7 +233,15 @@ export class CandidateProfilesService {
       'invitationSentDate': '21-JUN-19',
       'createdDate': '21-JUN-19',
       'createdBy': 'Matthew, Maturity',
-      'lastUpdatedDate': '21-JUN-19'
+      'lastUpdatedDate': '21-JUN-19',
+      'streetAddress': '41 Apple Ridge Rd',
+      'city': 'Danbury',
+      'state': 'CT',
+      'zipcode': '06810',
+      'noOfRooms': '4',
+      'housingType': 'Rents Apartment',
+      'noOfChildren': '3',
+      'total': '5'
     },
     {
       'fullname': 'Varaha, Pritpal',
@@ -187,7 +259,15 @@ export class CandidateProfilesService {
       'invitationSentDate': '21-JUN-19',
       'createdDate': '21-JUN-19',
       'createdBy': 'Matthew, Maturity',
-      'lastUpdatedDate': '21-JUN-19'
+      'lastUpdatedDate': '21-JUN-19',
+      'streetAddress': '41 Apple Ridge Rd',
+      'city': 'Danbury',
+      'state': 'CT',
+      'zipcode': '06810',
+      'noOfRooms': '4',
+      'housingType': 'Rents Apartment',
+      'noOfChildren': '3',
+      'total': '5'
     },
     {
       'fullname': 'Ellacott, Robin',
@@ -205,10 +285,17 @@ export class CandidateProfilesService {
       'invitationSentDate': '21-JUN-19',
       'createdDate': '21-JUN-19',
       'createdBy': 'Matthew, Maturity',
-      'lastUpdatedDate': '21-JUN-19'
+      'lastUpdatedDate': '21-JUN-19',
+      'streetAddress': '41 Apple Ridge Rd',
+      'city': 'Danbury',
+      'state': 'CT',
+      'zipcode': '06810',
+      'noOfRooms': '4',
+      'housingType': 'Rents Apartment',
+      'noOfChildren': '3',
+      'total': '5'
     }
 ];
-
 
   newCandidate: Candidate;
   constructor() { }
@@ -246,11 +333,11 @@ export class CandidateProfilesService {
 
     this.candidateList.push(newCandidateObj);
   } */
-  addCandidateProfile(formData, levelDetails, isInvitationSent){
+  addCandidateProfile(formData, levelDetails, isInvitationSent) {
     const dateString = new Date().toISOString();
-    console.log(this.candidateList.find(v => v.fullname == formData.LastName + ', ' + formData.FirstName));
-    if (this.candidateList.find(v => v.fullname == formData.LastName + ', ' + formData.FirstName) == undefined){
-      console.log("New Candidate");
+    console.log(this.candidateList.find(v => v.fullname === formData.LastName + ', ' + formData.FirstName));
+    if (this.candidateList.find(v => v.fullname === formData.LastName + ', ' + formData.FirstName) === undefined) {
+      console.log('New Candidate');
       const newCandidateObj = {
         'fullname': formData.LastName + ', ' + formData.FirstName,
         'level': {
@@ -260,41 +347,47 @@ export class CandidateProfilesService {
         },
         'departure': formData.Departure,
         'destination': formData.Destination,
-        'status': isInvitationSent? 'Invitation Sent' : 'Invitation Not Sent' ,
+        'status': isInvitationSent ? 'Invitation Sent' : 'Invitation Not Sent' ,
         'isInvitationSent': isInvitationSent,
         'invitationText': 'Resend',
         'isAssessmentReceived': false,
         'email': formData.Email,
         'businessUnit': formData.BusinessUnit,
         'emailAddress': formData.Email,
-        'invitationSentDate':  isInvitationSent? dateString : '',
+        'invitationSentDate':  isInvitationSent ? dateString : '',
         'createdDate': '21-JUN-19',
         'createdBy': 'Matthew, Maturity',
-        'lastUpdatedDate': '21-JUN-19'
+        'lastUpdatedDate': '21-JUN-19',
+        'streetAddress': '41 Apple Ridge Rd',
+        'city': 'Danbury',
+        'state': 'CT',
+        'zipcode': '06810',
+        'noOfRooms': '4',
+        'housingType': 'Rents Apartment',
+        'noOfChildren': '3',
+        'total': '5'
       };
       this.candidateList.push(newCandidateObj);
-    }else{
-      console.log("Update Candidate");
+    } else {
+      console.log('Update Candidate');
       console.log(formData.businessUnit);
       console.log(formData.Email);
-      this.candidateList.filter(function(item){
+      this.candidateList.filter(function(item) {
       return item.fullname === formData.LastName + ', ' + formData.FirstName;
-      }).map(function(item){
-      item.fullname = formData.LastName + ', ' + formData.FirstName
-      item.level.levelId = levelDetails.levelId
-      item.level.levelName = levelDetails.levelName
-      item.level.levelDescription = levelDetails.levelDescription
-      item.departure = formData.Departure
-      item.destination = formData.Destination
-      item.status =  isInvitationSent? 'Invitation Sent' : 'Invitation Not Sent'
-      item.isAssessmentReceived = false
-      item.businessUnit = formData.BusinessUnit
-      item.invitationSentDate = isInvitationSent? dateString : ''
-      item.emailAddress = formData.Email
+      }).map(function(item) {
+      item.fullname = formData.LastName + ', ' + formData.FirstName;
+      item.level.levelId = levelDetails.levelId;
+      item.level.levelName = levelDetails.levelName;
+      item.level.levelDescription = levelDetails.levelDescription;
+      item.departure = formData.Departure;
+      item.destination = formData.Destination;
+      item.status =  isInvitationSent ? 'Invitation Sent' : 'Invitation Not Sent';
+      item.isAssessmentReceived = false;
+      item.businessUnit = formData.BusinessUnit;
+      item.invitationSentDate = isInvitationSent ? dateString : '';
+      item.emailAddress = formData.Email;
       return item;
     });
     }
   }
-
-
 }
